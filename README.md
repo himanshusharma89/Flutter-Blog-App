@@ -1,6 +1,7 @@
-# blog_app
+# Flutter Blog App
 
-A new Flutter application.
+This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
+This is a fully functional app with Firebase backend.
 
 ## Getting Started
 
