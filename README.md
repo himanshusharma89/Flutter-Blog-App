@@ -5,6 +5,8 @@
 This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
 This is a fully functional app with Firebase backend.
 
+You can check the App on <a href="https://itsallwidgets.com/blog-app">IT'S ALL WIDGET!</a>
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
