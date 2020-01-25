@@ -27,4 +27,4 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-Made with <span style="color: #e25555;">&#9829;</span> by <a href="https://www.linkedin.com/in/himanshusharma89/">Himanshu Sharma</a>
+# Made with <span style="color: #e25555;">&#9829;</span> by <a href="https://www.linkedin.com/in/himanshusharma89/">Himanshu Sharma</a>
