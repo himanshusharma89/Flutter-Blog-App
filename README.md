@@ -4,7 +4,13 @@
 # Flutter Blog App
 
 This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
-This is a fully functional app with Firebase backend.
+This is a fully functional app with Firebase backend. <br>
+These are some screenshots of the app:<br>
+![Blog App](https://drive.google.com/open?id=1KGex5b4JHASpO9jNoElmbuotP83tIDQ4)
+![Blog App](https://drive.google.com/open?id=1A3luk2xX77TQa9SNzMmjJ6ohV22mxJQE)
+![Blog App](https://drive.google.com/open?id=1Jrvksu5TV8Hvm6rH_b7s2wGr71vRWrqC)
+![Blog App](https://drive.google.com/open?id=1aIcVBUoyIVBDcWJM9UecXPkH7tJaSX3i)
+
 
 You can check the App on <a href="https://itsallwidgets.com/blog-app">IT'S ALL WIDGET!</a>
 
