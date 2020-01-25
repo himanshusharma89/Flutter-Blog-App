@@ -12,7 +12,7 @@ These are some screenshots of the app:<br>
 ![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944836.png)
 
 
-You can check the App on <a href="https://itsallwidgets.com/blog-app">IT'S ALL WIDGET!</a>
+# <a href="https://itsallwidgets.com/blog-app">IT'S ALL WIDGET!</a>
 
 ## Getting Started
 
