@@ -21,21 +21,37 @@ class _EditPostState extends State<EditPost> {
    
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Post"),
+        title: Text(
+          "Edit Post",
+          style: TextStyle(
+            fontFamily: 'Roboto Mono'
+          ),
+        ),
         elevation: 0.0,
+        backgroundColor: Colors.deepPurple,
       ),
+      backgroundColor: Color(0xffc8d9ff),
       body: Form(
         key: formkey,
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top:15.0,left: 8.0,right: 8.0),
               child: TextFormField(
                 initialValue: widget.post.title,
+                style:TextStyle(
+                  fontFamily: 'Roboto Mono'
+                ),
                 decoration: InputDecoration(
+                  labelStyle:TextStyle(
+                    fontFamily: 'Roboto Mono'
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
                   labelText: "Post Title",
                   border: OutlineInputBorder()
                 ),
+                
                 onSaved: (val) => widget.post.title = val,
                 validator: (val) {
                   if(val.isEmpty){
@@ -45,11 +61,19 @@ class _EditPostState extends State<EditPost> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top:15.0,left: 8.0,right: 8.0),
               child: TextFormField(
                 initialValue: widget.post.body,
+                style:TextStyle(
+                  fontFamily: 'Roboto Mono'
+                ),
                 decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
                   labelText: "Post Body",
+                  labelStyle:TextStyle(
+                    fontFamily: 'Roboto Mono'
+                  ),
                   border: OutlineInputBorder()
                 ),
                 onSaved: (val) => widget.post.body = val,
@@ -72,11 +96,11 @@ class _EditPostState extends State<EditPost> {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
           },
           child: Icon(
-            Icons.edit, 
+            Icons.save, 
             //color=Colors.white,
             ),
-          backgroundColor: Colors.purple,
-          tooltip: "Edit post",
+          backgroundColor: Colors.deepPurple,
+          tooltip: "Save post",
         ),
     );
   }

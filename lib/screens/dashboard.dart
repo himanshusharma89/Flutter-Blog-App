@@ -45,7 +45,7 @@ class _DashboardState extends State<Dashboard> {
             curve: Curves.easeIn,
           );
         },
-        activeColor: Theme.of(context).primaryColor,
+        activeColor: Colors.deepPurple,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

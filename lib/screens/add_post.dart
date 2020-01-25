@@ -17,7 +17,13 @@ class _AddPostState extends State<AddPost> {
    
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Post"),
+        title: Text(
+          "Add Post",
+          style: TextStyle(
+            fontFamily: 'Roboto Mono',
+          ),  
+        ),
+        backgroundColor: Colors.deepPurple,
         elevation: 0.0,
       ),
       body: Form(
@@ -25,14 +31,17 @@ class _AddPostState extends State<AddPost> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top:15.0,left: 8.0,right: 8.0),
               child: TextFormField(
                 decoration: InputDecoration(
                   labelText: "Post Title",
+                  labelStyle: TextStyle(
+                    fontFamily: 'Roboto Mono',
+                  ),
                   border: OutlineInputBorder()
                 ),
                 onSaved: (val) => post.title = val,
-                validator: (val) {
+                validator: (val){
                   if(val.isEmpty){
                     return "Title filed can't be empty";
                   }
@@ -40,18 +49,23 @@ class _AddPostState extends State<AddPost> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Post Body",
-                  border: OutlineInputBorder()
+              padding: const EdgeInsets.only(top:15.0,left: 8.0,right: 8.0),
+              child: Container(
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: "Post Body",
+                    labelStyle: TextStyle(
+                      fontFamily: 'Roboto Mono'
+                    ),
+                    border: OutlineInputBorder()
+                  ),
+                  onSaved: (val) => post.body = val,
+                  validator: (val){
+                    if(val.isEmpty){
+                      return "Body field can't be empty";
+                    }
+                  },
                 ),
-                onSaved: (val) => post.body = val,
-                validator: (val){
-                  if(val.isEmpty){
-                    return "Body field can't be empty";
-                  }
-                },
               ),
             )
           ],
@@ -67,7 +81,7 @@ class _AddPostState extends State<AddPost> {
             Icons.add, 
             //color=Colors.white,
             ),
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.deepPurple,
           tooltip: "Add a post",
         ),
     );

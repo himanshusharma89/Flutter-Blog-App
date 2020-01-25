@@ -7,7 +7,9 @@ void main(){
     debugShowCheckedModeBanner: false,
     home: Dashboard(),
     theme: ThemeData(
-      primaryColor: Colors.purple
+      //backgroundColor: Color(0xff133337),
+      primaryColor: Colors.deepPurple,
+      fontFamily: 'Roboto Mono',
     ),
   ));
 }

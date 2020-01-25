@@ -33,16 +33,17 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           "Blog App",
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: Colors.deepPurple,
             fontSize: 22.0,
-            fontFamily: 'Open Sans',
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
+            fontFamily: 'Roboto Mono'
           ),
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
-        iconTheme: new IconThemeData(color: Theme.of(context).primaryColor,),
+        iconTheme: new IconThemeData(color: Colors.deepPurple,),
       ),
+      //backgroundColor: Color(0xFF8C9EFF),
       body:Container(
           color: Colors.white,
           child: Column(
@@ -62,33 +63,46 @@ class _HomePageState extends State<HomePage> {
                   child: FirebaseAnimatedList(query: _database.reference().child('posts'),
                   itemBuilder: (_, DataSnapshot snap, Animation<double> animation, int index){
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(left:8.0,right: 8.0,top: 5.0),
                       child: Card(
                         elevation: 4.0,
                         color: Colors.deepPurple,
                         child: ListTile(
-                          title: ListTile(
-                            onTap: (){
+                          onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=> PostView(postsList[index])));
                             },
+                          title: ListTile(
                             title: Text(
                               postsList[index].title,
-                              style: TextStyle(color:Colors.white,fontSize: 22.0,fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                color:Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w800,
+                                fontFamily: 'Roboto Mono'
+                              ),
                             ),
                             leading: Icon(
                             Icons.border_color,
                             color: Colors.white,
+                            size: 18.0,
                             ),
-                            trailing: Text(
-                              timeago.format(DateTime.fromMillisecondsSinceEpoch(postsList[index].date)),
-                              style:TextStyle(fontSize: 13.0, color: Colors.white),
-                            ),
+                            // trailing: Text(
+                            //   timeago.format(DateTime.fromMillisecondsSinceEpoch(postsList[index].date)),
+                            //   style:TextStyle(
+                            //     fontSize: 13.0, 
+                            //     color: Colors.white,
+                            //     fontFamily: 'Roboto Mono'
+                            //   ),
+                            // ),
                           ), 
                           subtitle: Padding(
-                              padding: const EdgeInsets.only(bottom:12.0,left: 12.0),
+                              padding: const EdgeInsets.only(bottom:12.0,left: 12.0,top: 5.0),
                               child: Text(postsList[index].body,
-                              style: TextStyle(color:Colors.white),),
-                            ), 
+                              style: TextStyle(
+                                color:Colors.white,
+                                fontFamily: 'Roboto Mono'),
+                              ),
+                          ), 
                         ),
                       ),
                     );
@@ -106,34 +120,98 @@ class _HomePageState extends State<HomePage> {
             Icons.edit, 
             //color=Colors.white,
             ),
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.deepPurple,
           tooltip: "Add a post",
         ),
         drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              UserAccountsDrawerHeader(
-                accountName: Text("Blog App",
-                style:TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold)),
-                accountEmail: Text("First Blog app using Flutter"),
-              ),
-              ListTile(
-                title: Text("About",
-                style:TextStyle(fontSize: 10.0)),
-                leading: Icon(Icons.details,color: Colors.purple,),
-              ),
-              Divider(
-                height: 10.0,
-                color: Colors.black,
-              ),
-              ListTile(
-                title: Text("Close"),
-                trailing: Icon(Icons.close),
-                onTap: (){
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
+          child: Container(
+            //color: Color(0xffc8d9ff),
+            child: ListView(
+              children: <Widget>[
+                // UserAccountsDrawerHeader(
+                //   accountName: Text("Blog App",
+                //   style:TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold)),
+                //   accountEmail: Text("First Blog app using Flutter"),
+                // ),
+                DrawerHeader(
+                  child: Column(
+                    children: <Widget>[
+                      // Row(
+                      //   children: <Widget>[
+                      //     Text(
+                      //       'Blog App',
+                      //       style: TextStyle(
+                      //         fontFamily: 'Roboto Mono',
+                      //         color: Colors.black,
+                      //         fontSize: 18.0
+                      //       ),
+                      //     )
+                      //   ],
+                      // ),
+                      // Row(
+                      //   children: <Widget>[
+                      //     Text(
+                      //       'Blog App with Firebase backend',
+                      //       style: TextStyle(
+                      //         fontFamily: 'Roboto Mono',
+                      //         color: Colors.black,
+                      //         fontSize: 12.0
+                      //       ),
+                      //     )
+                      //   ],
+                      // )
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                    //backgroundBlendMode: BlendMode.difference,
+                    image: DecorationImage(
+                      image:AssetImage("assets/blogging.png"),
+                      fit: BoxFit.scaleDown
+                    )
+                  ),
+                ),
+                Card(
+                  color: Color(0xffc8d9ff),
+                  child: ListTile(
+                    title: Text(
+                      "About",
+                      style:TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Roboto Mono'
+                      )
+                    ),
+                    trailing: Icon(Icons.details,color: Colors.blueAccent,),
+                  ),
+                ),
+                Divider(
+                  height: 10.0,
+                  color: Colors.black,
+                ),
+                Card(
+                  color: Color(0xffc8d9ff),
+                  child: ListTile(
+                    title: Text(
+                      "Close",
+                      style:TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Roboto Mono'
+                      )
+                    ),
+                    trailing: Icon(
+                      Icons.close,
+                      color: Colors.red,),
+                    onTap: (){
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       );

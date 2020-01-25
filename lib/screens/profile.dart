@@ -14,24 +14,33 @@ class _ProfileState extends State<Profile> {
         title: Text(
           "Developer",
           style: TextStyle(
-            color: Theme.of(context).primaryColor,
+            color: Colors.deepPurple,
             fontSize: 22.0,
-            fontFamily: 'Open Sans',
-            fontWeight: FontWeight.w600,
+            fontFamily: 'Roboto Mono',
+            fontWeight: FontWeight.w700,
+            letterSpacing: 0.5,
           ),
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
         iconTheme: new IconThemeData(color: Theme.of(context).primaryColor,),
       ),
+      //backgroundColor: Colors.deepPurple,
       body: Container(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 15.0),
-              child: new Stack(
-                children: <Widget>[
-                  Card(
-                  margin: const EdgeInsets.only(top: 50.0),
-                  child: SizedBox(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15.0),
+          child: new Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  width: 380.0,
+                  child: Card(
+                    //color: Colors.deepPurple,
+                    elevation: 5.0,
+                    //color: Color(0xFF8C9EFF),
+                    margin: const EdgeInsets.only(top: 50.0),
+                    child: SizedBox(
                       height: 150.0,
                       width: double.infinity,
                       child: Padding(
@@ -43,9 +52,11 @@ class _ProfileState extends State<Profile> {
                               "Himanshu Sharma",
                               style: TextStyle(
                                 fontSize: 22.0,
+                                color: Colors.deepPurple,
+                                fontWeight: FontWeight.w600,
                               )
                             ),
-                            SizedBox(height: 5.0,),
+                            SizedBox(height: 8.0,),
                             GestureDetector(
                               child: Image.asset('assets/GitHub.png'),
                               onTap: () async {
@@ -59,24 +70,27 @@ class _ProfileState extends State<Profile> {
                             ) 
                           ],
                         ),
-                      )),
-                ),
-                Positioned(
-                  top: .0,
-                  left: .0,
-                  right: .0,
-                  child: Center(
-                    child: CircleAvatar(
-                      radius: 50.0,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('assets/flutter_dev.png'),
+                      )
                     ),
                   ),
-                )
-                ],
+                ),
               ),
-            ),
+            Positioned(
+              top: .0,
+              left: .0,
+              right: .0,
+              child: Center(
+                child: CircleAvatar(
+                  radius: 50.0,
+                  backgroundColor: Colors.white,
+                  backgroundImage: AssetImage('assets/flutter_dev.png'),
+                ),
+              ),
+            )
+            ],
           ),
+        ),
+      ),
     );
   }
 }
