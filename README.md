@@ -1,7 +1,10 @@
 
 <a href="https://sourcerer.io/himanshusharma89"><img src="https://avatars0.githubusercontent.com/u/44980497?v=4" height="50px" width="50px" alt=""/></a><br>
-<a href="https://sourcerer.io/himanshusharma89"><img src="https://img.shields.io/badge/Dart-6%20commits-orange.svg" alt=""></a>
+<a href="https://sourcerer.io/himanshusharma89"><img src="https://img.shields.io/badge/Dart-47%20commits-orange.svg" alt=""></a>
 # Flutter Blog App
+
+![GitHub forks](https://img.shields.io/github/forks/himanshusharma89/Flutter-Blog-App?style=for-the-badge) ![GitHub stars](https://img.shields.io/github/stars/himanshusharma89/Flutter-Blog-App?style=for-the-badge)
+
 
 This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
 This is a fully functional app with Firebase backend. <br>
