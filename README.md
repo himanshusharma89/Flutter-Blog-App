@@ -7,6 +7,8 @@
 This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
 This is a fully functional app with Firebase backend. <br>
 These are some screenshots of the app:<br>
+[<img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/bmc-button.png">](https://www.buymeacoffee.com/himanshusharma)
+
 ![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944824.png)
 ![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944830.png)
 ![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944841.png)
