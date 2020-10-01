@@ -23,7 +23,9 @@ class _ProfileState extends State<Profile> {
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
-        iconTheme: new IconThemeData(color: Theme.of(context).primaryColor,),
+        iconTheme: new IconThemeData(
+          color: Theme.of(context).primaryColor,
+        ),
       ),
       //backgroundColor: Colors.deepPurple,
       body: Container(
@@ -41,52 +43,52 @@ class _ProfileState extends State<Profile> {
                     //color: Color(0xFF8C9EFF),
                     margin: const EdgeInsets.only(top: 50.0),
                     child: SizedBox(
-                      height: 150.0,
-                      width: double.infinity,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 58.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "Himanshu Sharma",
-                              style: TextStyle(
-                                fontSize: 22.0,
-                                color: Colors.deepPurple,
-                                fontWeight: FontWeight.w600,
+                        height: 150.0,
+                        width: double.infinity,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 58.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text("Himanshu Sharma",
+                                  style: TextStyle(
+                                    fontSize: 22.0,
+                                    color: Colors.deepPurple,
+                                    fontWeight: FontWeight.w600,
+                                  )),
+                              SizedBox(
+                                height: 8.0,
+                              ),
+                              GestureDetector(
+                                child: Image.asset('assets/GitHub.png'),
+                                onTap: () async {
+                                  const url =
+                                      'https://github.com/himanshusharma89';
+                                  if (await canLaunch(url)) {
+                                    await launch(url);
+                                  } else {
+                                    throw 'Could not launch $url';
+                                  }
+                                },
                               )
-                            ),
-                            SizedBox(height: 8.0,),
-                            GestureDetector(
-                              child: Image.asset('assets/GitHub.png'),
-                              onTap: () async {
-                                const url = 'https://github.com/himanshusharma89';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                              },
-                            ) 
-                          ],
-                        ),
-                      )
-                    ),
+                            ],
+                          ),
+                        )),
                   ),
                 ),
               ),
-            Positioned(
-              top: .0,
-              left: .0,
-              right: .0,
-              child: Center(
-                child: CircleAvatar(
-                  radius: 50.0,
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage('assets/flutter_dev.png'),
+              Positioned(
+                top: .0,
+                left: .0,
+                right: .0,
+                child: Center(
+                  child: CircleAvatar(
+                    radius: 50.0,
+                    backgroundColor: Colors.white,
+                    backgroundImage: AssetImage('assets/flutter_dev.png'),
+                  ),
                 ),
-              ),
-            )
+              )
             ],
           ),
         ),

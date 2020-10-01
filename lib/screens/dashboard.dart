@@ -13,7 +13,7 @@ class _DashboardState extends State<Dashboard> {
   PageController _pageController;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _pageController = PageController();
   }
@@ -27,21 +27,21 @@ class _DashboardState extends State<Dashboard> {
           HomePage(),
           Profile(),
         ],
-        onPageChanged: (int index){
+        onPageChanged: (int index) {
           setState(() {
-            _currentIndex=index;
+            _currentIndex = index;
           });
         },
       ),
       bottomNavigationBar: CupertinoTabBar(
         currentIndex: _currentIndex,
-        onTap: (index){
+        onTap: (index) {
           setState(() {
-            _currentIndex=index;
+            _currentIndex = index;
           });
           _pageController.animateToPage(
             index,
-            duration:Duration(milliseconds: 200),
+            duration: Duration(milliseconds: 200),
             curve: Curves.easeIn,
           );
         },
