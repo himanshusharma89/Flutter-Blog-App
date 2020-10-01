@@ -1,21 +1,19 @@
-[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/0)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/0)[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/1)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/1)[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/2)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/2)[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/3)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/3)[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/4)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/4)[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/5)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/5)[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/6)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/6)[![](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/images/7)](https://sourcerer.io/fame/himanshusharma89/himanshusharma89/Flutter-Blog-App/links/7)
 # Flutter Blog App
 
 ![GitHub forks](https://img.shields.io/github/forks/himanshusharma89/Flutter-Blog-App?style=for-the-badge) ![GitHub stars](https://img.shields.io/github/stars/himanshusharma89/Flutter-Blog-App?style=for-the-badge)
 
-
 This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
-This is a fully functional app with Firebase backend. <br>
-These are some screenshots of the app:<br>
+This is a fully functional app with Firebase backend. 
+
+<br>
+
 [<img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/bmc-button.png">](https://www.buymeacoffee.com/himanshusharma)
 
-![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944824.png)
-![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944830.png)
-![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944841.png)
-![Blog App](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944836.png)
+These are some screenshots of the app:
 
+<br>
 
-# <a href="https://itsallwidgets.com/blog-app">IT'S ALL WIDGET!</a>
+<img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944824.png" width="30%"/> <img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944830.png" width="30%"/> <img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944841.png" width="30%"/> <img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944836.png" width="30%"/>
 
 ## Getting Started
 
