@@ -16,13 +16,32 @@ class _AddPostState extends State<AddPost> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.deepPurple),
+          onPressed: ()=> Navigator.pop(context),
+        ),
         title: Text(
           "Add Post",
           style: TextStyle(
-            fontFamily: 'Roboto Mono',
+              fontFamily: 'Roboto Mono',
+              color: Colors.deepPurple
           ),
         ),
-        backgroundColor: Colors.deepPurple,
+        actions: [
+          IconButton(
+            padding: EdgeInsets.only(right: 30),
+            icon: Icon(
+              Icons.add,
+              color: Colors.deepPurple,
+            ),
+            onPressed: (){
+              insertPost();
+              Navigator.pop(context);
+            },
+          )
+        ],
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
       body: Form(
@@ -50,9 +69,10 @@ class _AddPostState extends State<AddPost> {
               padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
               child: Container(
                 child: TextFormField(
+                  maxLines: 15,
                   decoration: InputDecoration(
-                      labelText: "Post Body",
-                      labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
+                      hintText: "Post Body",
+                      hintStyle: TextStyle(fontFamily: 'Roboto Mono'),
                       border: OutlineInputBorder()),
                   onSaved: (val) => post.body = val,
                   validator: (val) {
@@ -65,19 +85,6 @@ class _AddPostState extends State<AddPost> {
             )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          insertPost();
-          Navigator.pop(context);
-          //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
-        },
-        child: Icon(
-          Icons.add,
-          //color=Colors.white,
-        ),
-        backgroundColor: Colors.deepPurple,
-        tooltip: "Add a post",
       ),
     );
   }
