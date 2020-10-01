@@ -1,4 +1,5 @@
 import 'package:blog_app/models/post.dart';
+import 'package:blog_app/screens/profile.dart';
 import 'package:blog_app/screens/view_post.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,20 +17,22 @@ class _HomePageState extends State<HomePage> {
   FirebaseDatabase _database = FirebaseDatabase.instance;
   String nodeName = "posts";
   List<Post> postsList = <Post>[];
-  int _currentIndex = 0;
-  PageController _pageController;
 
   @override
   void initState() {
     _database.reference().child(nodeName).onChildAdded.listen(_childAdded);
     _database.reference().child(nodeName).onChildRemoved.listen(_childRemoves);
     _database.reference().child(nodeName).onChildChanged.listen(_childChanged);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           "Blog App",
           style: TextStyle(
@@ -40,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.white,
         centerTitle: true,
-        iconTheme: new IconThemeData(
+        iconTheme: IconThemeData(
           color: Colors.deepPurple,
         ),
       ),
@@ -134,90 +137,49 @@ class _HomePageState extends State<HomePage> {
         tooltip: "Add a post",
       ),
       drawer: Drawer(
-        child: Container(
-          //color: Color(0xffc8d9ff),
-          child: ListView(
-            children: <Widget>[
-              // UserAccountsDrawerHeader(
-              //   accountName: Text("Blog App",
-              //   style:TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold)),
-              //   accountEmail: Text("First Blog app using Flutter"),
-              // ),
-              DrawerHeader(
-                child: Column(
-                  children: <Widget>[
-                    // Row(
-                    //   children: <Widget>[
-                    //     Text(
-                    //       'Blog App',
-                    //       style: TextStyle(
-                    //         fontFamily: 'Roboto Mono',
-                    //         color: Colors.black,
-                    //         fontSize: 18.0
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
-                    // Row(
-                    //   children: <Widget>[
-                    //     Text(
-                    //       'Blog App with Firebase backend',
-                    //       style: TextStyle(
-                    //         fontFamily: 'Roboto Mono',
-                    //         color: Colors.black,
-                    //         fontSize: 12.0
-                    //       ),
-                    //     )
-                    //   ],
-                    // )
-                  ],
+        child: ListView(
+          children: <Widget>[
+            Image.asset(
+              'assets/blogging.png',
+              fit: BoxFit.contain,
+              height: height*0.2,
+            ),
+            Ink(
+              child: ListTile(
+                title: Text("About",
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Roboto Mono')),
+                trailing: Icon(
+                  Icons.details,
+                  color: Colors.blueAccent,
                 ),
-                decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                    //backgroundBlendMode: BlendMode.difference,
-                    image: DecorationImage(
-                        image: AssetImage("assets/blogging.png"),
-                        fit: BoxFit.scaleDown)),
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => Profile()));
+                },
               ),
-              Card(
-                color: Color(0xffc8d9ff),
-                child: ListTile(
-                  title: Text("About",
-                      style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Roboto Mono')),
-                  trailing: Icon(
-                    Icons.details,
-                    color: Colors.blueAccent,
-                  ),
+            ),
+            Ink(
+              child: ListTile(
+                title: Text("Close",
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Roboto Mono')),
+                trailing: Icon(
+                  Icons.close,
+                  color: Colors.red,
                 ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
               ),
-              Divider(
-                height: 10.0,
-                color: Colors.black,
-              ),
-              Card(
-                color: Color(0xffc8d9ff),
-                child: ListTile(
-                  title: Text("Close",
-                      style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Roboto Mono')),
-                  trailing: Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
