@@ -78,6 +78,7 @@ class _PostViewState extends State<PostView> {
               ),
             ),
             Divider(),
+
             Row(
               children: <Widget>[
                 Expanded(
@@ -94,7 +95,6 @@ class _PostViewState extends State<PostView> {
                     ),
                   ),
                 ),
-
                 IconButton(
                   icon: Icon(Icons.delete),
                   onPressed: () {
