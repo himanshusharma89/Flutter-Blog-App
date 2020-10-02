@@ -7,6 +7,7 @@ void main() {
     home: HomePage(),
     theme: ThemeData(
       //backgroundColor: Color(0xff133337),
+      scaffoldBackgroundColor: Colors.white,
       primaryColor: Colors.deepPurple,
       fontFamily: 'Roboto Mono',
     ),
