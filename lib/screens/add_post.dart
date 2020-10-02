@@ -15,14 +15,29 @@ class _AddPostState extends State<AddPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.deepPurple,
+          ),
+          onPressed: () {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
+        ),
+        centerTitle: true,
         title: Text(
           "Add Post",
           style: TextStyle(
             fontFamily: 'Roboto Mono',
+            color: Colors.deepPurple,
+            fontSize: 22.0,
+            fontWeight: FontWeight.w700,
           ),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
       body: Form(
@@ -43,6 +58,7 @@ class _AddPostState extends State<AddPost> {
                   if (val.isEmpty) {
                     return "Title filed can't be empty";
                   }
+                  return val;
                 },
               ),
             ),
@@ -59,6 +75,7 @@ class _AddPostState extends State<AddPost> {
                     if (val.isEmpty) {
                       return "Body field can't be empty";
                     }
+                    return val;
                   },
                 ),
               ),
