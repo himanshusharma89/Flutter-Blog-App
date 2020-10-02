@@ -15,7 +15,6 @@ class _AddPostState extends State<AddPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -40,46 +39,60 @@ class _AddPostState extends State<AddPost> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
-      body: Form(
-        key: formkey,
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                    labelText: "Post Title",
-                    labelStyle: TextStyle(
-                      fontFamily: 'Roboto Mono',
+      body: SafeArea(
+        child: ListView(
+          children: [
+            Form(
+              key: formkey,
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Post Title",
+                        labelStyle: TextStyle(
+                          fontFamily: 'Roboto Mono',
+                        ),
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.only(right: 15, left: 15),
+                      ),
+                      onSaved: (val) => post.title = val,
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Title filed can't be empty";
+                        }
+                        return val;
+                      },
                     ),
-                    border: OutlineInputBorder()),
-                onSaved: (val) => post.title = val,
-                validator: (val) {
-                  if (val.isEmpty) {
-                    return "Title filed can't be empty";
-                  }
-                  return val;
-                },
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+                    child: Container(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: "Post Body",
+                          labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.only(
+                              right: 15, top: 15, bottom: 50, left: 15),
+                        ),
+                        maxLines: 7,
+                        onSaved: (val) => post.body = val,
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return "Body field can't be empty";
+                          }
+                          return val;
+                        },
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-              child: Container(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      labelText: "Post Body",
-                      labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
-                      border: OutlineInputBorder()),
-                  onSaved: (val) => post.body = val,
-                  validator: (val) {
-                    if (val.isEmpty) {
-                      return "Body field can't be empty";
-                    }
-                    return val;
-                  },
-                ),
-              ),
-            )
           ],
         ),
       ),
