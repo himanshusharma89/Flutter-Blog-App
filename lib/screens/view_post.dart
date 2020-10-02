@@ -78,7 +78,6 @@ class _PostViewState extends State<PostView> {
               ),
             ),
             Divider(),
-            
             Row(
               children: <Widget>[
                 Expanded(
