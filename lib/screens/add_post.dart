@@ -3,6 +3,8 @@ import 'package:blog_app/models/post.dart';
 import 'package:blog_app/screens/home.dart';
 import 'package:flutter/material.dart';
 
+import 'home.dart';
+
 class AddPost extends StatefulWidget {
   @override
   _AddPostState createState() => _AddPostState();
@@ -15,56 +17,103 @@ class _AddPostState extends State<AddPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Add Post",
-          style: TextStyle(
-            fontFamily: 'Roboto Mono',
+      body: Stack(
+        children: [
+          Container(
+            color: Colors.deepPurple,
           ),
-        ),
-        backgroundColor: Colors.deepPurple,
-        elevation: 0.0,
-      ),
-      body: Form(
-        key: formkey,
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                    labelText: "Post Title",
-                    labelStyle: TextStyle(
-                      fontFamily: 'Roboto Mono',
-                    ),
-                    border: OutlineInputBorder()),
-                onSaved: (val) => post.title = val,
-                validator: (val) {
-                  if (val.isEmpty) {
-                    return "Title filed can't be empty";
-                  }
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+          SafeArea(
               child: Container(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                      labelText: "Post Body",
-                      labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
-                      border: OutlineInputBorder()),
-                  onSaved: (val) => post.body = val,
-                  validator: (val) {
-                    if (val.isEmpty) {
-                      return "Body field can't be empty";
-                    }
-                  },
+            color: Colors.white,
+          )),
+          Container(
+            margin: EdgeInsets.all(15),
+            child: ListView(
+              children: [
+                Column(
+                  children: [
+                    Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
+                            },
+                            child: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Text(
+                            "Add Post",
+                            style: TextStyle(
+                                fontFamily: 'Roboto Mono',
+                                color: Colors.deepPurple,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Form(
+                      key: formkey,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 15.0, left: 8.0, right: 8.0),
+                            child: TextFormField(
+                              decoration: InputDecoration(
+                                  labelText: "Post Title",
+                                  labelStyle: TextStyle(
+                                    fontFamily: 'Roboto Mono',
+                                  ),
+                                  border: OutlineInputBorder()),
+                              onSaved: (val) => post.title = val,
+                              validator: (val) {
+                                if (val.isEmpty) {
+                                  return "Title filed can't be empty";
+                                }
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 15.0, left: 8.0, right: 8.0),
+                            child: Container(
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                    labelText: "Post Body",
+                                    labelStyle:
+                                        TextStyle(fontFamily: 'Roboto Mono'),
+                                    border: OutlineInputBorder()),
+                                onSaved: (val) => post.body = val,
+                                validator: (val) {
+                                  if (val.isEmpty) {
+                                    return "Body field can't be empty";
+                                  }
+                                },
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            )
-          ],
-        ),
+              ],
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -93,3 +142,5 @@ class _AddPostState extends State<AddPost> {
     }
   }
 }
+
+
