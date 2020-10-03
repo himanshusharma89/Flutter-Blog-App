@@ -20,11 +20,27 @@ class _PostViewState extends State<PostView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.transparent,
         title: Text(
           widget.post.title,
-          style: TextStyle(fontFamily: 'Roboto Mono'),
+          style: TextStyle(
+            fontFamily: 'Roboto Mono',
+            color: Colors.deepPurple,
+            fontSize: 22.0,
+            fontWeight: FontWeight.w700,
+          ),
         ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.deepPurple,
+          ),
+          onPressed: () {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+          },
+        ),
+        centerTitle: true,
       ),
       backgroundColor: Color(0xffc8d9ff),
       body: Padding(
@@ -53,12 +69,12 @@ class _PostViewState extends State<PostView> {
                 width: MediaQuery.of(context).size.width,
                 child: Card(
                     child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    widget.post.body,
-                    style: TextStyle(fontFamily: 'Roboto Mono', fontSize: 16.0),
-                  ),
-                )),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.post.body,
+                        style: TextStyle(fontFamily: 'Roboto Mono', fontSize: 16.0),
+                      ),
+                    )),
               ),
             ),
             Divider(),
@@ -66,7 +82,7 @@ class _PostViewState extends State<PostView> {
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.fromLTRB(12,4,4,4),
                     child: Text(
                       "Published:" +
                           timeago.format(DateTime.fromMillisecondsSinceEpoch(
@@ -87,13 +103,6 @@ class _PostViewState extends State<PostView> {
                     //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
                   },
                 ),
-                // IconButton(icon: Icon(Icons.edit),
-                // onPressed: (){
-                //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => EditPost(widget.post)));
-                //   //PostService postService = PostService(widget.post.toMap());
-                //   //postService.updatePost();
-                // },
-                // ),
               ],
             ),
           ],

@@ -1,0 +1,39 @@
+name: Apk Build
+on:
+  pull_request:
+    branches:
+      - '*' 
+  push:
+    branches:
+      - '*' 
+jobs:
+  build_apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: clone repo
+        uses: actions/checkout@v2
+
+      - name: setup java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+          
+      - name: setup flutter
+        uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.22.0'
+
+      - name: flutter get packages
+        run: flutter pub get
+
+      - name: flutter build
+        run: flutter build apk
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v2.2.0
+        with:
+          # Artifact name
+          name: build apk
+          # Path To Upload
+          path: build/app/outputs/flutter-apk/app-release.apk
