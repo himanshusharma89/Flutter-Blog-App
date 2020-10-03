@@ -44,7 +44,7 @@ class _BlogAppState extends State<BlogApp> {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme:
-                themeChangeProvider.darkTheme == true ? darkTheme : lightTheme,
+                (themeChangeProvider.darkTheme == true) ? darkTheme : lightTheme,
             home: HomePage(),
           );
         },
