@@ -24,6 +24,9 @@ dependencies:
   timeago: ^2.0.27
   flutter_launcher_icons: ^0.7.4
   url_launcher: ^5.4.1
+  # adding following two packages to solve issue #12
+  shared_preferences:
+  provider:
 
 flutter_icons:
   image_path: "assets/blogging.png"
