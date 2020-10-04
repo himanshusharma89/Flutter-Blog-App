@@ -1,4 +1,5 @@
 import 'package:blog_app/models/post.dart';
+import 'package:blog_app/screens/medium_post_view.dart';
 import 'package:blog_app/screens/profile.dart';
 import 'package:blog_app/screens/view_post.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -32,6 +33,23 @@ class _HomePageState extends State<HomePage> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(Icons.receipt),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MediumPostView(
+                    title: "Flutter MVVM + Providers",
+                    url:
+                    "https://medium.com/@chhimpa.shubh04/flutter-mvvm-providers-9a0fd66b7607",
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
         elevation: 0,
         title: Text(
           "Blog App",
@@ -120,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -142,7 +160,7 @@ class _HomePageState extends State<HomePage> {
             Image.asset(
               'assets/blogging.png',
               fit: BoxFit.contain,
-              height: height*0.2,
+              height: height * 0.2,
             ),
             Ink(
               child: ListTile(
