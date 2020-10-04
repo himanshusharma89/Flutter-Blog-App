@@ -1,7 +1,6 @@
-import 'package:blog_app/db/post_service.dart';
-import 'package:blog_app/models/post.dart';
-import 'package:blog_app/screens/home.dart';
 import 'package:flutter/material.dart';
+import '../db/post_service.dart';
+import '../models/post.dart';
 
 class AddPost extends StatefulWidget {
   @override
@@ -23,8 +22,7 @@ class _AddPostState extends State<AddPost> {
             color: Colors.deepPurple,
           ),
           onPressed: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.pop(context);
           },
         ),
         centerTitle: true,

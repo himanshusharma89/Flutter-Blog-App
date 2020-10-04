@@ -1,14 +1,13 @@
-import 'package:blog_app/models/post.dart';
-import 'package:blog_app/providers/theme_notifier.dart';
-import 'package:blog_app/screens/profile.dart';
-import 'package:blog_app/screens/view_post.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'add_post.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import '../models/post.dart';
+import '../providers/theme_notifier.dart';
+import '../routing/route_constant.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -83,11 +82,9 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.deepPurple,
                           child: ListTile(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PostView(postsList[index])));
+                              Navigator.pushNamed(
+                                  context, RouteConstant.VIEW_POST,
+                                  arguments: postsList[index]);
                             },
                             title: ListTile(
                               title: Text(
@@ -133,8 +130,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPost()));
+          Navigator.pushNamed(context, RouteConstant.ADD_POST);
         },
         child: Icon(
           Icons.edit,
@@ -164,8 +160,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.blueAccent,
                 ),
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => Profile()));
+                  Navigator.pushNamed(context, RouteConstant.PROFILE);
                 },
               ),
             ),

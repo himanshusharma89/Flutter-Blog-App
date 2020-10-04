@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
 import 'models/theme_data.dart';
 import 'screens/home.dart';
-import 'screens/home.dart';
-import 'screens/home.dart';
+import 'routing/route_page.dart';
+import 'routing/route_constant.dart';
 
 void main() {
   runApp(
@@ -46,6 +45,8 @@ class _BlogAppState extends State<BlogApp> {
             theme:
                 (themeChangeProvider.darkTheme == true) ? darkTheme : lightTheme,
             home: HomePage(),
+            onGenerateRoute: RoutePage.generateRoute,
+            initialRoute: RouteConstant.ROOT,
           );
         },
       ),
