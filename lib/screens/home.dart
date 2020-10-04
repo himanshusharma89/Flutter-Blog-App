@@ -1,4 +1,5 @@
 import 'package:blog_app/models/post.dart';
+import 'package:blog_app/routing/route_constant.dart';
 import 'package:blog_app/screens/profile.dart';
 import 'package:blog_app/screens/view_post.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -76,11 +77,9 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.deepPurple,
                           child: ListTile(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PostView(postsList[index])));
+                              Navigator.pushNamed(
+                                  context, RouteConstant.VIEW_POST,
+                                  arguments: postsList[index]);
                             },
                             title: ListTile(
                               title: Text(
@@ -126,8 +125,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPost()));
+          Navigator.pushNamed(context, RouteConstant.ADD_POST);
         },
         child: Icon(
           Icons.edit,
@@ -142,7 +140,7 @@ class _HomePageState extends State<HomePage> {
             Image.asset(
               'assets/blogging.png',
               fit: BoxFit.contain,
-              height: height*0.2,
+              height: height * 0.2,
             ),
             Ink(
               child: ListTile(
@@ -157,8 +155,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.blueAccent,
                 ),
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => Profile()));
+                  Navigator.pushNamed(context, RouteConstant.PROFILE);
                 },
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:blog_app/routing/route_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -36,8 +37,7 @@ class _PostViewState extends State<PostView> {
             color: Colors.deepPurple,
           ),
           onPressed: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.pop(context);
           },
         ),
         centerTitle: true,
@@ -53,10 +53,9 @@ class _PostViewState extends State<PostView> {
                 IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditPost(widget.post)));
+                    Navigator.pushReplacementNamed(
+                        context, RouteConstant.EDIT_POST,
+                        arguments: widget.post);
                     //PostService postService = PostService(widget.post.toMap());
                     //postService.updatePost();
                   },
@@ -69,12 +68,12 @@ class _PostViewState extends State<PostView> {
                 width: MediaQuery.of(context).size.width,
                 child: Card(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.post.body,
-                        style: TextStyle(fontFamily: 'Roboto Mono', fontSize: 16.0),
-                      ),
-                    )),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.post.body,
+                    style: TextStyle(fontFamily: 'Roboto Mono', fontSize: 16.0),
+                  ),
+                )),
               ),
             ),
             Divider(),
@@ -82,7 +81,7 @@ class _PostViewState extends State<PostView> {
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(12,4,4,4),
+                    padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
                     child: Text(
                       "Published:" +
                           timeago.format(DateTime.fromMillisecondsSinceEpoch(

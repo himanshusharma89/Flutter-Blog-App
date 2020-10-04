@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
+import 'routing/route_page.dart';
+import 'routing/route_constant.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -11,5 +13,7 @@ void main() {
       primaryColor: Colors.deepPurple,
       fontFamily: 'Roboto Mono',
     ),
+    onGenerateRoute: RoutePage.generateRoute,
+    initialRoute: RouteConstant.ROOT,
   ));
 }
