@@ -21,11 +21,11 @@ class _ProfileState extends State<Profile> {
             letterSpacing: 0.5,
           ),
         ),
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         centerTitle: true,
-        iconTheme: new IconThemeData(
-          color: Theme.of(context).primaryColor,
-        ),
+        // iconTheme: new IconThemeData(
+        //   color: Theme.of(context).primaryColor,
+        // ),
       ),
       //backgroundColor: Colors.deepPurple,
       body: Container(

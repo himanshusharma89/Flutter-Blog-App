@@ -4,9 +4,6 @@ import 'package:blog_app/models/post.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:blog_app/db/post_service.dart';
 
-import 'edit_post.dart';
-import 'home.dart';
-
 class PostView extends StatefulWidget {
   final Post post;
 
