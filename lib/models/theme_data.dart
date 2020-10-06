@@ -10,6 +10,14 @@ final darkTheme = ThemeData(
     floatingActionButtonTheme: FloatingActionButtonThemeData(
         foregroundColor: Colors.deepPurple, backgroundColor: Colors.white),
     dividerColor: Colors.black12,
+    inputDecorationTheme: InputDecorationTheme(
+      // enabledBorder: new OutlineInputBorder(
+      //   borderSide:  BorderSide(color: Colors.deepPurple ),
+      // ),
+      focusedBorder: new OutlineInputBorder(
+        borderSide:  BorderSide(color: Colors.white ),
+      ),
+    ),
     iconTheme: IconThemeData(
       color: Colors.white,
     ),
@@ -35,6 +43,14 @@ final lightTheme = ThemeData(
     floatingActionButtonTheme: FloatingActionButtonThemeData(
         foregroundColor: Colors.white, backgroundColor: Colors.deepPurple),
     dividerColor: Colors.white54,
+    inputDecorationTheme: InputDecorationTheme(
+      // enabledBorder: new OutlineInputBorder(
+      //   borderSide:  BorderSide(color: Colors.deepPurple ),
+      // ),
+      focusedBorder: new OutlineInputBorder(
+        borderSide:  BorderSide(color: Colors.deepPurple ),
+      ),
+    ),
     iconTheme: IconThemeData(
       color: Colors.deepPurple,
     ),

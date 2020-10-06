@@ -48,7 +48,7 @@ class _BlogAppState extends State<BlogApp> {
               theme: (themeChangeProvider.darkTheme == true)
                   ? darkTheme
                   : lightTheme,
-              home: HomePage(),
+              home: SafeArea(child: HomePage()),
               onGenerateRoute: RoutePage.generateRoute,
               initialRoute: RouteConstant.ROOT,
             ),

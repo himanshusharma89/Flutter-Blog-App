@@ -1,6 +1,7 @@
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   FirebaseDatabase _database = FirebaseDatabase.instance;
   String nodeName = "posts";
   List<Post> postsList = <Post>[];
-
+  GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   bool swithValue = false;
 
   @override
@@ -35,13 +36,16 @@ class _HomePageState extends State<HomePage> {
 
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(
         title: Text(
           "Blog App",
         ),
+        leading: IconButton(
+            icon: Icon(Icons.menu_rounded),
+            onPressed: () => _globalKey.currentState.openDrawer()),
       ),
       body: Container(
-        // color: Colors.white,
         child: Column(
           children: <Widget>[
             Visibility(
@@ -83,7 +87,9 @@ class _HomePageState extends State<HomePage> {
                                           Icons.border_color,
                                           size: 18.0,
                                         ),
-                                        SizedBox(width: 15,),
+                                        SizedBox(
+                                          width: 15,
+                                        ),
                                         Text(
                                           postsList[index].title,
                                           style: TextStyle(
@@ -94,7 +100,9 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ],
                                     ),
-                                    SizedBox(height: 12,),
+                                    SizedBox(
+                                      height: 12,
+                                    ),
                                     Text(
                                       postsList[index].body,
                                       style: TextStyle(
@@ -122,71 +130,78 @@ class _HomePageState extends State<HomePage> {
         tooltip: "Add a post",
       ),
       drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            Image.asset(
-              'assets/blogging.png',
-              fit: BoxFit.contain,
-              height: height * 0.2,
-            ),
-            Ink(
-              child: ListTile(
-                title: Text("About",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      // color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    )),
-                trailing: Icon(
-                  Icons.details,
-                  color: Colors.blueAccent,
+        child: Stack(
+          children: [
+            ListView(
+              children: <Widget>[
+                Image.asset(
+                  'assets/blogging.png',
+                  fit: BoxFit.contain,
+                  height: height * 0.2,
                 ),
-                onTap: () {
-                  Navigator.pushNamed(context, RouteConstant.PROFILE);
-                },
-              ),
-            ),
-            Ink(
-              child: ListTile(
-                title: Text("Close",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      // color: Colors.black,
-                      fontWeight: FontWeight.w600,
-                    )),
-                trailing: Icon(
-                  Icons.close,
-                  color: Colors.red,
+                Ink(
+                  child: ListTile(
+                    title: Text("About",
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          // color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                        )),
+                    trailing: Icon(
+                      Icons.info,
+                      color: Colors.blueAccent,
+                    ),
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteConstant.PROFILE);
+                    },
+                  ),
                 ),
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+                Ink(
+                  child: ListTile(
+                    title: Text("Dark Mode",
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.w600,
+                        )),
+                    trailing: Switch(
+                      activeColor: Colors.green,
+                      value: swithValue,
+                      onChanged: (bool value) {
+                        setState(() {
+                          swithValue = !swithValue;
+                          themeChange.darkTheme = swithValue;
+                        });
+                        //print("Dark Mode");
+                      },
+                    ),
+                    onTap: () {
+                      setState(() {
+                        swithValue = !swithValue;
+                        themeChange.darkTheme = swithValue;
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
-            Ink(
-              child: ListTile(
-                title: Text("Dark Mode",
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w600,
-                    )),
-                trailing: Switch(
-                  activeColor: Colors.green,
-                  value: swithValue,
-                  onChanged: (bool value) {
-                    setState(() {
-                      swithValue = !swithValue;
-                      themeChange.darkTheme = swithValue;
-                    });
-                    //print("Dark Mode");
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Ink(
+                child: ListTile(
+                  title: Text("Close",
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        // color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      )),
+                  trailing: Icon(
+                    Icons.close,
+                    color: Colors.red,
+                  ),
+                  onTap: () {
+                    SystemNavigator.pop();
                   },
                 ),
-                onTap: () {
-                  setState(() {
-                    swithValue = !swithValue;
-                    themeChange.darkTheme = swithValue;
-                  });
-                },
               ),
             ),
           ],

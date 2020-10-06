@@ -27,53 +27,50 @@ class _AddPostState extends State<AddPost> {
           "Add Post",
         ),
       ),
-      body: SafeArea(
-        child: ListView(
-          children: [
-            Form(
-              key: formkey,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-                child: Column(
-                  children: <Widget>[
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Post Title",
-                        border: OutlineInputBorder(),
-                        contentPadding: EdgeInsets.only(right: 15, left: 15),
-                      ),
-                      onSaved: (val) => post.title = val,
-                      validator: (val) {
-                        if (val.isEmpty) {
-                          return "Title filed can't be empty";
-                        }
-                        return val;
-                      },
+      body: ListView(
+        children: [
+          Form(
+            key: formkey,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Post Title",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.only(right: 15, left: 15),
                     ),
-                    SizedBox(height: 15,),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: "Post Body",
-                        border: OutlineInputBorder(),
-                        contentPadding: EdgeInsets.only(
-                            right: 15, top: 15, bottom: 50, left: 15),
-                      ),
-                      maxLines: 7,
-                      onSaved: (val) => post.body = val,
-                      validator: (val) {
-                        if (val.isEmpty) {
-                          return "Body field can't be empty";
-                        }
-                        return val;
-                      },
-                    )
-                  ],
-                ),
+                    onSaved: (val) => post.title = val,
+                    validator: (val) {
+                      if (val.isEmpty) {
+                        return "Title filed can't be empty";
+                      }
+                      return val;
+                    },
+                  ),
+                  SizedBox(height: 15,),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Post Body",
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.only(
+                          right: 15, top: 15, bottom: 50, left: 15),
+                    ),
+                    maxLines: 7,
+                    onSaved: (val) => post.body = val,
+                    validator: (val) {
+                      if (val.isEmpty) {
+                        return "Body field can't be empty";
+                      }
+                      return val;
+                    },
+                  )
+                ],
               ),
             ),
-//>>>>>>> master
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
