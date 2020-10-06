@@ -42,8 +42,10 @@ class _BlogAppState extends State<BlogApp> {
         builder: (BuildContext context, value, Widget child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme:
-                (themeChangeProvider.darkTheme == true) ? darkTheme : lightTheme,
+            builder: (context, child) => ScrollConfiguration(behavior: MyBehavior(), child: child),
+            theme: (themeChangeProvider.darkTheme == true)
+                ? darkTheme
+                : lightTheme,
             home: HomePage(),
             onGenerateRoute: RoutePage.generateRoute,
             initialRoute: RouteConstant.ROOT,
@@ -52,5 +54,12 @@ class _BlogAppState extends State<BlogApp> {
       ),
     );
   }
+}
 
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
 }
