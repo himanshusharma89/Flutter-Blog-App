@@ -14,20 +14,10 @@ class _ProfileState extends State<Profile> {
         title: Text(
           "Developer",
           style: TextStyle(
-            color: Colors.deepPurple,
-            fontSize: 22.0,
-            fontFamily: 'Roboto Mono',
-            fontWeight: FontWeight.w700,
             letterSpacing: 0.5,
           ),
         ),
-        backgroundColor: Colors.white,
-        centerTitle: true,
-        iconTheme: new IconThemeData(
-          color: Theme.of(context).primaryColor,
-        ),
       ),
-      //backgroundColor: Colors.deepPurple,
       body: Container(
         child: Padding(
           padding: const EdgeInsets.only(top: 15.0),

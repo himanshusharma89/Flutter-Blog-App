@@ -1,10 +1,8 @@
+import 'package:blog_app/routing/route_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:blog_app/db/post_service.dart';
-
-import 'edit_post.dart';
-import 'home.dart';
 
 class PostView extends StatefulWidget {
   final Post post;
@@ -20,61 +18,46 @@ class _PostViewState extends State<PostView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         title: Text(
           widget.post.title,
-          style: TextStyle(
-            fontFamily: 'Roboto Mono',
-            color: Colors.deepPurple,
-            fontSize: 22.0,
-            fontWeight: FontWeight.w700,
-          ),
         ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.deepPurple,
           ),
           onPressed: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.pop(context);
           },
         ),
-        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              Navigator.pushNamed(context, RouteConstant.EDIT_POST,
+                  arguments: widget.post);
+              //PostService postService = PostService(widget.post.toMap());
+              //postService.updatePost();
+            },
+          ),
+        ],
       ),
-      backgroundColor: Color(0xffc8d9ff),
+      // backgroundColor: Color(0xffc8d9ff),
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         child: Column(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditPost(widget.post)));
-                    //PostService postService = PostService(widget.post.toMap());
-                    //postService.updatePost();
-                  },
-                ),
-              ],
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Card(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        widget.post.body,
-                        style: TextStyle(fontFamily: 'Roboto Mono', fontSize: 16.0),
-                      ),
-                    )),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    widget.post.body,
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                )),
               ),
             ),
             Divider(),
@@ -82,15 +65,15 @@ class _PostViewState extends State<PostView> {
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(12,4,4,4),
+                    padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
                     child: Text(
                       "Published:" +
                           timeago.format(DateTime.fromMillisecondsSinceEpoch(
                               widget.post.date)),
                       style: TextStyle(
-                          fontSize: 14.0,
-                          color: Color(0xff133337),
-                          fontFamily: 'Roboto Mono'),
+                        fontSize: 14.0,
+                        // color: Color(0xff133337),
+                      ),
                     ),
                   ),
                 ),
