@@ -1,4 +1,8 @@
 import 'package:blog_app/models/post.dart';
+import 'package:blog_app/screens/medium_post_view.dart';
+import 'package:blog_app/screens/profile.dart';
+import 'package:blog_app/screens/view_post.dart';
+import 'package:blog_app/models/post.dart';
 import 'package:blog_app/screens/fetch_medium_screen.dart';
 import 'package:blog_app/screens/profile.dart';
 import 'package:blog_app/screens/view_post.dart';
@@ -136,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }),
               ),
-            )
+            ),
           ],
         ),
       ),
