@@ -18,47 +18,34 @@ class _PostViewState extends State<PostView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         title: Text(
           widget.post.title,
-          style: TextStyle(
-            fontFamily: 'Roboto Mono',
-            color: Colors.deepPurple,
-            fontSize: 22.0,
-            fontWeight: FontWeight.w700,
-          ),
         ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.deepPurple,
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              Navigator.pushNamed(context, RouteConstant.EDIT_POST,
+                  arguments: widget.post);
+              //PostService postService = PostService(widget.post.toMap());
+              //postService.updatePost();
+            },
+          ),
+        ],
       ),
-      backgroundColor: Color(0xffc8d9ff),
+      // backgroundColor: Color(0xffc8d9ff),
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         child: Column(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                        context, RouteConstant.EDIT_POST,
-                        arguments: widget.post);
-                    //PostService postService = PostService(widget.post.toMap());
-                    //postService.updatePost();
-                  },
-                ),
-              ],
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -68,7 +55,7 @@ class _PostViewState extends State<PostView> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     widget.post.body,
-                    style: TextStyle(fontFamily: 'Roboto Mono', fontSize: 16.0),
+                    style: TextStyle(fontSize: 16.0),
                   ),
                 )),
               ),
@@ -84,9 +71,9 @@ class _PostViewState extends State<PostView> {
                           timeago.format(DateTime.fromMillisecondsSinceEpoch(
                               widget.post.date)),
                       style: TextStyle(
-                          fontSize: 14.0,
-                          color: Color(0xff133337),
-                          fontFamily: 'Roboto Mono'),
+                        fontSize: 14.0,
+                        // color: Color(0xff133337),
+                      ),
                     ),
                   ),
                 ),
