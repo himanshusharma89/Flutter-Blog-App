@@ -163,16 +163,20 @@ class _HomePageState extends State<HomePage> {
                           fontSize: 15.0,
                           fontWeight: FontWeight.w600,
                         )),
-                    trailing: Switch(
-                      activeColor: Colors.green,
-                      value: swithValue,
-                      onChanged: (bool value) {
-                        setState(() {
-                          swithValue = !swithValue;
-                          themeChange.darkTheme = swithValue;
-                        });
-                        //print("Dark Mode");
-                      },
+                    trailing: Transform.scale(
+                      scale: 0.7,
+                      origin: Offset(25, 0),
+                      child: CupertinoSwitch(
+                        activeColor: Colors.green,
+                        value: swithValue,
+                        onChanged: (bool value) {
+                          setState(() {
+                            swithValue = !swithValue;
+                            themeChange.darkTheme = swithValue;
+                          });
+                          //print("Dark Mode");
+                        },
+                      ),
                     ),
                     onTap: () {
                       setState(() {
