@@ -1,4 +1,5 @@
 import 'package:blog_app/models/post.dart';
+import 'package:blog_app/screens/fetch_medium_screen.dart';
 import 'package:blog_app/screens/profile.dart';
 import 'package:blog_app/screens/view_post.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -32,6 +33,19 @@ class _HomePageState extends State<HomePage> {
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(Icons.receipt),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FetchMediumScreen(),
+                ),
+              );
+            },
+          )
+        ],
         elevation: 0,
         title: Text(
           "Blog App",
