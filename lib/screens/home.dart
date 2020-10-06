@@ -2,6 +2,10 @@ import 'package:blog_app/models/post.dart';
 import 'package:blog_app/screens/medium_post_view.dart';
 import 'package:blog_app/screens/profile.dart';
 import 'package:blog_app/screens/view_post.dart';
+import 'package:blog_app/models/post.dart';
+import 'package:blog_app/screens/fetch_medium_screen.dart';
+import 'package:blog_app/screens/profile.dart';
+import 'package:blog_app/screens/view_post.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +48,20 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(Icons.receipt),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => FetchMediumScreen(),
+                ),
+              );
+            },
+          )
+        ],
+        elevation: 0,
         title: Text(
           "Blog App",
         ),

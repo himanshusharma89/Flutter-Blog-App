@@ -24,6 +24,8 @@ dependencies:
   timeago: ^2.0.27
   url_launcher: ^5.4.1
   webview_flutter: ^1.0.0
+  http: ^0.12.2
+  # adding following two packages to solve issue #12
   shared_preferences:
   provider:
   cupertino_icons: ^0.1.2
