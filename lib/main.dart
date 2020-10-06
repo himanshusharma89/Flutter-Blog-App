@@ -40,19 +40,28 @@ class _BlogAppState extends State<BlogApp> {
       },
       child: Consumer<DarkThemeProvider>(
         builder: (BuildContext context, value, Widget child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            builder: (context, child) => ScrollConfiguration(behavior: MyBehavior(), child: child),
-            theme: (themeChangeProvider.darkTheme == true)
-                ? darkTheme
-                : lightTheme,
-            home: HomePage(),
-            onGenerateRoute: RoutePage.generateRoute,
-            initialRoute: RouteConstant.ROOT,
+          return GestureDetector(
+            onTap: () => hideKeyboard(context),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              builder: (context, child) => ScrollConfiguration(behavior: MyBehavior(), child: child),
+              theme: (themeChangeProvider.darkTheme == true)
+                  ? darkTheme
+                  : lightTheme,
+              home: HomePage(),
+              onGenerateRoute: RoutePage.generateRoute,
+              initialRoute: RouteConstant.ROOT,
+            ),
           );
         },
       ),
     );
+  }
+  void hideKeyboard(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus.unfocus();
+    }
   }
 }
 
