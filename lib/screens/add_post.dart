@@ -14,89 +14,31 @@ class _AddPostState extends State<AddPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.deepPurple,
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        centerTitle: true,
         title: Text(
           "Add Post",
-          style: TextStyle(
-            fontFamily: 'Roboto Mono',
-            color: Colors.deepPurple,
-            fontSize: 22.0,
-            fontWeight: FontWeight.w700,
-          ),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
       ),
-// <<<<<<< toggle-darkmode
-
-//       body: Form(
-//         key: formkey,
-//         child: Column(
-//           children: <Widget>[
-//             Padding(
-//               padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-//               child: TextFormField(
-//                 decoration: InputDecoration(
-//                     labelText: "Post Title",
-//                     labelStyle: TextStyle(
-//                       fontFamily: 'Roboto Mono',
-//                     ),
-//                     border: OutlineInputBorder()),
-//                 onSaved: (val) => post.title = val,
-//                 validator: (val) {
-//                   if (val.isEmpty) {
-//                     return "Title filed can't be empty";
-//                   }
-//                   return val;
-//                 },
-//               ),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-//               child: Container(
-//                 child: TextFormField(
-//                   decoration: InputDecoration(
-//                       labelText: "Post Body",
-//                       labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
-//                       border: OutlineInputBorder()),
-//                   onSaved: (val) => post.body = val,
-//                   validator: (val) {
-//                     if (val.isEmpty) {
-//                       return "Body field can't be empty";
-//                     }
-//                     return val;
-//                   },
-//                 ),
-//               ),
-//             )
-//=======
       body: SafeArea(
         child: ListView(
           children: [
             Form(
               key: formkey,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-                    child: TextFormField(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
                       decoration: InputDecoration(
                         labelText: "Post Title",
-                        labelStyle: TextStyle(
-                          fontFamily: 'Roboto Mono',
-                        ),
                         border: OutlineInputBorder(),
                         contentPadding: EdgeInsets.only(right: 15, left: 15),
                       ),
@@ -108,31 +50,25 @@ class _AddPostState extends State<AddPost> {
                         return val;
                       },
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-                    child: Container(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: "Post Body",
-                          labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.only(
-                              right: 15, top: 15, bottom: 50, left: 15),
-                        ),
-                        maxLines: 7,
-                        onSaved: (val) => post.body = val,
-                        validator: (val) {
-                          if (val.isEmpty) {
-                            return "Body field can't be empty";
-                          }
-                          return val;
-                        },
+                    SizedBox(height: 15,),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        labelText: "Post Body",
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.only(
+                            right: 15, top: 15, bottom: 50, left: 15),
                       ),
-                    ),
-                  )
-                ],
+                      maxLines: 7,
+                      onSaved: (val) => post.body = val,
+                      validator: (val) {
+                        if (val.isEmpty) {
+                          return "Body field can't be empty";
+                        }
+                        return val;
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
 //>>>>>>> master
@@ -147,9 +83,7 @@ class _AddPostState extends State<AddPost> {
         },
         child: Icon(
           Icons.add,
-          //color=Colors.white,
         ),
-        backgroundColor: Colors.deepPurple,
         tooltip: "Add a post",
       ),
     );

@@ -8,7 +8,6 @@ import '../models/post.dart';
 import '../providers/theme_notifier.dart';
 import '../routing/route_constant.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -35,25 +34,12 @@ class _HomePageState extends State<HomePage> {
     swithValue = themeChange.darkTheme;
 
     final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
         title: Text(
           "Blog App",
-          style: TextStyle(
-              color: Colors.deepPurple,
-              fontSize: 22.0,
-              fontWeight: FontWeight.w700,
-              fontFamily: 'Roboto Mono'),
         ),
-        // backgroundColor: Colors.white,
-        centerTitle: true,
-        // iconTheme: IconThemeData(
-        //   color: Colors.deepPurple,
-        // ),
       ),
-      //backgroundColor: Color(0xFF8C9EFF),
       body: Container(
         // color: Colors.white,
         child: Column(
@@ -77,49 +63,47 @@ class _HomePageState extends State<HomePage> {
                       return Padding(
                         padding: const EdgeInsets.only(
                             left: 8.0, right: 8.0, top: 5.0),
-                        child: Card(
-                          elevation: 4.0,
-                          color: Colors.deepPurple,
-                          child: ListTile(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, RouteConstant.VIEW_POST,
-                                  arguments: postsList[index]);
-                            },
-                            title: ListTile(
-                              title: Text(
-                                postsList[index].title,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w800,
-                                    fontFamily: 'Roboto Mono'),
-                              ),
-                              leading: Icon(
-                                Icons.border_color,
-                                color: Colors.white,
-                                size: 18.0,
-                              ),
-                              // trailing: Text(
-                              //   timeago.format(DateTime.fromMillisecondsSinceEpoch(postsList[index].date)),
-                              //   style:TextStyle(
-                              //     fontSize: 13.0,
-                              //     color: Colors.white,
-                              //     fontFamily: 'Roboto Mono'
-                              //   ),
-                              // ),
-                            ),
-                            subtitle: Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 12.0, left: 12.0, top: 5.0),
-                              child: Text(
-                                postsList[index].body,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'Roboto Mono'),
-                              ),
-                            ),
-                          ),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, RouteConstant.VIEW_POST,
+                                arguments: postsList[index]);
+                          },
+                          child: Card(
+                              elevation: 4.0,
+                              color: Colors.deepPurple,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.border_color,
+                                          size: 18.0,
+                                        ),
+                                        SizedBox(width: 15,),
+                                        Text(
+                                          postsList[index].title,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 12,),
+                                    Text(
+                                      postsList[index].body,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )),
                         ),
                       );
                     }),
@@ -134,9 +118,7 @@ class _HomePageState extends State<HomePage> {
         },
         child: Icon(
           Icons.edit,
-          //color=Colors.white,
         ),
-        backgroundColor: Colors.deepPurple,
         tooltip: "Add a post",
       ),
       drawer: Drawer(
@@ -151,10 +133,10 @@ class _HomePageState extends State<HomePage> {
               child: ListTile(
                 title: Text("About",
                     style: TextStyle(
-                        fontSize: 15.0,
-                        // color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Roboto Mono')),
+                      fontSize: 15.0,
+                      // color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    )),
                 trailing: Icon(
                   Icons.details,
                   color: Colors.blueAccent,
@@ -168,10 +150,10 @@ class _HomePageState extends State<HomePage> {
               child: ListTile(
                 title: Text("Close",
                     style: TextStyle(
-                        fontSize: 15.0,
-                        // color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Roboto Mono')),
+                      fontSize: 15.0,
+                      // color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    )),
                 trailing: Icon(
                   Icons.close,
                   color: Colors.red,
@@ -185,9 +167,9 @@ class _HomePageState extends State<HomePage> {
               child: ListTile(
                 title: Text("Dark Mode",
                     style: TextStyle(
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Roboto Mono')),
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w600,
+                    )),
                 trailing: Switch(
                   activeColor: Colors.green,
                   value: swithValue,

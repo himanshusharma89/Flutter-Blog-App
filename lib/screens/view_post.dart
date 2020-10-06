@@ -18,28 +18,19 @@ class _PostViewState extends State<PostView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         title: Text(
           widget.post.title,
-          style: TextStyle(
-            fontFamily: 'Roboto Mono',
-            color: Colors.deepPurple,
-            fontSize: 22.0,
-            fontWeight: FontWeight.w700,
-          ),
         ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back_ios,
-            color: Colors.deepPurple,
           ),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        centerTitle: true,
       ),
-      backgroundColor: Color(0xffc8d9ff),
+      // backgroundColor: Color(0xffc8d9ff),
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         child: Column(
@@ -68,7 +59,7 @@ class _PostViewState extends State<PostView> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     widget.post.body,
-                    style: TextStyle(fontFamily: 'Roboto Mono', fontSize: 16.0),
+                    style: TextStyle(fontSize: 16.0),
                   ),
                 )),
               ),
@@ -85,8 +76,8 @@ class _PostViewState extends State<PostView> {
                               widget.post.date)),
                       style: TextStyle(
                           fontSize: 14.0,
-                          color: Color(0xff133337),
-                          fontFamily: 'Roboto Mono'),
+                          // color: Color(0xff133337),
+                          ),
                     ),
                   ),
                 ),
