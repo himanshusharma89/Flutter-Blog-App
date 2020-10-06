@@ -5,9 +5,13 @@ import 'package:blog_app/screens/view_post.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'add_post.dart';
+import 'package:provider/provider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import '../models/post.dart';
+import '../providers/theme_notifier.dart';
+import '../routing/route_constant.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,6 +23,8 @@ class _HomePageState extends State<HomePage> {
   String nodeName = "posts";
   List<Post> postsList = <Post>[];
 
+  bool swithValue = false;
+
   @override
   void initState() {
     _database.reference().child(nodeName).onChildAdded.listen(_childAdded);
@@ -29,6 +35,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+    swithValue = themeChange.darkTheme;
+
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -55,15 +64,15 @@ class _HomePageState extends State<HomePage> {
               fontWeight: FontWeight.w700,
               fontFamily: 'Roboto Mono'),
         ),
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         centerTitle: true,
-        iconTheme: IconThemeData(
-          color: Colors.deepPurple,
-        ),
+        // iconTheme: IconThemeData(
+        //   color: Colors.deepPurple,
+        // ),
       ),
       //backgroundColor: Color(0xFF8C9EFF),
       body: Container(
-        color: Colors.white,
+        // color: Colors.white,
         child: Column(
           children: <Widget>[
             Visibility(
@@ -90,11 +99,9 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.deepPurple,
                           child: ListTile(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          PostView(postsList[index])));
+                              Navigator.pushNamed(
+                                  context, RouteConstant.VIEW_POST,
+                                  arguments: postsList[index]);
                             },
                             title: ListTile(
                               title: Text(
@@ -140,8 +147,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => AddPost()));
+          Navigator.pushNamed(context, RouteConstant.ADD_POST);
         },
         child: Icon(
           Icons.edit,
@@ -156,14 +162,14 @@ class _HomePageState extends State<HomePage> {
             Image.asset(
               'assets/blogging.png',
               fit: BoxFit.contain,
-              height: height*0.2,
+              height: height * 0.2,
             ),
             Ink(
               child: ListTile(
                 title: Text("About",
                     style: TextStyle(
                         fontSize: 15.0,
-                        color: Colors.black,
+                        // color: Colors.black,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Roboto Mono')),
                 trailing: Icon(
@@ -171,8 +177,7 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.blueAccent,
                 ),
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => Profile()));
+                  Navigator.pushNamed(context, RouteConstant.PROFILE);
                 },
               ),
             ),
@@ -181,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                 title: Text("Close",
                     style: TextStyle(
                         fontSize: 15.0,
-                        color: Colors.black,
+                        // color: Colors.black,
                         fontWeight: FontWeight.w600,
                         fontFamily: 'Roboto Mono')),
                 trailing: Icon(
@@ -192,7 +197,33 @@ class _HomePageState extends State<HomePage> {
                   Navigator.of(context).pop();
                 },
               ),
-            )
+            ),
+            Ink(
+              child: ListTile(
+                title: Text("Dark Mode",
+                    style: TextStyle(
+                        fontSize: 15.0,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Roboto Mono')),
+                trailing: Switch(
+                  activeColor: Colors.green,
+                  value: swithValue,
+                  onChanged: (bool value) {
+                    setState(() {
+                      swithValue = !swithValue;
+                      themeChange.darkTheme = swithValue;
+                    });
+                    //print("Dark Mode");
+                  },
+                ),
+                onTap: () {
+                  setState(() {
+                    swithValue = !swithValue;
+                    themeChange.darkTheme = swithValue;
+                  });
+                },
+              ),
+            ),
           ],
         ),
       ),
