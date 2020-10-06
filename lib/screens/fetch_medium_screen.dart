@@ -1,5 +1,6 @@
 import 'package:blog_app/models/article.dart';
 import 'package:blog_app/notifier/medium_Article_notifier.dart';
+import 'package:blog_app/screens/medium_post_view.dart';
 import 'package:blog_app/service/fetch_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -70,16 +71,27 @@ class FetchMediumScreenState extends State<FetchMediumScreen> {
           itemCount: mediumArticleNotifier.getArticleList().length,
           itemBuilder: (context, index) {
             Article article = mediumArticleNotifier.getArticleList()[index];
-            return Card(
-              elevation: 16,
-              margin: EdgeInsets.all(8),
-              child: Column(
-                children: [
-                  Image.network(article.thumbnail),
-                  Text(article.title),
-                  Text(article.author),
-                  Text(article.link),
-                ],
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MediumPostView(title: article.title, url: article.link),
+                  ),
+                );
+              },
+              child: Card(
+                elevation: 16,
+                margin: EdgeInsets.all(8),
+                child: Column(
+                  children: [
+                    Image.network(article.thumbnail),
+                    Text(article.title),
+                    Text(article.author),
+                    Text(article.link),
+                  ],
+                ),
               ),
             );
           },
