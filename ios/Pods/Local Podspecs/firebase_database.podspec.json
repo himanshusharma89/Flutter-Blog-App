@@ -1,0 +1,38 @@
+{
+  "name": "firebase_database",
+  "version": "4.1.0",
+  "summary": "Flutter plugin for Firebase Database, a cloud-hosted NoSQL database with realtime data syncing across Android and iOS clients, and offline access.",
+  "description": "Flutter plugin for Firebase Database, a cloud-hosted NoSQL database with realtime data syncing across Android and iOS clients, and offline access.",
+  "homepage": "https://github.com/FirebaseExtended/flutterfire/tree/master/packages/firebase_database",
+  "license": {
+    "file": "../LICENSE"
+  },
+  "authors": "The Chromium Authors",
+  "source": {
+    "path": "."
+  },
+  "source_files": "Classes/**/*.{h,m}",
+  "public_header_files": "Classes/*.h",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "dependencies": {
+    "Flutter": [
+
+    ],
+    "firebase_core": [
+
+    ],
+    "Firebase/CoreOnly": [
+      "~> 6.26.0"
+    ],
+    "Firebase/Database": [
+      "~> 6.26.0"
+    ]
+  },
+  "static_framework": true,
+  "pod_target_xcconfig": {
+    "GCC_PREPROCESSOR_DEFINITIONS": "LIBRARY_VERSION=\\@\\\"4.1.0\\\" LIBRARY_NAME=\\@\\\"flutter-fire-rtdb\\\"",
+    "DEFINES_MODULE": "YES"
+  }
+}

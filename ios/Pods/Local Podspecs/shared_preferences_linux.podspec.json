@@ -1,0 +1,31 @@
+{
+  "name": "shared_preferences_linux",
+  "version": "0.0.1",
+  "summary": "shared_preferences_linux iOS stub",
+  "description": "No-op implementation of the Linux shared_preferences plugin to avoid build issues on iOS",
+  "homepage": "https://github.com/flutter/plugins",
+  "license": {
+    "type": "BSD",
+    "file": "../LICENSE"
+  },
+  "authors": {
+    "Flutter Dev Team": "flutter-dev@googlegroups.com"
+  },
+  "source": {
+    "http": "https://github.com/flutter/plugins/tree/master/packages/shared_preferences/shared_preferences_linux"
+  },
+  "dependencies": {
+    "Flutter": [
+
+    ]
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES",
+    "VALID_ARCHS[sdk=iphonesimulator*]": "x86_64"
+  },
+  "swift_versions": "5.0",
+  "swift_version": "5.0"
+}
