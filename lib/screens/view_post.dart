@@ -29,27 +29,23 @@ class _PostViewState extends State<PostView> {
             Navigator.pop(context);
           },
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.edit),
+            onPressed: () {
+              Navigator.pushNamed(context, RouteConstant.EDIT_POST,
+                  arguments: widget.post);
+              //PostService postService = PostService(widget.post.toMap());
+              //postService.updatePost();
+            },
+          ),
+        ],
       ),
       // backgroundColor: Color(0xffc8d9ff),
       body: Padding(
         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
         child: Column(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(Icons.edit),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                        context, RouteConstant.EDIT_POST,
-                        arguments: widget.post);
-                    //PostService postService = PostService(widget.post.toMap());
-                    //postService.updatePost();
-                  },
-                ),
-              ],
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -75,9 +71,9 @@ class _PostViewState extends State<PostView> {
                           timeago.format(DateTime.fromMillisecondsSinceEpoch(
                               widget.post.date)),
                       style: TextStyle(
-                          fontSize: 14.0,
-                          // color: Color(0xff133337),
-                          ),
+                        fontSize: 14.0,
+                        // color: Color(0xff133337),
+                      ),
                     ),
                   ),
                 ),

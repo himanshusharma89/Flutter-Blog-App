@@ -14,7 +14,7 @@ class EditPost extends StatefulWidget {
 }
 
 class _EditPostState extends State<EditPost> {
-  final GlobalKey<FormState> formkey = new GlobalKey();
+  final GlobalKey<FormState> _formkey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _EditPostState extends State<EditPost> {
         ),
       ),
       body: Form(
-        key: formkey,
+        key: _formkey,
         child: Padding(
           padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
           child: Column(
@@ -44,20 +44,25 @@ class _EditPostState extends State<EditPost> {
                     filled: true,
                     labelText: "Post Title",
                     border: OutlineInputBorder()),
+                onChanged: (value) => widget.post.title = value,
                 onSaved: (val) => widget.post.title = val,
                 validator: (val) {
                   if (val.isEmpty) {
                     return "Title filed can't be empty";
                   }
+                  return null;
                 },
               ),
-              SizedBox(height: 15,),
+              SizedBox(
+                height: 15,
+              ),
               TextFormField(
                 initialValue: widget.post.body,
                 decoration: InputDecoration(
                     filled: true,
                     labelText: "Post Body",
                     border: OutlineInputBorder()),
+                onChanged: (value) => widget.post.body = value,
                 onSaved: (val) => widget.post.body = val,
                 validator: (val) {
                   if (val.isEmpty) {
@@ -65,6 +70,7 @@ class _EditPostState extends State<EditPost> {
                   } else if (val.length > 16) {
                     return "Title can/'t have more tham 16 characters";
                   }
+                  return null;
                 },
               )
             ],
@@ -73,10 +79,7 @@ class _EditPostState extends State<EditPost> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          insertPost();
-          //Navigator.pop(context);
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+          updatePost();
         },
         child: Icon(
           Icons.save,
@@ -86,14 +89,16 @@ class _EditPostState extends State<EditPost> {
     );
   }
 
-  void insertPost() {
-    final FormState form = formkey.currentState;
-    if (form.validate()) {
-      form.save();
-      form.reset();
+  void updatePost() {
+    print("updatePost form validation:" + _formkey.currentState.validate().toString());
+    if (_formkey.currentState.validate()) {
+      _formkey.currentState.save();
+      _formkey.currentState.reset();
       widget.post.date = DateTime.now().millisecondsSinceEpoch;
       PostService postService = PostService(widget.post.toMap());
       postService.updatePost();
+      Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 }

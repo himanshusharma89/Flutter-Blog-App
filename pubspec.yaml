@@ -22,7 +22,6 @@ dependencies:
   firebase_database: ^4.1.0
   firebase_core: ^0.5.0
   timeago: ^2.0.27
-  flutter_launcher_icons: ^0.7.4
   url_launcher: ^5.4.1
   shared_preferences:
   provider:
@@ -64,11 +63,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #    - family: Roboto Mono
-  #      fonts:
-  #        - asset: fonts/RobotoMono-Regular.ttf
-  #          weight: 400
+  fonts:
+     - family: Roboto Mono
+       fonts:
+         - asset: fonts/RobotoMono-Regular.ttf
+           weight: 400
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
@@ -6,7 +7,9 @@ import 'screens/home.dart';
 import 'routing/route_page.dart';
 import 'routing/route_constant.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     BlogApp(),
   );

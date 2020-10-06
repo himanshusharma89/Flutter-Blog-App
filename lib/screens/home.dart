@@ -20,12 +20,14 @@ class _HomePageState extends State<HomePage> {
   List<Post> postsList = <Post>[];
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   bool swithValue = false;
+  Query postQuery;
 
   @override
   void initState() {
     _database.reference().child(nodeName).onChildAdded.listen(_childAdded);
     _database.reference().child(nodeName).onChildRemoved.listen(_childRemoves);
     _database.reference().child(nodeName).onChildChanged.listen(_childChanged);
+    postQuery = _database.reference().child('posts');
     super.initState();
   }
 
@@ -61,7 +63,7 @@ class _HomePageState extends State<HomePage> {
               visible: postsList.isNotEmpty,
               child: Flexible(
                 child: FirebaseAnimatedList(
-                    query: _database.reference().child('posts'),
+                    query: postQuery,
                     itemBuilder: (_, DataSnapshot snap,
                         Animation<double> animation, int index) {
                       return Padding(
@@ -167,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                       scale: 0.7,
                       origin: Offset(25, 0),
                       child: CupertinoSwitch(
-                        activeColor: Colors.green,
+                        activeColor: Colors.deepPurple,
                         value: swithValue,
                         onChanged: (bool value) {
                           setState(() {

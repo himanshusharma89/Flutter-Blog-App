@@ -29,7 +29,7 @@ final darkTheme = ThemeData(
             headline6: TextStyle(
           color: Colors.white,
           fontFamily: 'Roboto Mono',
-          fontSize: 22.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.w700,
         ))));
 
