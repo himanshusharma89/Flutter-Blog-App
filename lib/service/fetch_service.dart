@@ -28,7 +28,10 @@ class FetchService {
           );
 
           print(articleList.length);
+          mediumArticleNotifier.setloader(true);
           mediumArticleNotifier.setArticleList(articleList);
+        } else {
+          mediumArticleNotifier.setloader(false);
         }
       },
     );

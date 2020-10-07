@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 final darkTheme = ThemeData(
     primarySwatch: Colors.grey,
     primaryColor: Colors.black,
-    fontFamily: 'Roboto Mono',
+    fontFamily: 'Nunito',
     brightness: Brightness.dark,
     backgroundColor: const Color(0xFF212121),
     accentColor: Colors.white,
@@ -28,7 +28,7 @@ final darkTheme = ThemeData(
         textTheme: TextTheme(
             headline6: TextStyle(
           color: Colors.white,
-          fontFamily: 'Roboto Mono',
+          fontFamily: 'Nunito',
           fontSize: 20.0,
           fontWeight: FontWeight.w700,
         ))));
@@ -36,7 +36,7 @@ final darkTheme = ThemeData(
 final lightTheme = ThemeData(
     primarySwatch: Colors.purple,
     primaryColor: Colors.deepPurple,
-    fontFamily: 'Roboto Mono',
+    fontFamily: 'Nunito',
     brightness: Brightness.light,
     backgroundColor: const Color(0xFFE5E5E5),
     accentColor: Colors.black,
@@ -64,7 +64,7 @@ final lightTheme = ThemeData(
         textTheme: TextTheme(
             headline6: TextStyle(
           color: Colors.deepPurple,
-          fontFamily: 'Roboto Mono',
+          fontFamily: 'Nunito',
           fontSize: 22.0,
           fontWeight: FontWeight.w700,
         ))));

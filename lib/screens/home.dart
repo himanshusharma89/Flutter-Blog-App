@@ -110,6 +110,7 @@ class _HomePageState extends State<HomePage> {
                                         Icon(
                                           Icons.border_color,
                                           size: 18.0,
+                                          color: Colors.white,
                                         ),
                                         SizedBox(
                                           width: 15,
