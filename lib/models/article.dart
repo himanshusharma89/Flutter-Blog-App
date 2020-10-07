@@ -13,12 +13,12 @@ class Article {
     link = data['link'];
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'title': title,
-      'author': author,
-      'thumbnail': thumbnail,
-      'link': link,
-    };
-  }
+  // Map<String, dynamic> toMap() {
+  //   return {
+  //     'title': title,
+  //     'author': author,
+  //     'thumbnail': thumbnail,
+  //     'link': link,
+  //   };
+  // }
 }

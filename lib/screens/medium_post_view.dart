@@ -29,10 +29,15 @@ class MediumPostViewState extends State<MediumPostView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title),),
+      appBar: AppBar(
+        title: Text(title),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_rounded),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
       body: WebView(
-        initialUrl:
-        url,
+        initialUrl: url,
       ),
     );
   }
