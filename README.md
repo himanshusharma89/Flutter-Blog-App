@@ -20,7 +20,7 @@ These are some screenshots of the app:
 
 <table>
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/shubhamchhimpa/"><img src="https://avatars0.githubusercontent.com/u/44980497?v=4" width="200px;" alt=""/><br /><sub><b>Himanshu Sharma</b></sub></a><br />
+    <td align="center"><a href="https://github.com/himanshusharma89"><img src="https://avatars0.githubusercontent.com/u/44980497?v=4" width="200px;" alt=""/><br /><sub><b>Himanshu Sharma</b></sub></a><br />
     <!-- <a href="https://github.com/himanshusharma89" title="Code">💻</a> -->
     </td>
   </tr>
