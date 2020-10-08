@@ -18,68 +18,162 @@ class _ProfileState extends State<Profile> {
           ),
         ),
       ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 15.0),
-          child: new Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  width: 380.0,
-                  child: Card(
-                    //color: Colors.deepPurple,
-                    elevation: 5.0,
-                    //color: Color(0xFF8C9EFF),
-                    margin: const EdgeInsets.only(top: 50.0),
-                    child: SizedBox(
-                        height: 150.0,
-                        width: double.infinity,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 58.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Text("Himanshu Sharma",
-                                  style: TextStyle(
-                                    fontSize: 22.0,
-                                    color: Colors.deepPurple,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                              SizedBox(
-                                height: 8.0,
+      body: SingleChildScrollView(
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 15.0),
+            child: new Stack(
+              children: <Widget>[
+                Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        width: 380.0,
+                        child: Card(
+                          //color: Colors.deepPurple,
+                          elevation: 5.0,
+                          //color: Color(0xFF8C9EFF),
+                          margin: const EdgeInsets.only(top: 50.0),
+                          child: SizedBox(
+                              height: 250.0,
+                              width: double.infinity,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 58.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text("Himanshu Sharma",
+                                        style: TextStyle(
+                                          fontSize: 22.0,
+                                          color: Colors.deepPurple,
+                                          fontWeight: FontWeight.w600,
+                                        )),
+                                    SizedBox(
+                                      height: 8.0,
+                                    ),
+                                    GestureDetector(
+                                      child: Image.asset('assets/GitHub.png'),
+                                      onTap: () async {
+                                        const url =
+                                            'https://github.com/himanshusharma89';
+                                        if (await canLaunch(url)) {
+                                          await launch(url);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
+                                      },
+                                    ),
+                                    SizedBox(
+                                      height: 20.0,
+                                    ),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          "Wanna pen down your thoughts in the form of a blog?",
+                                          style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Colors.deepPurple),
+                                        ),
+                                        Text(
+                                          "This is just the App for you!",
+                                          style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Colors.deepPurple),
+                                        ),
+                                        Text(
+                                          "Happy Blogging!",
+                                          style: TextStyle(
+                                              fontSize: 15.0,
+                                              color: Colors.deepPurple),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 380.0,
+                      child: Card(
+                        //color: Colors.deepPurple,
+                        elevation: 5.0,
+                        //color: Color(0xFF8C9EFF),
+                        margin: const EdgeInsets.only(top: 20.0),
+                        child: SizedBox(
+                            height: 150.0,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text("Tech Stack",
+                                      style: TextStyle(
+                                          fontSize: 22.0,
+                                          color: Colors.blueAccent,
+                                          fontWeight: FontWeight.w600)),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                            'assets/flutter_icon.png'),
+                                        radius: 18.0,
+                                      ),
+                                      SizedBox(width: 20.0),
+                                      Text(
+                                        "Flutter",
+                                        style: TextStyle(
+                                            fontSize: 20.0,
+                                            color: Colors.blueGrey),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                            'assets/firebase_icon.png'),
+                                        backgroundColor: Colors.white,
+                                        radius: 20.0,
+                                      ),
+                                      SizedBox(width: 20.0),
+                                      Text(
+            
+                                        "FireBase",
+                                        style: TextStyle(
+                                            fontSize: 20.0,
+                                            color: Colors.blueGrey),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
-                              GestureDetector(
-                                child: Image.asset('assets/GitHub.png'),
-                                onTap: () async {
-                                  const url =
-                                      'https://github.com/himanshusharma89';
-                                  if (await canLaunch(url)) {
-                                    await launch(url);
-                                  } else {
-                                    throw 'Could not launch $url';
-                                  }
-                                },
-                              )
-                            ],
-                          ),
-                        )),
-                  ),
+                            )),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Positioned(
-                top: .0,
-                left: .0,
-                right: .0,
-                child: Center(
-                  child: CircleAvatar(
-                    radius: 50.0,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('assets/flutter_dev.png'),
+                Positioned(
+                  top: .0,
+                  left: .0,
+                  right: .0,
+                  child: Center(
+                    child: CircleAvatar(
+                      radius: 50.0,
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('assets/developer.png'),
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
