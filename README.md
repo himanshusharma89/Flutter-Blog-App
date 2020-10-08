@@ -1,6 +1,6 @@
 # Flutter Blog App
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
@@ -39,6 +39,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://carlosfelix.pythonanywhere.com/"><img src="https://avatars3.githubusercontent.com/u/18339454?v=4" width="100px;" alt=""/><br /><sub><b>Carlos Felix</b></sub></a><br /><a href="#design-carlosfrodrigues" title="Design">🎨</a></td>
     <td align="center"><a href="https://medium.com/@derangga"><img src="https://avatars2.githubusercontent.com/u/31648630?v=4" width="100px;" alt=""/><br /><sub><b>Dimas Rangga</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=derangga" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/arbazdiwan"><img src="https://avatars3.githubusercontent.com/u/24837320?v=4" width="100px;" alt=""/><br /><sub><b>Arbaz Mustufa Diwan</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=arbazdiwan" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.adrienrichard.com/"><img src="https://avatars0.githubusercontent.com/u/25491408?v=4" width="100px;" alt=""/><br /><sub><b>Adrien</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Mrgove10" title="Code">💻</a></td>
   </tr>
 </table>
 
