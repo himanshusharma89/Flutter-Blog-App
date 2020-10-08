@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "shubham-chhimpa",
+      "name": "Shubham Chhimpa",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/38981756?v=4",
+      "profile": "https://www.linkedin.com/in/shubhamchhimpa/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "Flutter-Blog-App",
+  "projectOwner": "himanshusharma89",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
