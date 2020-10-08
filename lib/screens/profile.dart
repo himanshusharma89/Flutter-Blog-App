@@ -75,19 +75,22 @@ class _ProfileState extends State<Profile> {
                                           "Wanna pen down your thoughts in the form of a blog?",
                                           style: TextStyle(
                                               fontSize: 15.0,
-                                              color: Colors.deepPurple),
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w700),
                                         ),
                                         Text(
                                           "This is just the App for you!",
                                           style: TextStyle(
                                               fontSize: 15.0,
-                                              color: Colors.deepPurple),
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w700),
                                         ),
                                         Text(
                                           "Happy Blogging!",
                                           style: TextStyle(
                                               fontSize: 15.0,
-                                              color: Colors.deepPurple),
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w700),
                                         )
                                       ],
                                     ),
@@ -98,7 +101,73 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Container(
-                      width: 380.0,
+                      width: 360.0,
+                      child: Card(
+                        //color: Colors.deepPurple,
+                        elevation: 5.0,
+                        //color: Color(0xFF8C9EFF),
+                        margin: const EdgeInsets.only(top: 20.0),
+                        child: SizedBox(
+                            height: 180.0,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text("Tech Stack",
+                                      style: TextStyle(
+                                          fontSize: 22.0,
+                                          color: Colors.blueAccent,
+                                          fontWeight: FontWeight.w600)),
+                                  SizedBox(height: 10.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                'assets/flutter_icon.png'),
+                                            radius: 18.0,
+                                          ),
+                                          CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                'assets/firebase_icon.png'),
+                                            backgroundColor: Colors.white,
+                                            radius: 20.0,
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(width: 10.0),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "Flutter",
+                                            style: TextStyle(
+                                                fontSize: 17.0,
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          SizedBox(height: 15.0),
+                                          Text(
+                                            "FireBase",
+                                            style: TextStyle(
+                                                fontSize: 17.0,
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w700),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                    ),
+                    Container(
+                      width: 360.0,
                       child: Card(
                         //color: Colors.deepPurple,
                         elevation: 5.0,
@@ -112,7 +181,7 @@ class _ProfileState extends State<Profile> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  Text("Tech Stack",
+                                  Text("Platforms",
                                       style: TextStyle(
                                           fontSize: 22.0,
                                           color: Colors.blueAccent,
@@ -120,39 +189,45 @@ class _ProfileState extends State<Profile> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            'assets/flutter_icon.png'),
-                                        radius: 18.0,
+                                      Column(
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                'assets/android_icon.png'),
+                                            backgroundColor: Colors.white,
+                                            radius: 22.0,
+                                          ),
+                                          CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                'assets/ios_icon.png'),
+                                            backgroundColor: Colors.transparent,
+                                            radius: 18.0,
+                                          ),
+                                        ],
                                       ),
-                                      SizedBox(width: 20.0),
-                                      Text(
-                                        "Flutter",
-                                        style: TextStyle(
-                                            fontSize: 20.0,
-                                            color: Colors.blueGrey),
-                                      )
+                                      SizedBox(width: 10.0),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            "IOS",
+                                            textAlign: TextAlign.end,
+                                            style: TextStyle(
+                                                fontSize: 17.0,
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          SizedBox(height: 15.0),
+                                          Text(
+                                            "Android",
+                                            style: TextStyle(
+                                                fontSize: 17.0,
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w700),
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundImage: AssetImage(
-                                            'assets/firebase_icon.png'),
-                                        backgroundColor: Colors.white,
-                                        radius: 20.0,
-                                      ),
-                                      SizedBox(width: 20.0),
-                                      Text(
-            
-                                        "FireBase",
-                                        style: TextStyle(
-                                            fontSize: 20.0,
-                                            color: Colors.blueGrey),
-                                      )
-                                    ],
-                                  )
                                 ],
                               ),
                             )),
