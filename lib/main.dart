@@ -1,4 +1,8 @@
+import 'package:blog_app/notifier/medium_Article_notifier.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
 import 'models/theme_data.dart';
@@ -6,9 +10,19 @@ import 'screens/home.dart';
 import 'routing/route_page.dart';
 import 'routing/route_constant.dart';
 
-void main() {
+void main() async{
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('google_fonts/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+  });
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
-    BlogApp(),
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => MediumArticleNotifier()),
+        ],
+        child:BlogApp(),),
   );
 }
 
@@ -40,17 +54,35 @@ class _BlogAppState extends State<BlogApp> {
       },
       child: Consumer<DarkThemeProvider>(
         builder: (BuildContext context, value, Widget child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme:
-                (themeChangeProvider.darkTheme == true) ? darkTheme : lightTheme,
-            home: HomePage(),
-            onGenerateRoute: RoutePage.generateRoute,
-            initialRoute: RouteConstant.ROOT,
+          return GestureDetector(
+            onTap: () => hideKeyboard(context),
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              builder: (context, child) => ScrollConfiguration(behavior: MyBehavior(), child: child),
+              theme: (themeChangeProvider.darkTheme == true)
+                  ? darkTheme
+                  : lightTheme,
+              home: SafeArea(child: HomePage()),
+              onGenerateRoute: RoutePage.generateRoute,
+              initialRoute: RouteConstant.ROOT,
+            ),
           );
         },
       ),
     );
   }
+  void hideKeyboard(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+      FocusManager.instance.primaryFocus.unfocus();
+    }
+  }
+}
 
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
 }

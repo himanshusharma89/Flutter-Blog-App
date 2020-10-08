@@ -1,11 +1,8 @@
 name: Apk Build
 on:
-  pull_request:
-    branches:
-      - '*' 
   push:
     branches:
-      - '*' 
+      - master 
 jobs:
   build_apk:
     runs-on: ubuntu-latest
