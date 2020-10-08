@@ -3,8 +3,6 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-![GitHub forks](https://img.shields.io/github/forks/himanshusharma89/Flutter-Blog-App?style=for-the-badge) ![GitHub stars](https://img.shields.io/github/stars/himanshusharma89/Flutter-Blog-App?style=for-the-badge)
-
 This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
 This is a fully functional app with Firebase backend. 
 
