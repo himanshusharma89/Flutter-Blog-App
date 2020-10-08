@@ -22,6 +22,15 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "derangga",
+      "name": "Dimas Rangga",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/31648630?v=4",
+      "profile": "https://medium.com/@derangga",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
