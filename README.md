@@ -1,6 +1,6 @@
 # Flutter Blog App
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![GitHub forks](https://img.shields.io/github/forks/himanshusharma89/Flutter-Blog-App?style=for-the-badge) ![GitHub stars](https://img.shields.io/github/stars/himanshusharma89/Flutter-Blog-App?style=for-the-badge)
@@ -43,6 +43,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/shubhamchhimpa/"><img src="https://avatars0.githubusercontent.com/u/38981756?v=4" width="100px;" alt=""/><br /><sub><b>Shubham Chhimpa</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=shubham-chhimpa" title="Code">💻</a></td>
+    <td align="center"><a href="http://carlosfelix.pythonanywhere.com/"><img src="https://avatars3.githubusercontent.com/u/18339454?v=4" width="100px;" alt=""/><br /><sub><b>Carlos Felix</b></sub></a><br /><a href="#design-carlosfrodrigues" title="Design">🎨</a></td>
   </tr>
 </table>
 
