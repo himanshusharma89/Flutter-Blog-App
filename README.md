@@ -1,4 +1,7 @@
 # Flutter Blog App
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ![GitHub forks](https://img.shields.io/github/forks/himanshusharma89/Flutter-Blog-App?style=for-the-badge) ![GitHub stars](https://img.shields.io/github/stars/himanshusharma89/Flutter-Blog-App?style=for-the-badge)
 
@@ -29,3 +32,22 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 **Made with <span style="color: #e25555;">&#9829;</span> by <a href="https://www.linkedin.com/in/himanshusharma89/">Himanshu Sharma</a>**
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/shubhamchhimpa/"><img src="https://avatars0.githubusercontent.com/u/38981756?v=4" width="100px;" alt=""/><br /><sub><b>Shubham Chhimpa</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=shubham-chhimpa" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
