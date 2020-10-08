@@ -1,3 +1,4 @@
+import 'package:blog_app/screens/data.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -7,6 +8,13 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  List<Data> tech = [                         //Static List of icons and texts
+    Data("assets/flutter_icon.png", "Flutter"),
+    Data("assets/firebase_icon.png", "FireBase"),
+    Data("assets/android_icon.png","Android"),
+    Data("assets/ios_icon.png", "IOS"),
+    Data("assets/developer.png","Himanshu Sharma")
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,13 +135,11 @@ class _ProfileState extends State<Profile> {
                                       Column(
                                         children: [
                                           CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                'assets/flutter_icon.png'),
+                                            backgroundImage: AssetImage(tech.elementAt(0).img),
                                             radius: 18.0,
                                           ),
                                           CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                'assets/firebase_icon.png'),
+                                            backgroundImage: AssetImage(tech.elementAt(1).img),
                                             backgroundColor: Colors.white,
                                             radius: 20.0,
                                           ),
@@ -143,7 +149,7 @@ class _ProfileState extends State<Profile> {
                                       Column(
                                         children: [
                                           Text(
-                                            "Flutter",
+                                            tech.elementAt(0).data,
                                             style: TextStyle(
                                                 fontSize: 17.0,
                                                 color: Colors.black54,
@@ -151,7 +157,7 @@ class _ProfileState extends State<Profile> {
                                           ),
                                           SizedBox(height: 15.0),
                                           Text(
-                                            "FireBase",
+                                            tech.elementAt(1).data,
                                             style: TextStyle(
                                                 fontSize: 17.0,
                                                 color: Colors.black54,
@@ -193,13 +199,13 @@ class _ProfileState extends State<Profile> {
                                         children: [
                                           CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                'assets/android_icon.png'),
+                                                tech.elementAt(2).img),
                                             backgroundColor: Colors.white,
                                             radius: 22.0,
                                           ),
                                           CircleAvatar(
                                             backgroundImage: AssetImage(
-                                                'assets/ios_icon.png'),
+                                                tech.elementAt(3).img),
                                             backgroundColor: Colors.transparent,
                                             radius: 18.0,
                                           ),
@@ -209,7 +215,7 @@ class _ProfileState extends State<Profile> {
                                       Column(
                                         children: [
                                           Text(
-                                            "IOS",
+                                            tech.elementAt(2).data,
                                             textAlign: TextAlign.end,
                                             style: TextStyle(
                                                 fontSize: 17.0,
@@ -218,12 +224,65 @@ class _ProfileState extends State<Profile> {
                                           ),
                                           SizedBox(height: 15.0),
                                           Text(
-                                            "Android",
+                                            tech.elementAt(3).data,
                                             style: TextStyle(
                                                 fontSize: 17.0,
                                                 color: Colors.black54,
                                                 fontWeight: FontWeight.w700),
                                           )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )),
+                      ),
+                    ),
+                    Container(
+                      width: 360.0,
+                      child: Card(
+                        //color: Colors.deepPurple,
+                        elevation: 5.0,
+                        //color: Color(0xFF8C9EFF),
+                        margin: const EdgeInsets.only(top: 20.0),
+                        child: SizedBox(
+                            height: 150.0,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text("Contributors",
+                                      style: TextStyle(
+                                          fontSize: 22.0,
+                                          color: Colors.blueAccent,
+                                          fontWeight: FontWeight.w600)),
+                                  SizedBox(height: 10.0),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Column(
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage: AssetImage(
+                                                tech.elementAt(4).img),
+                                            backgroundColor: Colors.white,
+                                            radius: 18.0,
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(width: 10.0),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            tech.elementAt(4).data,
+                                            style: TextStyle(
+                                                fontSize: 17.0,
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w700),
+                                          ),
                                         ],
                                       ),
                                     ],
