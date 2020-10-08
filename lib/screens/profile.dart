@@ -247,7 +247,7 @@ class _ProfileState extends State<Profile> {
                         //color: Color(0xFF8C9EFF),
                         margin: const EdgeInsets.only(top: 20.0),
                         child: SizedBox(
-                            height: 150.0,
+                            height: 100.0,
                             width: double.infinity,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 20.0),
@@ -283,6 +283,7 @@ class _ProfileState extends State<Profile> {
                                                 color: Colors.black54,
                                                 fontWeight: FontWeight.w700),
                                           ),
+                                          
                                         ],
                                       ),
                                     ],
