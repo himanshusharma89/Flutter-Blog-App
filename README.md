@@ -1,6 +1,6 @@
 # Flutter Blog App
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Table of contents
@@ -91,6 +91,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.adrienrichard.com/"><img src="https://avatars0.githubusercontent.com/u/25491408?v=4" width="100px;" alt=""/><br /><sub><b>Adrien</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Mrgove10" title="Code">💻</a></td>
     <td align="center"><a href="https://promise.hashnode.dev/"><img src="https://avatars2.githubusercontent.com/u/15036164?v=4" width="100px;" alt=""/><br /><sub><b>Promise Amadi</b></sub></a><br /><a href="#design-Wizpna" title="Design">🎨</a></td>
     <td align="center"><a href="https://linkedin.com/in/daruanugerah"><img src="https://avatars2.githubusercontent.com/u/20470960?v=4" width="100px;" alt=""/><br /><sub><b>Daru Anugerah Setiawan</b></sub></a><br /><a href="#design-daruanugerah" title="Design">🎨</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/yash-ajgaonkar-289520168/?"><img src="https://avatars2.githubusercontent.com/u/31548778?v=4" width="100px;" alt=""/><br /><sub><b>Yash Ajgaonkar</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=yash2189" title="Documentation">📖</a></td>
   </tr>
 </table>
 
