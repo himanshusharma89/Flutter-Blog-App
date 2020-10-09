@@ -1,6 +1,6 @@
 # Flutter Blog App
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Table of contents
@@ -95,6 +95,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/yash-ajgaonkar-289520168/?"><img src="https://avatars2.githubusercontent.com/u/31548778?v=4" width="100px;" alt=""/><br /><sub><b>Yash Ajgaonkar</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=yash2189" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/Dhruv-Sachdev1313"><img src="https://avatars0.githubusercontent.com/u/56223242?v=4" width="100px;" alt=""/><br /><sub><b>Dhruv Sachdev</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Dhruv-Sachdev1313" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Janhavi23"><img src="https://avatars3.githubusercontent.com/u/56731465?v=4" width="100px;" alt=""/><br /><sub><b>Janhavi</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Janhavi23" title="Code">💻</a> <a href="#design-Janhavi23" title="Design">🎨</a></td>
   </tr>
 </table>
 
