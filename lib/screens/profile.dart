@@ -8,22 +8,21 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  List<Data> tech = [                         //Static List of icons and texts
+  List<Data> tech = [
+    //Static List of icons and texts
     Data("assets/flutter_icon.png", "Flutter"),
     Data("assets/firebase_icon.png", "FireBase"),
-    Data("assets/android_icon.png","Android"),
+    Data("assets/android_icon.png", "Android"),
     Data("assets/ios_icon.png", "IOS"),
-    Data("assets/developer.png","Himanshu Sharma")
+    Data("assets/developer.png", "Himanshu Sharma")
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Developer",
-          style: TextStyle(
-            letterSpacing: 0.5,
-          ),
+          "About",
+          style: TextStyle(letterSpacing: 0.5, fontSize: 30.0),
         ),
       ),
       body: SingleChildScrollView(
@@ -109,7 +108,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Container(
-                      width: 360.0,
+                      width: 380.0,
                       child: Card(
                         //color: Colors.deepPurple,
                         elevation: 5.0,
@@ -135,11 +134,13 @@ class _ProfileState extends State<Profile> {
                                       Column(
                                         children: [
                                           CircleAvatar(
-                                            backgroundImage: AssetImage(tech.elementAt(0).img),
+                                            backgroundImage: AssetImage(
+                                                tech.elementAt(0).img),
                                             radius: 18.0,
                                           ),
                                           CircleAvatar(
-                                            backgroundImage: AssetImage(tech.elementAt(1).img),
+                                            backgroundImage: AssetImage(
+                                                tech.elementAt(1).img),
                                             backgroundColor: Colors.white,
                                             radius: 20.0,
                                           ),
@@ -173,7 +174,7 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Container(
-                      width: 360.0,
+                      width: 380.0,
                       child: Card(
                         //color: Colors.deepPurple,
                         elevation: 5.0,
@@ -240,14 +241,14 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     Container(
-                      width: 360.0,
+                      width: 380.0,
                       child: Card(
                         //color: Colors.deepPurple,
                         elevation: 5.0,
                         //color: Color(0xFF8C9EFF),
                         margin: const EdgeInsets.only(top: 20.0),
                         child: SizedBox(
-                            height: 100.0,
+                            height: 130.0,
                             width: double.infinity,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 20.0),
@@ -283,7 +284,6 @@ class _ProfileState extends State<Profile> {
                                                 color: Colors.black54,
                                                 fontWeight: FontWeight.w700),
                                           ),
-                                          
                                         ],
                                       ),
                                     ],
@@ -293,6 +293,91 @@ class _ProfileState extends State<Profile> {
                             )),
                       ),
                     ),
+                    Container(
+                      width: 380.0,
+                      child: Card(
+                        //color: Colors.deepPurple,
+                        elevation: 5.0,
+                        //color: Color(0xFF8C9EFF),
+                        margin: const EdgeInsets.only(top: 20.0),
+                        child: SizedBox(
+                            height: 150.0,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text("License",
+                                      style: TextStyle(
+                                          fontSize: 22.0,
+                                          color: Colors.blueAccent,
+                                          fontWeight: FontWeight.w600)),
+                                  SizedBox(height: 20.0),
+                                  CircleAvatar(
+                                    radius: 18.0,
+                                    child: GestureDetector(
+                                      child: Image.asset(
+                                          'assets/license_icon.jpg'),
+                                      onTap: () async {
+                                        const url =
+                                            'https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/LICENSE';
+                                        if (await canLaunch(url)) {
+                                          await launch(url);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )),
+                      ),
+                    ),
+                    Container(
+                      width: 380.0,
+                      child: Card(
+                        //color: Colors.deepPurple,
+                        elevation: 5.0,
+                        //color: Color(0xFF8C9EFF),
+                        margin: const EdgeInsets.only(top: 20.0),
+                        child: SizedBox(
+                            height: 150.0,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text("Contributing",
+                                      style: TextStyle(
+                                          fontSize: 22.0,
+                                          color: Colors.blueAccent,
+                                          fontWeight: FontWeight.w600)),
+                                  SizedBox(height: 20.0),
+                                  CircleAvatar(
+                                    radius: 18.0,
+                                    backgroundColor: Colors.transparent,
+                                    child: GestureDetector(
+                                      child: Image.asset(
+                                          'assets/contribute_icon.png'),
+                                      onTap: () async {
+                                        const url =
+                                            'https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/CONTRIBUTING.md';
+                                        if (await canLaunch(url)) {
+                                          await launch(url);
+                                        } else {
+                                          throw 'Could not launch $url';
+                                        }
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )),
+                      ),
+                    )
                   ],
                 ),
                 Positioned(
