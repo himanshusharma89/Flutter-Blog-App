@@ -1,19 +1,19 @@
 import 'package:blog_app/models/article.dart';
-import 'package:blog_app/notifier/medium_Article_notifier.dart';
-import 'package:blog_app/screens/medium_post_view.dart';
-import 'package:blog_app/service/fetch_service.dart';
+import 'package:blog_app/providers/medium_article_notifier.dart';
+import 'package:blog_app/screens/medium_articles_webview.dart';
+import 'package:blog_app/service/fetch_medium_articles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FetchMediumScreen extends StatefulWidget {
+class MediumArticles extends StatefulWidget {
   @override
   State createState() {
-    return FetchMediumScreenState();
+    return MediumArticlesState();
   }
 }
 
-class FetchMediumScreenState extends State<FetchMediumScreen> {
+class MediumArticlesState extends State<MediumArticles> {
   List<dynamic> selected;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final myController = TextEditingController();
@@ -112,7 +112,7 @@ class FetchMediumScreenState extends State<FetchMediumScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MediumPostView(
+                                  builder: (context) => MediumArticlesWebView(
                                       title: article.title, url: article.link),
                                 ),
                               );

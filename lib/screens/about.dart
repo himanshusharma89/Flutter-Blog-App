@@ -1,16 +1,15 @@
-import 'package:blog_app/screens/data.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Profile extends StatefulWidget {
+class About extends StatefulWidget {
   @override
-  _ProfileState createState() => _ProfileState();
+  _AboutState createState() => _AboutState();
 }
 
-class _ProfileState extends State<Profile> {
+class _AboutState extends State<About> {
   List<Data> tech = [
     //Static List of icons and texts
-    Data("assets/flutter_icon.png", "Flutter"),
+    Data("assets/firebase_icon.png", "Flutter"),
     Data("assets/firebase_icon.png", "FireBase"),
     Data("assets/android_icon.png", "Android"),
     Data("assets/ios_icon.png", "IOS"),
@@ -22,7 +21,6 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         title: Text(
           "About",
-          style: TextStyle(letterSpacing: 0.5, fontSize: 30.0),
         ),
       ),
       body: SingleChildScrollView(
@@ -400,3 +398,10 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
+
+class Data {
+  String img;
+  String data;
+
+  Data(this.img, this.data);
+}       //Class to hold the image path and data to be displayed

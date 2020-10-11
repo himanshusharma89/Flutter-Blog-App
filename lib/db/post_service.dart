@@ -1,5 +1,3 @@
-import 'package:blog_app/models/post.dart';
-import 'package:blog_app/screens/add_post.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class PostService {

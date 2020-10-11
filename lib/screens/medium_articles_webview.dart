@@ -2,23 +2,19 @@ import 'dart:io';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 
-class MediumPostView extends StatefulWidget {
+class MediumArticlesWebView extends StatefulWidget {
   final String title;
   final String url;
 
-  MediumPostView({@required this.title, @required this.url});
+  MediumArticlesWebView({@required this.title, @required this.url});
 
   @override
   State<StatefulWidget> createState() {
-    return MediumPostViewState(title, url);
+    return MediumArticlesWebViewState();
   }
 }
 
-class MediumPostViewState extends State<MediumPostView> {
-  String title;
-  String url;
-
-  MediumPostViewState(this.title, this.url);
+class MediumArticlesWebViewState extends State<MediumArticlesWebView> {
 
   @override
   void initState() {
@@ -30,14 +26,14 @@ class MediumPostViewState extends State<MediumPostView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios_rounded),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       body: WebView(
-        initialUrl: url,
+        initialUrl: widget.url,
       ),
     );
   }

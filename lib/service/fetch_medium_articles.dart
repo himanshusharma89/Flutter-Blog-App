@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:blog_app/models/article.dart';
-import 'package:blog_app/notifier/medium_Article_notifier.dart';
+import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:http/http.dart' as http;
 
 class FetchService {

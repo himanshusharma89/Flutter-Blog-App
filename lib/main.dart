@@ -1,4 +1,4 @@
-import 'package:blog_app/notifier/medium_Article_notifier.dart';
+import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ import 'screens/home.dart';
 import 'routing/route_page.dart';
 import 'routing/route_constant.dart';
 
-void main() async{
+void main() async {
   LicenseRegistry.addLicense(() async* {
     final license = await rootBundle.loadString('google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
@@ -18,11 +18,12 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => MediumArticleNotifier()),
-        ],
-        child:BlogApp(),),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MediumArticleNotifier()),
+      ],
+      child: BlogApp(),
+    ),
   );
 }
 
@@ -58,7 +59,8 @@ class _BlogAppState extends State<BlogApp> {
             onTap: () => hideKeyboard(context),
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
-              builder: (context, child) => ScrollConfiguration(behavior: MyBehavior(), child: child),
+              builder: (context, child) =>
+                  ScrollConfiguration(behavior: MyBehavior(), child: child),
               theme: (themeChangeProvider.darkTheme == true)
                   ? darkTheme
                   : lightTheme,
@@ -71,6 +73,7 @@ class _BlogAppState extends State<BlogApp> {
       ),
     );
   }
+
   void hideKeyboard(BuildContext context) {
     FocusScopeNode currentFocus = FocusScope.of(context);
     if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {

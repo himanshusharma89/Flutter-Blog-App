@@ -44,9 +44,6 @@ final lightTheme = ThemeData(
         foregroundColor: Colors.white, backgroundColor: Colors.deepPurple),
     dividerColor: Colors.white54,
     inputDecorationTheme: InputDecorationTheme(
-      // enabledBorder: new OutlineInputBorder(
-      //   borderSide:  BorderSide(color: Colors.deepPurple ),
-      // ),
       focusedBorder: new OutlineInputBorder(
         borderSide:  BorderSide(color: Colors.deepPurple ),
       ),

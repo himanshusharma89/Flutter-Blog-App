@@ -1,18 +1,11 @@
 import 'package:blog_app/models/post.dart';
-import 'package:blog_app/screens/medium_post_view.dart';
-import 'package:blog_app/screens/profile.dart';
-import 'package:blog_app/screens/view_post.dart';
-import 'package:blog_app/models/post.dart';
-import 'package:blog_app/screens/fetch_medium_screen.dart';
-import 'package:blog_app/screens/profile.dart';
-import 'package:blog_app/screens/view_post.dart';
+import 'package:blog_app/screens/medium_articles.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:timeago/timeago.dart' as timeago;
 import '../models/post.dart';
 import '../providers/theme_notifier.dart';
 import '../routing/route_constant.dart';
@@ -55,7 +48,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FetchMediumScreen(),
+                  builder: (context) => MediumArticles(),
                 ),
               );
             },
@@ -177,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.blueAccent,
                     ),
                     onTap: () {
-                      Navigator.pushNamed(context, RouteConstant.PROFILE);
+                      Navigator.pushNamed(context, RouteConstant.ABOUT);
                     },
                   ),
                 ),

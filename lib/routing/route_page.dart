@@ -5,7 +5,7 @@ import '../models/post.dart';
 import '../screens/add_post.dart';
 import '../screens/edit_post.dart';
 import '../screens/home.dart';
-import '../screens/profile.dart';
+import '../screens/about.dart';
 import '../screens/view_post.dart';
 import 'undefined_view.dart';
 
@@ -26,8 +26,8 @@ class RoutePage {
         Post post = settings.arguments as Post;
         return MaterialPageRoute(builder: (_) => PostView(post));
 
-      case RouteConstant.PROFILE:
-        return MaterialPageRoute(builder: (_) => Profile());
+      case RouteConstant.ABOUT:
+        return MaterialPageRoute(builder: (_) => About());
 
       default:
         return MaterialPageRoute(
