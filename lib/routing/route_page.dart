@@ -28,21 +28,21 @@ class RoutePage {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteConstant.ROOT:
-        return PageTransition(child: HomePage(),duration: Duration(seconds: 1), type: PageTransitionType.leftToRight);
+        return PageTransition(child: HomePage(),duration: Duration(seconds: 1), type: PageTransitionType.fade);
 
       case RouteConstant.ADD_POST:
-        return PageTransition(child: AddPost(),duration: Duration(seconds: 1), type: PageTransitionType.leftToRight);
+        return PageTransition(child: AddPost(),duration: Duration(seconds: 1), type: PageTransitionType.fade);
 
       case RouteConstant.EDIT_POST:
         Post post = settings.arguments as Post;
-        return PageTransition(child: EditPost(post),duration: Duration(seconds: 1), type: PageTransitionType.leftToRightWithFade);
+        return PageTransition(child: EditPost(post),duration: Duration(seconds: 1), type: PageTransitionType.fade);
 
       case RouteConstant.VIEW_POST:
         Post post = settings.arguments as Post;
-        return PageTransition(child: PostView(post),duration: Duration(seconds: 1), type: PageTransitionType.leftToRight);
+        return PageTransition(child: PostView(post),duration: Duration(seconds: 1), type: PageTransitionType.fade);
 
       case RouteConstant.PROFILE:
-        return PageTransition(child: Profile(),duration: Duration(seconds: 1), type: PageTransitionType.leftToRight);
+        return PageTransition(child: Profile(),duration: Duration(seconds: 1), type: PageTransitionType.fade);
 
       default:
         return MaterialPageRoute(
