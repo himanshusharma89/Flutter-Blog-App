@@ -14,7 +14,7 @@ class EditPost extends StatefulWidget {
 }
 
 class _EditPostState extends State<EditPost> {
-  final GlobalKey<FormState> formkey = new GlobalKey();
+  final GlobalKey<FormState> _formkey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -22,46 +22,47 @@ class _EditPostState extends State<EditPost> {
       appBar: AppBar(
         title: Text(
           "Edit Post",
-          style: TextStyle(fontFamily: 'Roboto Mono'),
         ),
-        elevation: 0.0,
-        backgroundColor: Colors.deepPurple,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
-      backgroundColor: Color(0xffc8d9ff),
       body: Form(
-        key: formkey,
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-              child: TextFormField(
+        key: _formkey,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
+          child: Column(
+            children: <Widget>[
+              TextFormField(
                 initialValue: widget.post.title,
-                style: TextStyle(fontFamily: 'Roboto Mono'),
                 decoration: InputDecoration(
-                    labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
                     filled: true,
-                    fillColor: Colors.white,
                     labelText: "Post Title",
                     border: OutlineInputBorder()),
+                onChanged: (value) => widget.post.title = value,
                 onSaved: (val) => widget.post.title = val,
                 validator: (val) {
                   if (val.isEmpty) {
                     return "Title filed can't be empty";
                   }
+                  return null;
                 },
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0, left: 8.0, right: 8.0),
-              child: TextFormField(
+              SizedBox(
+                height: 15,
+              ),
+              TextFormField(
                 initialValue: widget.post.body,
-                style: TextStyle(fontFamily: 'Roboto Mono'),
                 decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.white,
                     labelText: "Post Body",
-                    labelStyle: TextStyle(fontFamily: 'Roboto Mono'),
                     border: OutlineInputBorder()),
+                onChanged: (value) => widget.post.body = value,
                 onSaved: (val) => widget.post.body = val,
                 validator: (val) {
                   if (val.isEmpty) {
@@ -69,37 +70,35 @@ class _EditPostState extends State<EditPost> {
                   } else if (val.length > 16) {
                     return "Title can/'t have more tham 16 characters";
                   }
+                  return null;
                 },
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          insertPost();
-          //Navigator.pop(context);
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+          updatePost();
         },
         child: Icon(
           Icons.save,
-          //color=Colors.white,
         ),
-        backgroundColor: Colors.deepPurple,
         tooltip: "Save post",
       ),
     );
   }
 
-  void insertPost() {
-    final FormState form = formkey.currentState;
-    if (form.validate()) {
-      form.save();
-      form.reset();
+  void updatePost() {
+    print("updatePost form validation:" + _formkey.currentState.validate().toString());
+    if (_formkey.currentState.validate()) {
+      _formkey.currentState.save();
+      _formkey.currentState.reset();
       widget.post.date = DateTime.now().millisecondsSinceEpoch;
       PostService postService = PostService(widget.post.toMap());
       postService.updatePost();
+      Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 }
