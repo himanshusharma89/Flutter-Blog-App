@@ -1,4 +1,5 @@
 import 'package:blog_app/db/post_service.dart';
+import 'package:blog_app/helpers/floating_button.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:flutter/material.dart';
 
@@ -76,20 +77,18 @@ class _EditPostState extends State<EditPost> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          updatePost();
-        },
-        child: Icon(
-          Icons.save,
-        ),
-        tooltip: "Save post",
-      ),
+      floatingActionButton: FloatingButton(
+          buttonText: "Save Changes",
+          onPressed: () {
+            updatePost();
+          }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
   void updatePost() {
-    print("updatePost form validation:" + _formkey.currentState.validate().toString());
+    print("updatePost form validation:" +
+        _formkey.currentState.validate().toString());
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       _formkey.currentState.reset();
@@ -97,7 +96,7 @@ class _EditPostState extends State<EditPost> {
       PostService postService = PostService(widget.post.toMap());
       postService.updatePost();
       Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     }
   }
 }

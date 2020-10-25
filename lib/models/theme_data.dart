@@ -15,7 +15,7 @@ final darkTheme = ThemeData(
       //   borderSide:  BorderSide(color: Colors.deepPurple ),
       // ),
       focusedBorder: new OutlineInputBorder(
-        borderSide:  BorderSide(color: Colors.white ),
+        borderSide: BorderSide(color: Colors.white),
       ),
     ),
     iconTheme: IconThemeData(
@@ -45,7 +45,7 @@ final lightTheme = ThemeData(
     dividerColor: Colors.white54,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: new OutlineInputBorder(
-        borderSide:  BorderSide(color: Colors.deepPurple ),
+        borderSide: BorderSide(color: Colors.deepPurple),
       ),
     ),
     iconTheme: IconThemeData(

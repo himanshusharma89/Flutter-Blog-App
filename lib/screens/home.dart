@@ -1,9 +1,9 @@
 import 'package:blog_app/models/post.dart';
+import 'package:blog_app/screens/drawer.dart';
 import 'package:blog_app/screens/medium_articles.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_database/firebase_database.dart';
 import '../models/post.dart';
@@ -35,9 +35,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
-    swithValue = themeChange.darkTheme;
-
-    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(
@@ -55,8 +52,11 @@ class _HomePageState extends State<HomePage> {
           )
         ],
         elevation: 0,
-        title: Text(
-          "Blog App",
+        title: Image.asset(
+          themeChange.darkTheme
+              ? 'assets/blog_flutter_dark.png'
+              : 'assets/blog_flutter_light.png',
+          height: kToolbarHeight + 100,
         ),
         leading: IconButton(
             icon: Icon(Icons.menu_rounded),
@@ -143,92 +143,11 @@ class _HomePageState extends State<HomePage> {
           Navigator.pushNamed(context, RouteConstant.ADD_POST);
         },
         child: Icon(
-          Icons.edit,
+          Icons.add,
         ),
         tooltip: "Add a post",
       ),
-      drawer: Drawer(
-        child: Stack(
-          children: [
-            ListView(
-              children: <Widget>[
-                Image.asset(
-                  'assets/blogging.png',
-                  fit: BoxFit.contain,
-                  height: height * 0.2,
-                ),
-                Ink(
-                  child: ListTile(
-                    title: Text("About",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          // color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                        )),
-                    trailing: Icon(
-                      Icons.info,
-                      color: Colors.blueAccent,
-                    ),
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteConstant.ABOUT);
-                    },
-                  ),
-                ),
-                Ink(
-                  child: ListTile(
-                    title: Text("Dark Mode",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w600,
-                        )),
-                    trailing: Transform.scale(
-                      scale: 0.7,
-                      origin: Offset(25, 0),
-                      child: CupertinoSwitch(
-                        activeColor: Colors.deepPurple,
-                        value: swithValue,
-                        onChanged: (bool value) {
-                          setState(() {
-                            swithValue = !swithValue;
-                            themeChange.darkTheme = swithValue;
-                          });
-                          //print("Dark Mode");
-                        },
-                      ),
-                    ),
-                    onTap: () {
-                      setState(() {
-                        swithValue = !swithValue;
-                        themeChange.darkTheme = swithValue;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Ink(
-                child: ListTile(
-                  title: Text("Close",
-                      style: TextStyle(
-                        fontSize: 15.0,
-                        // color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                      )),
-                  trailing: Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ),
-                  onTap: () {
-                    SystemNavigator.pop();
-                  },
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      drawer: BlogDrawer()
     );
   }
 

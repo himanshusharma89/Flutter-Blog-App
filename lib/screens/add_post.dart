@@ -1,3 +1,4 @@
+import 'package:blog_app/helpers/floating_button.dart';
 import 'package:flutter/material.dart';
 import '../db/post_service.dart';
 import '../models/post.dart';
@@ -50,7 +51,9 @@ class _AddPostState extends State<AddPost> {
                       return null;
                     },
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(
+                    height: 15,
+                  ),
                   TextFormField(
                     decoration: InputDecoration(
                       labelText: "Post Body",
@@ -74,21 +77,18 @@ class _AddPostState extends State<AddPost> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          addPost();
-          //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
-        },
-        child: Icon(
-          Icons.add,
-        ),
-        tooltip: "Add a post",
-      ),
+      floatingActionButton: FloatingButton(
+          buttonText: "Add The Post",
+          onPressed: () {
+            addPost();
+          }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
   void addPost() {
-    print("addPost form validation:"+ _formkey.currentState.validate().toString());
+    print("addPost form validation:" +
+        _formkey.currentState.validate().toString());
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
       _formkey.currentState.reset();

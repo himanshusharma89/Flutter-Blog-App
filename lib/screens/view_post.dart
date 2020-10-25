@@ -29,17 +29,6 @@ class _PostViewState extends State<PostView> {
             Navigator.pop(context);
           },
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.edit),
-            onPressed: () {
-              Navigator.pushNamed(context, RouteConstant.EDIT_POST,
-                  arguments: widget.post);
-              //PostService postService = PostService(widget.post.toMap());
-              //postService.updatePost();
-            },
-          ),
-        ],
       ),
       // backgroundColor: Color(0xffc8d9ff),
       body: Padding(
@@ -91,6 +80,12 @@ class _PostViewState extends State<PostView> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.edit),
+          onPressed: () {
+            Navigator.pushNamed(context, RouteConstant.EDIT_POST,
+                arguments: widget.post);
+          }),
     );
   }
 }
