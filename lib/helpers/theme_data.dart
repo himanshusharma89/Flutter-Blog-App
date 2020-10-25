@@ -1,3 +1,4 @@
+import 'package:blog_app/helpers/app_theme.dart';
 import 'package:flutter/material.dart';
 
 final darkTheme = ThemeData(
@@ -8,11 +9,11 @@ final darkTheme = ThemeData(
     backgroundColor: const Color(0xFF212121),
     accentColor: Colors.white,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        foregroundColor: Colors.deepPurple, backgroundColor: Colors.white),
+        foregroundColor: AppTheme.primaryColor, backgroundColor: Colors.white),
     dividerColor: Colors.black12,
     inputDecorationTheme: InputDecorationTheme(
       // enabledBorder: new OutlineInputBorder(
-      //   borderSide:  BorderSide(color: Colors.deepPurple ),
+      //   borderSide:  BorderSide(color: AppTheme.primaryColor ),
       // ),
       focusedBorder: new OutlineInputBorder(
         borderSide: BorderSide(color: Colors.white),
@@ -35,32 +36,32 @@ final darkTheme = ThemeData(
 
 final lightTheme = ThemeData(
     primarySwatch: Colors.purple,
-    primaryColor: Colors.deepPurple,
+    primaryColor: AppTheme.primaryColor,
     fontFamily: 'Nunito',
     brightness: Brightness.light,
     backgroundColor: const Color(0xFFE5E5E5),
     accentColor: Colors.black,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        foregroundColor: Colors.white, backgroundColor: Colors.deepPurple),
+        foregroundColor: Colors.white, backgroundColor: AppTheme.primaryColor),
     dividerColor: Colors.white54,
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: new OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.deepPurple),
+        borderSide: BorderSide(color: AppTheme.primaryColor),
       ),
     ),
     iconTheme: IconThemeData(
-      color: Colors.deepPurple,
+      color: AppTheme.primaryColor,
     ),
     appBarTheme: AppBarTheme(
         elevation: 0,
         centerTitle: true,
         color: Colors.transparent,
         iconTheme: IconThemeData(
-          color: Colors.deepPurple,
+          color: AppTheme.primaryColor,
         ),
         textTheme: TextTheme(
             headline6: TextStyle(
-          color: Colors.deepPurple,
+          color: AppTheme.primaryColor,
           fontFamily: 'Nunito',
           fontSize: 22.0,
           fontWeight: FontWeight.w700,

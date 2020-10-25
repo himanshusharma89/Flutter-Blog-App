@@ -1,3 +1,4 @@
+import 'package:blog_app/helpers/app_theme.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:blog_app/screens/drawer.dart';
 import 'package:blog_app/screens/medium_articles.dart';
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                           },
                           child: Card(
                               elevation: 4.0,
-                              color: Colors.deepPurple,
+                              color: AppTheme.primaryColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Column(

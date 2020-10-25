@@ -1,3 +1,4 @@
+import 'package:blog_app/helpers/app_theme.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,13 +20,13 @@ class _FloatingButtonState extends State<FloatingButton> {
       margin: const EdgeInsets.only(bottom: 10),
       height: kFloatingActionButtonMargin * 3,
       child: RaisedButton(
-          color: themeChange.darkTheme ? Colors.white :  Colors.deepPurple,
+          color: themeChange.darkTheme ? Colors.white :  AppTheme.primaryColor,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           onPressed: widget.onPressed,
           child: Text(
             widget.buttonText,
-            style: TextStyle(color: themeChange.darkTheme ? Colors.deepPurple : Colors.white, fontSize: 18),
+            style: TextStyle(color: themeChange.darkTheme ? AppTheme.primaryColor : Colors.white, fontSize: 18),
           )),
     );
   }

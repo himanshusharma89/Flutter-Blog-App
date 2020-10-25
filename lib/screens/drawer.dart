@@ -1,3 +1,4 @@
+import 'package:blog_app/helpers/app_theme.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:blog_app/routing/route_constant.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,7 +57,7 @@ class _BlogDrawerState extends State<BlogDrawer> {
                       scale: 0.7,
                       origin: Offset(25, 0),
                       child: CupertinoSwitch(
-                        activeColor: Colors.deepPurple,
+                        activeColor: AppTheme.primaryColor,
                         value: swithValue,
                         onChanged: (bool value) {
                           setState(() {

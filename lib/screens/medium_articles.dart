@@ -36,74 +36,22 @@ class MediumArticlesState extends State<MediumArticles> {
         Provider.of<MediumArticleNotifier>(context);
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_rounded),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text('Search Medium Articles')
-      ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text('Search Medium Articles')),
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Form(
-                key: _formKey,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: TextFormField(
-                        controller: myController,
-                        keyboardType: TextInputType.text,
-                        decoration: new InputDecoration(
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.only(
-                              left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: "Enter Username",
-                          // hintStyle: TextStyle(color: Colors.white),
-                        ),
-                        validator: (val) {
-                          if (val.isEmpty) {
-                            return "Username can't be empty";
-                          }
-                          return null;
-                        },
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    RaisedButton(
-                      child: Text(
-                          mediumArticleNotifier.getArticleList().length == 0
-                              ? "Fetch"
-                              : "Clear"),
-                      onPressed: () {
-                        if(mediumArticleNotifier.getArticleList().length !=0){
-                          mediumArticleNotifier.clearArticleList();
-                            mediumArticleNotifier.setloader(false);
-                        }
-                        else {
-                          if (_formKey.currentState.validate()) {
-                          _formKey.currentState.save();
-                            mediumArticleNotifier.setloader(true);
-                            FetchService.getPosts(
-                                mediumArticleNotifier, myController.text);
-                        }
-                        }
-                      },
-                    ),
-                  ],
-                ),
-              ),
               Expanded(
                 child: mediumArticleNotifier.getArticleList().length != 0
                     ? ListView.builder(
                         shrinkWrap: true,
-                        itemCount: mediumArticleNotifier.getArticleList().length,
+                        itemCount:
+                            mediumArticleNotifier.getArticleList().length,
                         itemBuilder: (context, index) {
                           Article article =
                               mediumArticleNotifier.getArticleList()[index];
@@ -158,11 +106,65 @@ class MediumArticlesState extends State<MediumArticles> {
                             child: CircularProgressIndicator(),
                           )
                         : Center(
-                            child: Text('Search Medium Articles by Author name.'),
+                            child:
+                                Text('Search Medium Articles by Author name.'),
                           ),
               ),
             ],
           )),
+          floatingActionButton: Form(
+                key: _formKey,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: TextFormField(
+                        controller: myController,
+                        keyboardType: TextInputType.text,
+                        decoration: new InputDecoration(
+                          border: OutlineInputBorder(),
+                          contentPadding: EdgeInsets.only(
+                              left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: "Enter Username",
+                          // hintStyle: TextStyle(color: Colors.white),
+                        ),
+                        validator: (val) {
+                          if (val.isEmpty) {
+                            return "Username can't be empty";
+                          }
+                          return null;
+                        },
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    RaisedButton(
+                      child: Text(
+                          mediumArticleNotifier.getArticleList().length == 0
+                              ? "Fetch"
+                              : "Clear"),
+                      onPressed: () {
+                        if (mediumArticleNotifier.getArticleList().length !=
+                            0) {
+                          mediumArticleNotifier.clearArticleList();
+                          mediumArticleNotifier.setloader(false);
+                        } else {
+                          if (_formKey.currentState.validate()) {
+                            _formKey.currentState.save();
+                            mediumArticleNotifier.setloader(true);
+                            FetchService.getPosts(
+                                mediumArticleNotifier, myController.text);
+                          }
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
