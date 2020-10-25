@@ -1,20 +1,97 @@
+import 'package:blog_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class About extends StatefulWidget {
-  @override
-  _AboutState createState() => _AboutState();
-}
-
-class _AboutState extends State<About> {
-  List<Data> tech = [
-    //Static List of icons and texts
-    Data("assets/firebase_icon.png", "Flutter"),
-    Data("assets/firebase_icon.png", "FireBase"),
-    Data("assets/android_icon.png", "Android"),
-    Data("assets/ios_icon.png", "IOS"),
-    Data("assets/developer.png", "Himanshu Sharma")
+// ignore: must_be_immutable
+class About extends StatelessWidget {
+  List contributors = [
+    {
+      "login": "shubham-chhimpa",
+      "name": "Shubham Chhimpa",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/38981756?v=4",
+      "profile": "https://www.linkedin.com/in/shubhamchhimpa/",
+      "contributions": ["code"]
+    },
+    {
+      "login": "carlosfrodrigues",
+      "name": "Carlos Felix",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/18339454?v=4",
+      "profile": "http://carlosfelix.pythonanywhere.com/",
+      "contributions": ["design"]
+    },
+    {
+      "login": "derangga",
+      "name": "Dimas Rangga",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/31648630?v=4",
+      "profile": "https://medium.com/@derangga",
+      "contributions": ["code"]
+    },
+    {
+      "login": "arbazdiwan",
+      "name": "Arbaz Mustufa Diwan",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/24837320?v=4",
+      "profile": "https://github.com/arbazdiwan",
+      "contributions": ["code"]
+    },
+    {
+      "login": "Mrgove10",
+      "name": "Adrien",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/25491408?v=4",
+      "profile": "http://www.adrienrichard.com/",
+      "contributions": ["code"]
+    },
+    {
+      "login": "Wizpna",
+      "name": "Promise Amadi",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15036164?v=4",
+      "profile": "https://promise.hashnode.dev/",
+      "contributions": ["design"]
+    },
+    {
+      "login": "daruanugerah",
+      "name": "Daru Anugerah Setiawan",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/20470960?v=4",
+      "profile": "https://linkedin.com/in/daruanugerah",
+      "contributions": ["design"]
+    },
+    {
+      "login": "yash2189",
+      "name": "Yash Ajgaonkar",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/31548778?v=4",
+      "profile": "https://www.linkedin.com/in/yash-ajgaonkar-289520168/?",
+      "contributions": ["doc"]
+    },
+    {
+      "login": "Dhruv-Sachdev1313",
+      "name": "Dhruv Sachdev",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/56223242?v=4",
+      "profile": "https://github.com/Dhruv-Sachdev1313",
+      "contributions": ["code"]
+    },
+    {
+      "login": "Janhavi23",
+      "name": "Janhavi",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/56731465?v=4",
+      "profile": "https://github.com/Janhavi23",
+      "contributions": ["code", "design"]
+    }
   ];
+
+  List social = [
+    {
+      'URL': 'https://github.com/himanshusharma89',
+      'iconURL': 'https://img.icons8.com/fluent/50/000000/github.png'
+    },
+    {
+      'URL': 'https://twitter.com/_SharmaHimanshu',
+      'iconURL': 'https://img.icons8.com/color/48/000000/twitter.png'
+    },
+    {
+      'URL': 'https://www.linkedin.com/in/himanshusharma89/',
+      'iconURL': 'https://img.icons8.com/color/48/000000/linkedin.png'
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,376 +99,191 @@ class _AboutState extends State<About> {
         title: Text(
           "About",
         ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 15.0),
-            child: new Stack(
-              children: <Widget>[
-                Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        width: 380.0,
-                        child: Card(
-                          //color: Colors.deepPurple,
-                          elevation: 5.0,
-                          //color: Color(0xFF8C9EFF),
-                          margin: const EdgeInsets.only(top: 50.0),
-                          child: SizedBox(
-                              height: 250.0,
-                              width: double.infinity,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 58.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text("Himanshu Sharma",
-                                        style: TextStyle(
-                                          fontSize: 22.0,
-                                          color: Colors.deepPurple,
-                                          fontWeight: FontWeight.w600,
-                                        )),
-                                    SizedBox(
-                                      height: 8.0,
-                                    ),
-                                    GestureDetector(
-                                      child: Image.asset('assets/GitHub.png'),
-                                      onTap: () async {
-                                        const url =
-                                            'https://github.com/himanshusharma89';
-                                        if (await canLaunch(url)) {
-                                          await launch(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
-                                      },
-                                    ),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          "Wanna pen down your thoughts in the form of a blog?",
-                                          style: TextStyle(
-                                              fontSize: 15.0,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Text(
-                                          "This is just the App for you!",
-                                          style: TextStyle(
-                                              fontSize: 15.0,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w700),
-                                        ),
-                                        Text(
-                                          "Happy Blogging!",
-                                          style: TextStyle(
-                                              fontSize: 15.0,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w700),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              )),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Want to pen down your thoughts in the form of a blog anonymously?",
+                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
+              ),
+              Text(
+                "This is just the App for you! You can post your blogs and no one can know about the original poster.",
+                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    child: Card(
+                      elevation: 5.0,
+                      margin: const EdgeInsets.only(top: 45.0),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 40.0, bottom: 15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text("Himanshu Sharma",
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: social
+                                    .map(
+                                      (e) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8),
+                                        child: GestureDetector(
+                                            child: Image.network(
+                                              e['iconURL'],
+                                              height: 26,
+                                              width: 26,
+                                            ),
+                                            onTap: () =>
+                                                launcher.launcher(e['URL'])),
+                                      ),
+                                    )
+                                    .toList()),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'The Developer behind this project',
+                                  style: TextStyle(fontSize: 15),
+                                )
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Container(
-                      width: 380.0,
-                      child: Card(
-                        //color: Colors.deepPurple,
-                        elevation: 5.0,
-                        //color: Color(0xFF8C9EFF),
-                        margin: const EdgeInsets.only(top: 20.0),
-                        child: SizedBox(
-                            height: 180.0,
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text("Tech Stack",
-                                      style: TextStyle(
-                                          fontSize: 22.0,
-                                          color: Colors.blueAccent,
-                                          fontWeight: FontWeight.w600)),
-                                  SizedBox(height: 10.0),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                tech.elementAt(0).img),
-                                            radius: 18.0,
-                                          ),
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                tech.elementAt(1).img),
-                                            backgroundColor: Colors.white,
-                                            radius: 20.0,
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(width: 10.0),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            tech.elementAt(0).data,
-                                            style: TextStyle(
-                                                fontSize: 17.0,
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          SizedBox(height: 15.0),
-                                          Text(
-                                            tech.elementAt(1).data,
-                                            style: TextStyle(
-                                                fontSize: 17.0,
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.w700),
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )),
+                  ),
+                  Positioned(
+                    top: .0,
+                    left: .0,
+                    right: .0,
+                    child: Center(
+                      child: CircleAvatar(
+                        radius: 40.0,
+                        backgroundImage: NetworkImage(
+                            'https://avatars0.githubusercontent.com/u/44980497?v=4'),
                       ),
                     ),
-                    Container(
-                      width: 380.0,
-                      child: Card(
-                        //color: Colors.deepPurple,
-                        elevation: 5.0,
-                        //color: Color(0xFF8C9EFF),
-                        margin: const EdgeInsets.only(top: 20.0),
-                        child: SizedBox(
-                            height: 150.0,
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text("Platforms",
-                                      style: TextStyle(
-                                          fontSize: 22.0,
-                                          color: Colors.blueAccent,
-                                          fontWeight: FontWeight.w600)),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                tech.elementAt(2).img),
-                                            backgroundColor: Colors.white,
-                                            radius: 22.0,
-                                          ),
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                tech.elementAt(3).img),
-                                            backgroundColor: Colors.transparent,
-                                            radius: 18.0,
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(width: 10.0),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            tech.elementAt(2).data,
-                                            textAlign: TextAlign.end,
-                                            style: TextStyle(
-                                                fontSize: 17.0,
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          SizedBox(height: 15.0),
-                                          Text(
-                                            tech.elementAt(3).data,
-                                            style: TextStyle(
-                                                fontSize: 17.0,
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.w700),
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-                    ),
-                    Container(
-                      width: 380.0,
-                      child: Card(
-                        //color: Colors.deepPurple,
-                        elevation: 5.0,
-                        //color: Color(0xFF8C9EFF),
-                        margin: const EdgeInsets.only(top: 20.0),
-                        child: SizedBox(
-                            height: 130.0,
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text("Contributors",
-                                      style: TextStyle(
-                                          fontSize: 22.0,
-                                          color: Colors.blueAccent,
-                                          fontWeight: FontWeight.w600)),
-                                  SizedBox(height: 10.0),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          CircleAvatar(
-                                            backgroundImage: AssetImage(
-                                                tech.elementAt(4).img),
-                                            backgroundColor: Colors.white,
-                                            radius: 18.0,
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(width: 10.0),
-                                      Column(
-                                        children: [
-                                          Text(
-                                            tech.elementAt(4).data,
-                                            style: TextStyle(
-                                                fontSize: 17.0,
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ),
-                    ),
-                    Container(
-                      width: 380.0,
-                      child: Card(
-                        //color: Colors.deepPurple,
-                        elevation: 5.0,
-                        //color: Color(0xFF8C9EFF),
-                        margin: const EdgeInsets.only(top: 20.0),
-                        child: SizedBox(
-                            height: 150.0,
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text("License",
-                                      style: TextStyle(
-                                          fontSize: 22.0,
-                                          color: Colors.blueAccent,
-                                          fontWeight: FontWeight.w600)),
-                                  SizedBox(height: 20.0),
-                                  CircleAvatar(
-                                    radius: 18.0,
-                                    child: GestureDetector(
-                                      child: Image.asset(
-                                          'assets/license_icon.jpg'),
-                                      onTap: () async {
-                                        const url =
-                                            'https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/LICENSE';
-                                        if (await canLaunch(url)) {
-                                          await launch(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
-                                      },
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )),
-                      ),
-                    ),
-                    Container(
-                      width: 380.0,
-                      child: Card(
-                        //color: Colors.deepPurple,
-                        elevation: 5.0,
-                        //color: Color(0xFF8C9EFF),
-                        margin: const EdgeInsets.only(top: 20.0),
-                        child: SizedBox(
-                            height: 150.0,
-                            width: double.infinity,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text("Contributing",
-                                      style: TextStyle(
-                                          fontSize: 22.0,
-                                          color: Colors.blueAccent,
-                                          fontWeight: FontWeight.w600)),
-                                  SizedBox(height: 20.0),
-                                  CircleAvatar(
-                                    radius: 18.0,
-                                    backgroundColor: Colors.transparent,
-                                    child: GestureDetector(
-                                      child: Image.asset(
-                                          'assets/contribute_icon.png'),
-                                      onTap: () async {
-                                        const url =
-                                            'https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/CONTRIBUTING.md';
-                                        if (await canLaunch(url)) {
-                                          await launch(url);
-                                        } else {
-                                          throw 'Could not launch $url';
-                                        }
-                                      },
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )),
-                      ),
-                    )
-                  ],
+                  )
+                ],
+              ),
+              Card(
+                margin: const EdgeInsets.only(top: 20),
+                elevation: 5,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text("Contributors ✨",
+                          style: TextStyle(
+                              fontSize: 22.0, fontWeight: FontWeight.w600)),
+                      SizedBox(height: 10.0),
+                      GridView.builder(
+                          itemCount: contributors.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  mainAxisSpacing: 4,
+                                  crossAxisSpacing: 4,
+                                  childAspectRatio: 1 / 0.9),
+                          primary: false,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  height: 60,
+                                  width: 60,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: NetworkImage(
+                                              contributors[index]
+                                                  ['avatar_url']))),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  contributors[index]['login'],
+                                  style: TextStyle(fontSize: 13),
+                                )
+                              ],
+                            );
+                          }),
+                    ],
+                  ),
                 ),
-                Positioned(
-                  top: .0,
-                  left: .0,
-                  right: .0,
-                  child: Center(
-                    child: CircleAvatar(
-                      radius: 50.0,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('assets/developer.png'),
+              ),
+              Container(
+                width: double.infinity,
+                child: Card(
+                  elevation: 5.0,
+                  margin: const EdgeInsets.only(top: 20.0),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Contributing",
+                            style: TextStyle(
+                                fontSize: 22.0, fontWeight: FontWeight.w600)),
+                        SizedBox(height: 10.0),
+                        Text(
+                          "If you wish to contribute a change to any of the existing features in this application, please review our contribution guide and send a pull request.",
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 10.0),
+                        GestureDetector(
+                            child: Image.asset(
+                              'assets/contribute_icon.png',
+                              height: 26,
+                              width: 26,
+                            ),
+                            onTap: () => launcher.launcher(
+                                'https://github.com/himanshusharma89/Flutter-Blog-App')),
+                      ],
                     ),
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              )
+            ],
           ),
         ),
       ),
@@ -404,4 +296,4 @@ class Data {
   String data;
 
   Data(this.img, this.data);
-}       //Class to hold the image path and data to be displayed
+} //Class to hold the image path and data to be displayed

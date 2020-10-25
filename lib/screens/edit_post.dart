@@ -63,12 +63,11 @@ class _EditPostState extends State<EditPost> {
                     labelText: "Post Body",
                     border: OutlineInputBorder()),
                 onChanged: (value) => widget.post.body = value,
+                maxLines: 10,
                 onSaved: (val) => widget.post.body = val,
                 validator: (val) {
                   if (val.isEmpty) {
                     return "Body feild can't be empty";
-                  } else if (val.length > 16) {
-                    return "Title can/'t have more tham 16 characters";
                   }
                   return null;
                 },

@@ -1,3 +1,4 @@
+import 'package:blog_app/helpers/launcher.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
@@ -9,6 +10,8 @@ import 'models/theme_data.dart';
 import 'screens/home.dart';
 import 'routing/route_page.dart';
 import 'routing/route_constant.dart';
+
+final Launcher launcher = Launcher();
 
 void main() async {
   LicenseRegistry.addLicense(() async* {
