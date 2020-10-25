@@ -26,11 +26,7 @@ This is a fully functional app with Firebase backend.
 [<img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/bmc-button.png">](https://www.buymeacoffee.com/himanshusharma)
 
 ## App Screens
-These are some screenshots of the app:
-
-<br>
-
-<img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944824.png" width="30%"/> <img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944830.png" width="30%"/> <img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944841.png" width="30%"/> <img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/screenshots/Screenshot_1579944836.png" width="30%"/>
+The updated images will be added soon.
 
 ## Getting Started
 
