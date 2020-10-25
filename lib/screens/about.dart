@@ -1,4 +1,5 @@
 import 'package:blog_app/main.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -152,10 +153,11 @@ class About extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8),
                                         child: GestureDetector(
-                                            child: Image.network(
-                                              e['iconURL'],
+                                            child: CachedNetworkImage(
+                                              imageUrl: e['iconURL'],
                                               height: 26,
                                               width: 26,
+                                              placeholder: (_, str) => CircularProgressIndicator(),
                                             ),
                                             onTap: () =>
                                                 launcher.launcher(e['URL'])),
@@ -186,7 +188,7 @@ class About extends StatelessWidget {
                     child: Center(
                       child: CircleAvatar(
                         radius: 40.0,
-                        backgroundImage: NetworkImage(
+                        backgroundImage: CachedNetworkImageProvider(
                             'https://avatars0.githubusercontent.com/u/44980497?v=4'),
                       ),
                     ),
@@ -228,7 +230,7 @@ class About extends StatelessWidget {
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
-                                          image: NetworkImage(
+                                          image: CachedNetworkImageProvider(
                                               contributors[index]
                                                   ['avatar_url']))),
                                 ),
