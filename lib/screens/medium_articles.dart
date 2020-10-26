@@ -44,7 +44,7 @@ class MediumArticlesState extends State<MediumArticles> {
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: mediumArticleNotifier.getArticleList().length != 0
@@ -110,61 +110,63 @@ class MediumArticlesState extends State<MediumArticles> {
                                 Text('Search Medium Articles by Author name.'),
                           ),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Form(
+                  key: _formKey,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: TextFormField(
+                          controller: myController,
+                          keyboardType: TextInputType.text,
+                          decoration: new InputDecoration(
+                            border: OutlineInputBorder(),
+                            contentPadding: EdgeInsets.only(
+                                left: 15, bottom: 11, top: 11, right: 15),
+                            hintText: "Enter Username",
+                            // hintStyle: TextStyle(color: Colors.white),
+                          ),
+                          validator: (val) {
+                            if (val.isEmpty) {
+                              return "Username can't be empty";
+                            }
+                            return null;
+                          },
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      RaisedButton(
+                        child: Text(
+                            mediumArticleNotifier.getArticleList().length == 0
+                                ? "Fetch"
+                                : "Clear"),
+                        onPressed: () {
+                          if (mediumArticleNotifier.getArticleList().length !=
+                              0) {
+                            mediumArticleNotifier.clearArticleList();
+                            mediumArticleNotifier.setloader(false);
+                          } else {
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+                              mediumArticleNotifier.setloader(true);
+                              FetchService.getPosts(
+                                  mediumArticleNotifier, myController.text);
+                            }
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           )),
-          floatingActionButton: Form(
-                key: _formKey,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: TextFormField(
-                        controller: myController,
-                        keyboardType: TextInputType.text,
-                        decoration: new InputDecoration(
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.only(
-                              left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: "Enter Username",
-                          // hintStyle: TextStyle(color: Colors.white),
-                        ),
-                        validator: (val) {
-                          if (val.isEmpty) {
-                            return "Username can't be empty";
-                          }
-                          return null;
-                        },
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    RaisedButton(
-                      child: Text(
-                          mediumArticleNotifier.getArticleList().length == 0
-                              ? "Fetch"
-                              : "Clear"),
-                      onPressed: () {
-                        if (mediumArticleNotifier.getArticleList().length !=
-                            0) {
-                          mediumArticleNotifier.clearArticleList();
-                          mediumArticleNotifier.setloader(false);
-                        } else {
-                          if (_formKey.currentState.validate()) {
-                            _formKey.currentState.save();
-                            mediumArticleNotifier.setloader(true);
-                            FetchService.getPosts(
-                                mediumArticleNotifier, myController.text);
-                          }
-                        }
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
