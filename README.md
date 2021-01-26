@@ -1,6 +1,6 @@
 # Flutter Blog App
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Table of contents
@@ -96,23 +96,25 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/shubhamchhimpa/"><img src="https://avatars0.githubusercontent.com/u/38981756?v=4" width="100px;" alt=""/><br /><sub><b>Shubham Chhimpa</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=shubham-chhimpa" title="Code">💻</a></td>
-    <td align="center"><a href="http://carlosfelix.pythonanywhere.com/"><img src="https://avatars3.githubusercontent.com/u/18339454?v=4" width="100px;" alt=""/><br /><sub><b>Carlos Felix</b></sub></a><br /><a href="#design-carlosfrodrigues" title="Design">🎨</a></td>
-    <td align="center"><a href="https://medium.com/@derangga"><img src="https://avatars2.githubusercontent.com/u/31648630?v=4" width="100px;" alt=""/><br /><sub><b>Dimas Rangga</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=derangga" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/arbazdiwan"><img src="https://avatars3.githubusercontent.com/u/24837320?v=4" width="100px;" alt=""/><br /><sub><b>Arbaz Mustufa Diwan</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=arbazdiwan" title="Code">💻</a></td>
-    <td align="center"><a href="http://www.adrienrichard.com/"><img src="https://avatars0.githubusercontent.com/u/25491408?v=4" width="100px;" alt=""/><br /><sub><b>Adrien</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Mrgove10" title="Code">💻</a></td>
-    <td align="center"><a href="https://promise.hashnode.dev/"><img src="https://avatars2.githubusercontent.com/u/15036164?v=4" width="100px;" alt=""/><br /><sub><b>Promise Amadi</b></sub></a><br /><a href="#design-Wizpna" title="Design">🎨</a></td>
-    <td align="center"><a href="https://linkedin.com/in/daruanugerah"><img src="https://avatars2.githubusercontent.com/u/20470960?v=4" width="100px;" alt=""/><br /><sub><b>Daru Anugerah Setiawan</b></sub></a><br /><a href="#design-daruanugerah" title="Design">🎨</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/shubhamchhimpa/"><img src="https://avatars0.githubusercontent.com/u/38981756?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shubham Chhimpa</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=shubham-chhimpa" title="Code">💻</a></td>
+    <td align="center"><a href="http://carlosfelix.pythonanywhere.com/"><img src="https://avatars3.githubusercontent.com/u/18339454?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carlos Felix</b></sub></a><br /><a href="#design-carlosfrodrigues" title="Design">🎨</a></td>
+    <td align="center"><a href="https://medium.com/@derangga"><img src="https://avatars2.githubusercontent.com/u/31648630?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dimas Rangga</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=derangga" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/arbazdiwan"><img src="https://avatars3.githubusercontent.com/u/24837320?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arbaz Mustufa Diwan</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=arbazdiwan" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.adrienrichard.com/"><img src="https://avatars0.githubusercontent.com/u/25491408?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Adrien</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Mrgove10" title="Code">💻</a></td>
+    <td align="center"><a href="https://promise.hashnode.dev/"><img src="https://avatars2.githubusercontent.com/u/15036164?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Promise Amadi</b></sub></a><br /><a href="#design-Wizpna" title="Design">🎨</a></td>
+    <td align="center"><a href="https://linkedin.com/in/daruanugerah"><img src="https://avatars2.githubusercontent.com/u/20470960?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daru Anugerah Setiawan</b></sub></a><br /><a href="#design-daruanugerah" title="Design">🎨</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/yash-ajgaonkar-289520168/?"><img src="https://avatars2.githubusercontent.com/u/31548778?v=4" width="100px;" alt=""/><br /><sub><b>Yash Ajgaonkar</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=yash2189" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/Dhruv-Sachdev1313"><img src="https://avatars0.githubusercontent.com/u/56223242?v=4" width="100px;" alt=""/><br /><sub><b>Dhruv Sachdev</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Dhruv-Sachdev1313" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Janhavi23"><img src="https://avatars3.githubusercontent.com/u/56731465?v=4" width="100px;" alt=""/><br /><sub><b>Janhavi</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Janhavi23" title="Code">💻</a> <a href="#design-Janhavi23" title="Design">🎨</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/yash-ajgaonkar-289520168/?"><img src="https://avatars2.githubusercontent.com/u/31548778?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yash Ajgaonkar</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=yash2189" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/Dhruv-Sachdev1313"><img src="https://avatars0.githubusercontent.com/u/56223242?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Dhruv Sachdev</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Dhruv-Sachdev1313" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Janhavi23"><img src="https://avatars3.githubusercontent.com/u/56731465?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Janhavi</b></sub></a><br /><a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Janhavi23" title="Code">💻</a> <a href="#design-Janhavi23" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/Saransh-cpp"><img src="https://avatars.githubusercontent.com/u/74055102?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Saransh Chopra</b></sub></a><br /><a href="#design-Saransh-cpp" title="Design">🎨</a> <a href="https://github.com/himanshusharma89/Flutter-Blog-App/commits?author=Saransh-cpp" title="Documentation">📖</a></td>
   </tr>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
