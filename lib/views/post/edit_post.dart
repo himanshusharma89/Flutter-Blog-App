@@ -1,9 +1,8 @@
-import 'package:blog_app/db/post_service.dart';
-import 'package:blog_app/helpers/floating_button.dart';
+import 'package:blog_app/services/post_service.dart';
+import 'package:blog_app/helpers/constants.dart';
+import 'package:blog_app/widgets/floating_button.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:flutter/material.dart';
-
-import 'home.dart';
 
 class EditPost extends StatefulWidget {
   final Post post;
@@ -95,8 +94,7 @@ class _EditPostState extends State<EditPost> {
       widget.post.date = DateTime.now().millisecondsSinceEpoch;
       PostService postService = PostService(widget.post.toMap());
       postService.updatePost();
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.pushReplacementNamed(context, RouteConstant.ROOT);
     }
   }
 }

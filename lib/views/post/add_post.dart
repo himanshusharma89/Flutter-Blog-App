@@ -1,7 +1,7 @@
-import 'package:blog_app/helpers/floating_button.dart';
+import 'package:blog_app/widgets/floating_button.dart';
 import 'package:flutter/material.dart';
-import '../db/post_service.dart';
-import '../models/post.dart';
+import '../../services/post_service.dart';
+import '../../models/post.dart';
 
 class AddPost extends StatefulWidget {
   @override

@@ -1,21 +1,20 @@
 import 'package:blog_app/helpers/launcher.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
+import 'package:blog_app/helpers/route_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
-import 'helpers/theme_data.dart';
-import 'screens/home.dart';
-import 'routing/route_page.dart';
-import 'routing/route_constant.dart';
+import 'helpers/constants.dart';
+import 'views/home.dart';
 
 final Launcher launcher = Launcher();
 
 void main() async {
   LicenseRegistry.addLicense(() async* {
-    final license = await rootBundle.loadString('google_fonts/OFL.txt');
+    final license = await rootBundle.loadString('assets/google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
   WidgetsFlutterBinding.ensureInitialized();

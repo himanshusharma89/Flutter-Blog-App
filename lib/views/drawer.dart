@@ -1,6 +1,5 @@
-import 'package:blog_app/helpers/app_theme.dart';
+import 'package:blog_app/helpers/constants.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
-import 'package:blog_app/routing/route_constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

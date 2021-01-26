@@ -1,7 +1,7 @@
+import 'package:blog_app/helpers/constants.dart';
 import 'package:blog_app/models/article.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
-import 'package:blog_app/screens/medium_articles_webview.dart';
-import 'package:blog_app/service/fetch_medium_articles.dart';
+import 'package:blog_app/services/fetch_medium_articles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -57,13 +57,12 @@ class MediumArticlesState extends State<MediumArticles> {
                               mediumArticleNotifier.getArticleList()[index];
                           return GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MediumArticlesWebView(
-                                      title: article.title, url: article.link),
-                                ),
-                              );
+                              Navigator.pushNamed(context,
+                                  RouteConstant.MEDIUM_ARTICLES_WEB_VIEW,
+                                  arguments: {
+                                    'title': article.title,
+                                    'url': article.link
+                                  });
                             },
                             child: Card(
                               shape: RoundedRectangleBorder(
@@ -155,7 +154,7 @@ class MediumArticlesState extends State<MediumArticles> {
                             if (_formKey.currentState.validate()) {
                               _formKey.currentState.save();
                               mediumArticleNotifier.setloader(true);
-                              FetchService.getPosts(
+                              FetchMediumArticleService.getPosts(
                                   mediumArticleNotifier, myController.text);
                             }
                           }

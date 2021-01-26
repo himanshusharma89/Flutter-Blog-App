@@ -1,8 +1,8 @@
-import 'package:blog_app/routing/route_constant.dart';
+import 'package:blog_app/helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:blog_app/db/post_service.dart';
+import 'package:blog_app/services/post_service.dart';
 
 class PostView extends StatefulWidget {
   final Post post;
@@ -72,7 +72,6 @@ class _PostViewState extends State<PostView> {
                     PostService postService = PostService(widget.post.toMap());
                     postService.deletePost();
                     Navigator.pop(context);
-                    //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
                   },
                 ),
               ],

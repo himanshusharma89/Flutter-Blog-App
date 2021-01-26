@@ -1,4 +1,4 @@
-import 'package:blog_app/helpers/app_theme.dart';
+import 'package:blog_app/helpers/constants.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

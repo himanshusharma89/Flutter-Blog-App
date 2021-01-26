@@ -4,7 +4,7 @@ import 'package:blog_app/models/article.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:http/http.dart' as http;
 
-class FetchService {
+class FetchMediumArticleService {
   static const String API_ENDPOINT =
       "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@";
 

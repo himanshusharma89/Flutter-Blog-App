@@ -1,4 +1,4 @@
-import 'package:blog_app/db/shared_preference_service.dart';
+import 'package:blog_app/services/shared_preference_service.dart';
 import 'package:flutter/material.dart';
 
 class DarkThemeProvider with ChangeNotifier {

@@ -1,13 +1,15 @@
-import 'package:blog_app/routing/route_constant.dart';
+import 'package:blog_app/helpers/constants.dart';
+import 'package:blog_app/views/medium/medium_articles.dart';
+import 'package:blog_app/views/medium/medium_articles_webview.dart';
 import 'package:flutter/material.dart';
 
 import '../models/post.dart';
-import '../screens/add_post.dart';
-import '../screens/edit_post.dart';
-import '../screens/home.dart';
-import '../screens/about.dart';
-import '../screens/view_post.dart';
-import 'undefined_view.dart';
+import '../views/post/add_post.dart';
+import '../views/post/edit_post.dart';
+import '../views/home.dart';
+import '../views/about.dart';
+import '../views/post/view_post.dart';
+import '../views/undefined_route.dart';
 
 class RoutePage {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -28,6 +30,17 @@ class RoutePage {
 
       case RouteConstant.ABOUT:
         return MaterialPageRoute(builder: (_) => About());
+
+      case RouteConstant.MEDIUM_ARTICLES:
+        return MaterialPageRoute(builder: (_) => MediumArticles());
+
+      case RouteConstant.MEDIUM_ARTICLES_WEB_VIEW:
+        final Map arguments = settings.arguments as Map;
+        return MaterialPageRoute(
+            builder: (_) => MediumArticlesWebView(
+                  title: arguments['title'],
+                  url: arguments['url'],
+                ));
 
       default:
         return MaterialPageRoute(
