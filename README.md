@@ -35,6 +35,13 @@ Images of the app while using Dark Mode -
 <img src="assets/ReadMeImages/DModeAbout1.png">
 <img src="assets/ReadMeImages/DModeAbout2.png">
 
+<img src="assets/ReadMeImages/LModeBlogViewScreen.png">
+<img src="assets/ReadMeImages/LModeDrawer.png">
+<img src="assets/ReadMeImages/LModeAddPost.png">
+<img src="assets/ReadMeImages/LModeSearchMedium.png">
+<img src="assets/ReadMeImages/LModeAbout1.png">
+<img src="assets/ReadMeImages/LModeAbout2.png">
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
