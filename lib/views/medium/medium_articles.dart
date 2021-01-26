@@ -1,4 +1,7 @@
+<<<<<<< HEAD:lib/views/medium/medium_articles.dart
 import 'package:blog_app/helpers/constants.dart';
+=======
+>>>>>>> 86c87ea (Removed unecessary import):lib/screens/medium_articles.dart
 import 'package:blog_app/models/article.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:blog_app/services/fetch_medium_articles.dart';
