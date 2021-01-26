@@ -1,14 +1,8 @@
-
 import 'package:blog_app/helpers/constants.dart';
-
 import 'package:blog_app/models/article.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
-
 import 'package:blog_app/services/fetch_medium_articles.dart';
-
 import 'package:blog_app/providers/theme_notifier.dart';
-import 'package:blog_app/screens/medium_articles_webview.dart';
-import 'package:blog_app/service/fetch_medium_articles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -142,8 +136,6 @@ class MediumArticlesState extends State<MediumArticles> {
                             }
                             return null;
                           },
-
-                          style: TextStyle(color: Colors.white),
                           style: TextStyle(color: themeChange.darkTheme ?
                           Colors.white:
                           Colors.black),
