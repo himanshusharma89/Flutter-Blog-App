@@ -26,7 +26,14 @@ This is a fully functional app with Firebase backend.
 [<img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/bmc-button.png">](https://www.buymeacoffee.com/himanshusharma)
 
 ## App Screens
-The updated images will be added soon.
+Images of the app while using Dark Mode -
+
+<img src="assets/ReadMeImages/DModeBlogViewScreen.png">
+<img src="assets/ReadMeImages/DModeDrawer.png">
+<img src="assets/ReadMeImages/DModeAddPost.png">
+<img src="assets/ReadMeImages/DModeSearchMedium.png">
+<img src="assets/ReadMeImages/DModeAbout1.png">
+<img src="assets/ReadMeImages/DModeAbout2.png">
 
 ## Getting Started
 
