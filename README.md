@@ -23,26 +23,26 @@ This is a fully functional app with Firebase backend.
 
 <br>
 
-[<img src="https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/bmc-button.png">](https://www.buymeacoffee.com/himanshusharma)
+[<img src="bmc-button.png">](https://www.buymeacoffee.com/himanshusharma)
 
 ## App Screens
 Images of the app while using Dark Mode -
 
-<img src="assets/ReadMeImages/DModeBlogViewScreen.png">
-<img src="assets/ReadMeImages/DModeDrawer.png">
-<img src="assets/ReadMeImages/DModeAddPost.png">
-<img src="assets/ReadMeImages/DModeSearchMedium.png">
-<img src="assets/ReadMeImages/DModeAbout1.png">
-<img src="assets/ReadMeImages/DModeAbout2.png">
+<img src="readme-images/DModeBlogViewScreen.png">
+<img src="readme-images/DModeDrawer.png">
+<img src="readme-images/DModeAddPost.png">
+<img src="readme-images/DModeSearchMedium.png">
+<img src="readme-images/DModeAbout1.png">
+<img src="readme-images/DModeAbout2.png">
 
 Images of the app while using Light Mode -
 
-<img src="assets/ReadMeImages/LModeBlogView.png">
-<img src="assets/ReadMeImages/LModeDrawer.png">
-<img src="assets/ReadMeImages/LModeAddPost.png">
-<img src="assets/ReadMeImages/LModeSearchMedium.png">
-<img src="assets/ReadMeImages/LModeAbout1.png">
-<img src="assets/ReadMeImages/LModeAbout2.png">
+<img src="readme-images/LModeBlogView.png">
+<img src="readme-images/LModeDrawer.png">
+<img src="readme-images/LModeAddPost.png">
+<img src="readme-images/LModeSearchMedium.png">
+<img src="readme-images/LModeAbout1.png">
+<img src="readme-images/LModeAbout2.png">
 
 ## Getting Started
 
