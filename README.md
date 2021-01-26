@@ -35,7 +35,9 @@ Images of the app while using Dark Mode -
 <img src="assets/ReadMeImages/DModeAbout1.png">
 <img src="assets/ReadMeImages/DModeAbout2.png">
 
-<img src="assets/ReadMeImages/LModeBlogViewScreen.png">
+Images of the app while using Light Mode -
+
+<img src="assets/ReadMeImages/LModeBlogView.png">
 <img src="assets/ReadMeImages/LModeDrawer.png">
 <img src="assets/ReadMeImages/LModeAddPost.png">
 <img src="assets/ReadMeImages/LModeSearchMedium.png">
