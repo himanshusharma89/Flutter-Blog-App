@@ -15,38 +15,69 @@ class RoutePage {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteConstant.ROOT:
-        return MaterialPageRoute(builder: (_) => HomePage());
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => HomePage(),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
 
       case RouteConstant.ADD_POST:
-        return MaterialPageRoute(builder: (_) => AddPost());
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => AddPost(),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
 
       case RouteConstant.EDIT_POST:
         Post post = settings.arguments as Post;
-        return MaterialPageRoute(builder: (_) => EditPost(post));
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => EditPost(post),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
 
       case RouteConstant.VIEW_POST:
         Post post = settings.arguments as Post;
-        return MaterialPageRoute(builder: (_) => PostView(post));
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => PostView(post),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
 
       case RouteConstant.ABOUT:
-        return MaterialPageRoute(builder: (_) => About());
+        return PageRouteBuilder(
+          settings: settings,
+            pageBuilder: (_, __, ___) => About(),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
+        // return MaterialPageRoute(builder: (_) => About());
 
       case RouteConstant.MEDIUM_ARTICLES:
-        return MaterialPageRoute(builder: (_) => MediumArticles());
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => MediumArticles(),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
 
       case RouteConstant.MEDIUM_ARTICLES_WEB_VIEW:
         final Map arguments = settings.arguments as Map;
-        return MaterialPageRoute(
-            builder: (_) => MediumArticlesWebView(
-                  title: arguments['title'],
-                  url: arguments['url'],
-                ));
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => MediumArticlesWebView(
+                title: arguments['title'],
+                url: arguments['url']
+            ),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
 
       default:
-        return MaterialPageRoute(
-            builder: (_) => UndefinedView(
-                  routeName: settings.name,
-                ));
+        return PageRouteBuilder(
+            settings: settings,
+            pageBuilder: (_, __, ___) => UndefinedView(
+              routeName: settings.name,
+            ),
+            transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c)
+        );
     }
   }
 }
