@@ -1,8 +1,10 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:blog_app/models/page_view.dart';
+import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:blog_app/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -34,12 +36,19 @@ class _IntroState extends State<Intro> with AfterLayoutMixin<Intro>{
     bool _seen = (prefs.getBool('seen') ?? false);
 
     if (_seen) {
-      Navigator.of(context).pushReplacement(
-           MaterialPageRoute(builder: (context) => HomePage()));
+      // Navigator.pushNamed(context, RouteConstant.ROOT);
+      Navigator.pushReplacement(context, PageRouteBuilder(
+        pageBuilder: (c, a1, a2) => HomePage(),
+        transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+        transitionDuration: Duration(milliseconds: 1500),
+      ),);
     } else {
       await prefs.setBool('seen', true);
-      Navigator.of(context).pushReplacement(
-           MaterialPageRoute(builder: (context) => IntroScreen()));
+      Navigator.pushReplacement(context, PageRouteBuilder(
+        pageBuilder: (c, a1, a2) => IntroScreen(),
+        transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+        transitionDuration: Duration(milliseconds: 1500),
+      ),);
     }
   }
 
@@ -48,12 +57,10 @@ class _IntroState extends State<Intro> with AfterLayoutMixin<Intro>{
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
-      body: Center(
-        child: SpinKitRing(
-          color: Colors.black,
-        ),
-      ),
+      backgroundColor: themeChange.darkTheme ? Colors.black : Colors.white,
+      body: Container()
     );
   }
 }
@@ -152,8 +159,11 @@ class _IntroScreenState extends State<IntroScreen> {
             )
                 : InkWell(
               onTap: () =>
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage())),
+                  Navigator.pushReplacement(context, PageRouteBuilder(
+                    pageBuilder: (c, a1, a2) => HomePage(),
+                    transitionsBuilder: (c, anim, a2, child) => FadeTransition(opacity: anim, child: child),
+                    transitionDuration: Duration(milliseconds: 1000),
+                  ),),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blue,
