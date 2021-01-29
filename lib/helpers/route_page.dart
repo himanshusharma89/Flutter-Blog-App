@@ -1,4 +1,5 @@
 import 'package:blog_app/helpers/constants.dart';
+import 'package:blog_app/views/intro_slider.dart';
 import 'package:blog_app/views/medium/medium_articles.dart';
 import 'package:blog_app/views/medium/medium_articles_webview.dart';
 import 'package:flutter/material.dart';

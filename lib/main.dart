@@ -1,6 +1,7 @@
 import 'package:blog_app/helpers/launcher.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:blog_app/helpers/route_page.dart';
+import 'package:blog_app/views/intro_slider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class _BlogAppState extends State<BlogApp> {
               theme: (themeChangeProvider.darkTheme == true)
                   ? darkTheme
                   : lightTheme,
-              home: HomePage(),
+              home: Intro(),
               onGenerateRoute: RoutePage.generateRoute,
               initialRoute: RouteConstant.ROOT,
             ),
