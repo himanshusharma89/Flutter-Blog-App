@@ -18,8 +18,8 @@ Table of contents
 <!--te-->
 
 ## About this app
-This is a new Flutter application that I have developed. You can check from the name that it is just a blog adding and saving application.
-This is a fully functional app with Firebase backend. 
+An anonymous blog creation application. It is provides real-time blog creation without any communication and account
+creation. It is Created using Flutter SDK and utilizing Firebase as backend.
 
 <br>
 
