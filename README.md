@@ -75,7 +75,7 @@ If you wish to contribute a change to any of the existing features in this repo,
 We follow certain guidelines in order to maintain this repository.Please find our [code of conduct](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/CODE_OF_CONDUCT.md) and read it carefully.
 
 ## License
-Distributed under the CC0-1.0 License.See `LICENSE` for more information.
+Distributed under the CC0-1.0 License.See [LICENSE](https://github.com/himanshusharma89/Flutter-Blog-App/blob/master/LICENSE) for more information.
 
 ## Developer ✨
 
