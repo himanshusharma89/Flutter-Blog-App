@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PageViewModel extends StatelessWidget {
+class PageViewWidget extends StatelessWidget {
+  const PageViewWidget({
+    @required this.image,
+    @required this.text,
+    Key key,
+  }) : super(key: key);
 
   final String image, text;
-
-  const PageViewModel({Key key, @required this.image, @required this.text,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +15,16 @@ class PageViewModel extends StatelessWidget {
       padding: const EdgeInsets.all(20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: <Widget>[
           Image.asset(
-            "assets/$image",
+            'assets/$image',
             height: 200,
           ),
           const SizedBox(height: 50),
           Text(
             text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15.0, color: Colors.black),
+            style: const TextStyle(fontSize: 15.0, color: Colors.black),
           ),
         ],
       ),

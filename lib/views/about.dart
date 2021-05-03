@@ -2,16 +2,17 @@ import 'package:blog_app/helpers/constants.dart';
 import 'package:blog_app/main.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "About",
+        title: const Text(
+          'About',
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
           ),
           onPressed: () {
@@ -23,22 +24,21 @@ class About extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Want to pen down your thoughts in the form of a blog anonymously?",
+            children: <Widget>[
+              const Text(
+                'Want to pen down your thoughts in the form of a blog anonymously?',
                 style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
               ),
-              Text(
-                "This is just the App for you! You can post your blogs and no one can know about the original poster.",
+              const Text(
+                'This is just the App for you! You can post your blogs and no one can know about the original poster.',
                 style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Stack(
-                children: [
-                  Container(
+                children: <Widget>[
+                  SizedBox(
                     width: double.infinity,
                     child: Card(
                       elevation: 5.0,
@@ -46,54 +46,49 @@ class About extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 40.0, bottom: 15),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
-                            Text("Himanshu Sharma",
+                            const Text('Himanshu Sharma',
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontWeight: FontWeight.w600,
                                 )),
-                            SizedBox(
+                            const SizedBox(
                               height: 10.0,
                             ),
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: social
                                     .map(
-                                      (e) => Padding(
+                                      (Map<String, String> e) => Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 8),
                                         child: GestureDetector(
-                                            child: CachedNetworkImage(
-                                              imageUrl: e['iconURL'],
-                                              height: 26,
-                                              width: 26,
-                                              placeholder: (_, str) =>
-                                                  CircularProgressIndicator(),
-                                            ),
-                                            onTap: () =>
-                                                launcher.launcher(e['URL'])),
+                                          onTap: () =>
+                                              launcher.launcher(e['URL']),
+                                          child: CachedNetworkImage(
+                                            imageUrl: e['iconURL'],
+                                            height: 26,
+                                            width: 26,
+                                            placeholder: (_, String str) =>
+                                                const CircularProgressIndicator(),
+                                          ),
+                                        ),
                                       ),
                                     )
                                     .toList()),
-                            SizedBox(
+                            const SizedBox(
                               height: 10.0,
                             ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  'The Developer behind this project',
-                                  style: TextStyle(fontSize: 15),
-                                )
-                              ],
+                            const Text(
+                              'The Developer behind this project',
+                              style: TextStyle(fontSize: 15),
                             ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     top: .0,
                     left: .0,
                     right: .0,
@@ -114,26 +109,24 @@ class About extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text("Contributors ✨",
+                    children: <Widget>[
+                      const Text('Contributors ✨',
                           style: TextStyle(
                               fontSize: 22.0, fontWeight: FontWeight.w600)),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       GridView.builder(
                           itemCount: contributors.length,
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3,
                                   mainAxisSpacing: 4,
                                   crossAxisSpacing: 4,
                                   childAspectRatio: 1 / 0.9),
                           primary: false,
                           shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (_, int index) {
                             return Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Container(
@@ -143,15 +136,15 @@ class About extends StatelessWidget {
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: CachedNetworkImageProvider(
-                                              contributors[index]
-                                                  ['avatar_url']))),
+                                              contributors[index]['avatar_url']
+                                                  as String))),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 Text(
-                                  contributors[index]['login'],
-                                  style: TextStyle(fontSize: 13),
+                                  contributors[index]['login'] as String,
+                                  style: const TextStyle(fontSize: 13),
                                 )
                               ],
                             );
@@ -160,7 +153,7 @@ class About extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: Card(
                   elevation: 5.0,
@@ -169,31 +162,31 @@ class About extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         vertical: 15, horizontal: 10),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text("Contributing",
+                        const Text('Contributing',
                             style: TextStyle(
                                 fontSize: 22.0, fontWeight: FontWeight.w600)),
-                        SizedBox(height: 10.0),
-                        Text(
-                          "If you wish to contribute a change to any of the existing features in this application, please review our contribution guide and send a pull request.",
+                        const SizedBox(height: 10.0),
+                        const Text(
+                          'If you wish to contribute a change to any of the existing features in this application, please review our contribution guide and send a pull request.',
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10.0),
                         GestureDetector(
-                            child: Image.asset(
-                              'assets/contribute_icon.png',
-                              height: 26,
-                              width: 26,
-                            ),
-                            onTap: () => launcher.launcher(
-                                'https://github.com/himanshusharma89/Flutter-Blog-App')),
+                          onTap: () => launcher.launcher(
+                              'https://github.com/himanshusharma89/Flutter-Blog-App'),
+                          child: Image.asset(
+                            'assets/contribute_icon.png',
+                            height: 26,
+                            width: 26,
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               )
             ],
@@ -203,10 +196,3 @@ class About extends StatelessWidget {
     );
   }
 }
-
-class Data {
-  String img;
-  String data;
-
-  Data(this.img, this.data);
-} //Class to hold the image path and data to be displayed

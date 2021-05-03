@@ -2,35 +2,20 @@
 import 'package:firebase_database/firebase_database.dart';
 
 class Post {
-  static const KEY = "key";
-  static const DATE = "date";
-  static const TITLE = "title";
-  static const BODY = "body";
+  Post({this.key, this.date, this.title, this.body});
 
-  int date;
-  String key;
-  String title;
-  String body;
+  factory Post.fromSnapshot(DataSnapshot snap) => Post(
+      body: snap.value['body'] as String,
+      date: snap.value['date'] as int,
+      key: snap.key,
+      title: snap.value['title'] as String);
 
-  Post(this.date, this.title, this.body);
-
-  //String get key => _key;
-  //String get date => _date;
-  //String get title => _title;
-  //String get body => _body;
-
-  Post.fromSnapshot(DataSnapshot snap)
-      : this.key = snap.key,
-        this.body = snap.value[BODY],
-        this.date = snap.value[DATE],
-        this.title = snap.value[TITLE];
-
-  Map toMap() {
-    return {
-      BODY: body,
-      TITLE: title,
-      DATE: date,
-      KEY: key,
-    };
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{'body': body, 'date': date, 'key': key, 'title': title};
   }
+
+  final int date;
+  final String key;
+  final String title;
+  final String body;
 }

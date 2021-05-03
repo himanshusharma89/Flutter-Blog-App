@@ -1,5 +1,6 @@
-import 'package:blog_app/helpers/constants.dart';
+import 'package:blog_app/helpers/colors.dart';
 import 'package:blog_app/models/post.dart';
+import 'package:blog_app/routes/route_constants.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +16,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  FirebaseDatabase _database = FirebaseDatabase.instance;
-  String nodeName = "posts";
+  final FirebaseDatabase _database = FirebaseDatabase.instance;
+  String nodeName = 'posts';
   List<Post> postsList = <Post>[];
-  GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   bool swithValue = false;
   Query postQuery;
 
@@ -33,19 +34,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
+    final DarkThemeProvider themeChange =
+        Provider.of<DarkThemeProvider>(context);
     return Scaffold(
         key: _globalKey,
         appBar: AppBar(
-          actions: [
+          actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.receipt),
+              icon: const Icon(Icons.receipt),
               onPressed: () {
                 Navigator.pushNamed(context, RouteConstant.MEDIUM_ARTICLES);
               },
             )
           ],
-          elevation: 0,
           title: Image.asset(
             themeChange.darkTheme
                 ? 'assets/blog_flutter_dark.png'
@@ -53,106 +54,103 @@ class _HomePageState extends State<HomePage> {
             height: kToolbarHeight + 100,
           ),
           leading: IconButton(
-              icon: Icon(Icons.menu_rounded),
+              icon: const Icon(Icons.menu_rounded),
               onPressed: () => _globalKey.currentState.openDrawer()),
         ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Visibility(
-                visible: postsList.isEmpty,
-                child: Center(
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator(),
-                  ),
+        body: Column(
+          children: <Widget>[
+            Visibility(
+              visible: postsList.isEmpty,
+              child: Center(
+                child: Container(
+                  alignment: Alignment.center,
+                  child: const Text('No post to show'),
                 ),
               ),
-              Visibility(
-                visible: postsList.isNotEmpty,
-                child: Flexible(
-                  child: FirebaseAnimatedList(
-                      query: postQuery,
-                      itemBuilder: (_, DataSnapshot snap,
-                          Animation<double> animation, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0, right: 8.0, top: 5.0),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, RouteConstant.VIEW_POST,
-                                  arguments: postsList[index]);
-                            },
-                            child: Card(
-                                elevation: 4.0,
-                                color: AppTheme.primaryColor,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.border_color,
-                                            size: 18.0,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(
-                                            width: 15,
-                                          ),
-                                          Text(
-                                            postsList[index].title,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w800,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 12,
-                                      ),
-                                      Text(
-                                        postsList[index].body,
-                                        style: TextStyle(
+            ),
+            Visibility(
+              visible: postsList.isNotEmpty,
+              child: Flexible(
+                child: FirebaseAnimatedList(
+                    query: postQuery,
+                    itemBuilder: (_, DataSnapshot snap,
+                        Animation<double> animation, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 2.5),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, RouteConstant.VIEW_POST,
+                                arguments: postsList[index]);
+                          },
+                          child: Card(
+                              elevation: 4.0,
+                              color: AppTheme.primaryColor,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        const Icon(
+                                          Icons.border_color,
+                                          size: 18.0,
                                           color: Colors.white,
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                )),
-                          ),
-                        );
-                      }),
-                ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        Text(
+                                          postsList[index].title,
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 12,
+                                    ),
+                                    Text(
+                                      postsList[index].body,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )),
+                        ),
+                      );
+                    }),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.pushNamed(context, RouteConstant.ADD_POST);
           },
-          child: Icon(
+          tooltip: 'Add a post',
+          child: const Icon(
             Icons.add,
           ),
-          tooltip: "Add a post",
         ),
         drawer: BlogDrawer());
   }
 
-  _childAdded(Event event) {
+  void _childAdded(Event event) {
     setState(() {
       postsList.add(Post.fromSnapshot(event.snapshot));
     });
   }
 
   void _childRemoves(Event event) {
-    var deletedPost = postsList.singleWhere((post) {
+    final Post deletedPost = postsList.singleWhere((Post post) {
       return post.key == event.snapshot.key;
     });
 
@@ -162,7 +160,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _childChanged(Event event) {
-    var changedPost = postsList.singleWhere((post) {
+    final Post changedPost = postsList.singleWhere((Post post) {
       return post.key == event.snapshot.key;
     });
     setState(() {

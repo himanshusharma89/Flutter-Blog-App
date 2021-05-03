@@ -2,11 +2,11 @@ import 'package:blog_app/models/article.dart';
 import 'package:flutter/material.dart';
 
 class MediumArticleNotifier with ChangeNotifier {
-  List<Article> _articleList = [];
+  List<Article> _articleList = <Article>[];
   bool _status = false;
 
-  setArticleList(List<Article> articleList) {
-    _articleList = [];
+  void setArticleList(List<Article> articleList) {
+    _articleList = <Article>[];
     _articleList = articleList;
     notifyListeners();
   }
@@ -15,12 +15,12 @@ class MediumArticleNotifier with ChangeNotifier {
     return _articleList;
   }
 
-  clearArticleList(){
-    _articleList = [];
+  void clearArticleList(){
+    _articleList = <Article>[];
     notifyListeners();
   }
 
-  setloader(bool status) {
+  void setloader(bool status) {
     _status = status;
     notifyListeners();
   }

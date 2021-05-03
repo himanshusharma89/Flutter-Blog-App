@@ -6,15 +6,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesService {
   // a generic method to retrieve one key:value pair from shared preferences at a time
   Future<dynamic> getSharedPreferenceValue(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.get(key) ?? null;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.get(key);
   }
 
   // a generic method to store one key:value pair in shared preferences at a time
   // key is of type String,
   // and value can be any of the following types [String, int, double, bool]
-  setSharedPreferenceValue(String key, dynamic value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<void> setSharedPreferenceValue(String key, dynamic value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     if (value is String) {
       await prefs.setString(key, value);

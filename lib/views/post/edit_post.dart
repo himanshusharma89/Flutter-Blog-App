@@ -1,30 +1,39 @@
+import 'package:blog_app/routes/route_constants.dart';
 import 'package:blog_app/services/post_service.dart';
-import 'package:blog_app/helpers/constants.dart';
 import 'package:blog_app/widgets/floating_button.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:flutter/material.dart';
 
 class EditPost extends StatefulWidget {
-  final Post post;
+  const EditPost(this.post);
 
-  EditPost(this.post);
+  final Post post;
 
   @override
   _EditPostState createState() => _EditPostState();
 }
 
 class _EditPostState extends State<EditPost> {
+  TextEditingController titleEditingController;
+  TextEditingController bodyEditingController;
   final GlobalKey<FormState> _formkey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    titleEditingController = TextEditingController(text: widget.post.title);
+    bodyEditingController = TextEditingController(text: widget.post.body);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Edit Post",
+        title: const Text(
+          'Edit Post',
         ),
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
           ),
           onPressed: () {
@@ -39,33 +48,29 @@ class _EditPostState extends State<EditPost> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                initialValue: widget.post.title,
-                decoration: InputDecoration(
+                controller: titleEditingController,
+                decoration: const InputDecoration(
                     filled: true,
-                    labelText: "Post Title",
+                    labelText: 'Post Title',
                     border: OutlineInputBorder()),
-                onChanged: (value) => widget.post.title = value,
-                onSaved: (val) => widget.post.title = val,
-                validator: (val) {
+                validator: (String val) {
                   if (val.isEmpty) {
                     return "Title filed can't be empty";
                   }
                   return null;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               TextFormField(
-                initialValue: widget.post.body,
-                decoration: InputDecoration(
+                controller: bodyEditingController,
+                decoration: const InputDecoration(
                     filled: true,
-                    labelText: "Post Body",
+                    labelText: 'Post Body',
                     border: OutlineInputBorder()),
-                onChanged: (value) => widget.post.body = value,
                 maxLines: 10,
-                onSaved: (val) => widget.post.body = val,
-                validator: (val) {
+                validator: (String val) {
                   if (val.isEmpty) {
                     return "Body feild can't be empty";
                   }
@@ -77,7 +82,7 @@ class _EditPostState extends State<EditPost> {
         ),
       ),
       floatingActionButton: FloatingButton(
-          buttonText: "Save Changes",
+          buttonText: 'Save Changes',
           onPressed: () {
             updatePost();
           }),
@@ -86,14 +91,17 @@ class _EditPostState extends State<EditPost> {
   }
 
   void updatePost() {
-    print("updatePost form validation:" +
-        _formkey.currentState.validate().toString());
+    debugPrint(
+        'updatePost form validation:${_formkey.currentState.validate()}');
     if (_formkey.currentState.validate()) {
       _formkey.currentState.save();
+      final Post post = Post(
+          key: widget.post.key,
+          title: titleEditingController.text,
+          body: bodyEditingController.text,
+          date: DateTime.now().millisecondsSinceEpoch);
+      PostService().updatePost(post);
       _formkey.currentState.reset();
-      widget.post.date = DateTime.now().millisecondsSinceEpoch;
-      PostService postService = PostService(widget.post.toMap());
-      postService.updatePost();
       Navigator.pushReplacementNamed(context, RouteConstant.ROOT);
     }
   }

@@ -3,10 +3,10 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 
 class MediumArticlesWebView extends StatefulWidget {
+  const MediumArticlesWebView({@required this.title, @required this.url});
+
   final String title;
   final String url;
-
-  MediumArticlesWebView({@required this.title, @required this.url});
 
   @override
   State<StatefulWidget> createState() {
@@ -15,7 +15,6 @@ class MediumArticlesWebView extends StatefulWidget {
 }
 
 class MediumArticlesWebViewState extends State<MediumArticlesWebView> {
-
   @override
   void initState() {
     super.initState();
@@ -28,7 +27,7 @@ class MediumArticlesWebViewState extends State<MediumArticlesWebView> {
       appBar: AppBar(
         title: Text(widget.title),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_rounded),
+          icon: const Icon(Icons.arrow_back_ios_rounded),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),

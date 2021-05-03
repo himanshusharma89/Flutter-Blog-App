@@ -1,6 +1,6 @@
-import 'package:blog_app/helpers/constants.dart';
 import 'package:blog_app/models/article.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
+import 'package:blog_app/routes/route_constants.dart';
 import 'package:blog_app/services/fetch_medium_articles.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -16,8 +16,8 @@ class MediumArticles extends StatefulWidget {
 
 class MediumArticlesState extends State<MediumArticles> {
   List<dynamic> selected;
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final myController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController myController = TextEditingController();
 
   @override
   void initState() {
@@ -33,35 +33,36 @@ class MediumArticlesState extends State<MediumArticles> {
 
   @override
   Widget build(BuildContext context) {
-    final themeChange = Provider.of<DarkThemeProvider>(context);
-    MediumArticleNotifier mediumArticleNotifier =
+    final DarkThemeProvider themeChange =
+        Provider.of<DarkThemeProvider>(context);
+    final MediumArticleNotifier mediumArticleNotifier =
         Provider.of<MediumArticleNotifier>(context);
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_rounded),
+            icon: const Icon(Icons.arrow_back_ios_rounded),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          title: Text('Search Medium Articles')),
+          title: const Text('Search Medium Articles')),
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: <Widget>[
               Expanded(
-                child: mediumArticleNotifier.getArticleList().length != 0
+                child: mediumArticleNotifier.getArticleList().isNotEmpty
                     ? ListView.builder(
                         shrinkWrap: true,
                         itemCount:
                             mediumArticleNotifier.getArticleList().length,
-                        itemBuilder: (context, index) {
-                          Article article =
+                        itemBuilder: (_, int index) {
+                          final Article article =
                               mediumArticleNotifier.getArticleList()[index];
                           return GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(context,
                                   RouteConstant.MEDIUM_ARTICLES_WEB_VIEW,
-                                  arguments: {
+                                  arguments: <String, String>{
                                     'title': article.title,
                                     'url': article.link
                                   });
@@ -71,9 +72,9 @@ class MediumArticlesState extends State<MediumArticles> {
                                   borderRadius: BorderRadius.circular(10)),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                                children: <Widget>[
                                   ClipRRect(
-                                    borderRadius: BorderRadius.only(
+                                    borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         topRight: Radius.circular(10)),
                                     child: CachedNetworkImage(
@@ -85,7 +86,7 @@ class MediumArticlesState extends State<MediumArticles> {
                                     child: Text(
                                       article.title,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16),
                                     ),
@@ -93,7 +94,7 @@ class MediumArticlesState extends State<MediumArticles> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      "Author: " + article.author,
+                                      'Author: ${article.author}',
                                     ),
                                   )
                                 ],
@@ -102,14 +103,12 @@ class MediumArticlesState extends State<MediumArticles> {
                           );
                         },
                       )
-                    : mediumArticleNotifier.getLoader()
-                        ? Center(
-                            child: CircularProgressIndicator(),
-                          )
-                        : Center(
-                            child:
-                                Text('Search Medium Articles by Author name.'),
-                          ),
+                    : Center(
+                        child: mediumArticleNotifier.getLoader()
+                            ? const CircularProgressIndicator()
+                            : const Text(
+                                'Search Medium Articles by Author name.'),
+                      ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5),
@@ -117,42 +116,38 @@ class MediumArticlesState extends State<MediumArticles> {
                   key: _formKey,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget>[
                       Expanded(
-                        flex: 1,
                         child: TextFormField(
                           controller: myController,
                           keyboardType: TextInputType.text,
-                          decoration: new InputDecoration(
+                          decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             contentPadding: EdgeInsets.only(
                                 left: 15, bottom: 11, top: 11, right: 15),
-                            hintText: "Enter Username",
+                            hintText: 'Enter Username',
                             // hintStyle: TextStyle(color: Colors.white),
                           ),
-                          validator: (val) {
+                          validator: (String val) {
                             if (val.isEmpty) {
                               return "Username can't be empty";
                             }
                             return null;
                           },
-                          style: TextStyle(color: themeChange.darkTheme ?
-                          Colors.white:
-                          Colors.black),
-
+                          style: TextStyle(
+                              color: themeChange.darkTheme
+                                  ? Colors.white
+                                  : Colors.black),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
-                      RaisedButton(
-                        child: Text(
-                            mediumArticleNotifier.getArticleList().length == 0
-                                ? "Fetch"
-                                : "Clear"),
+                      ElevatedButton(
                         onPressed: () {
-                          if (mediumArticleNotifier.getArticleList().length !=
-                              0) {
+                          if (mediumArticleNotifier
+                              .getArticleList()
+                              .isNotEmpty) {
                             mediumArticleNotifier.clearArticleList();
                             mediumArticleNotifier.setloader(false);
                           } else {
@@ -164,6 +159,10 @@ class MediumArticlesState extends State<MediumArticles> {
                             }
                           }
                         },
+                        child: Text(
+                            mediumArticleNotifier.getArticleList().isEmpty
+                                ? 'Fetch'
+                                : 'Clear'),
                       ),
                     ],
                   ),
