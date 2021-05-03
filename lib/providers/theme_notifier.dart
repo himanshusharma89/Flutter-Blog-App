@@ -8,7 +8,7 @@ class DarkThemeProvider with ChangeNotifier {
   bool get darkTheme => _darkTheme;
 
   set darkTheme(bool value) {
-    _darkTheme = value ?? false;
+    _darkTheme = value;
     darkThemePreference.setSharedPreferenceValue('themeMode', value);
     notifyListeners();
   }

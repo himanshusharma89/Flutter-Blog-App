@@ -65,7 +65,7 @@ class RoutePage {
         return PageRouteBuilder<dynamic>(
             settings: settings,
             pageBuilder: (_, __, ___) => MediumArticlesWebView(
-                title: arguments['title'], url: arguments['url']),
+                title: arguments['title']!, url: arguments['url']!),
             transitionsBuilder: (_, Animation<double> a, __, Widget c) =>
                 FadeTransition(opacity: a, child: c));
 
@@ -73,7 +73,7 @@ class RoutePage {
         return PageRouteBuilder<dynamic>(
             settings: settings,
             pageBuilder: (_, __, ___) => UndefinedView(
-                  routeName: settings.name,
+                  routeName: settings.name!,
                 ),
             transitionsBuilder: (_, Animation<double> a, __, Widget c) =>
                 FadeTransition(opacity: a, child: c));

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class UndefinedView extends StatelessWidget {
-  const UndefinedView({Key key, this.routeName}) : super(key: key);
+  const UndefinedView({
+    required this.routeName,
+    Key? key,
+  }) : super(key: key);
 
   final String routeName;
 

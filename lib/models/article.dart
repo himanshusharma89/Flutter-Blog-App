@@ -1,5 +1,9 @@
 class Article {
-  Article({this.title, this.author, this.thumbnail, this.link});
+  Article(
+      {required this.title,
+      required this.author,
+      required this.thumbnail,
+      required this.link});
 
   factory Article.fromMap(Map<String, dynamic> data) {
     return Article(

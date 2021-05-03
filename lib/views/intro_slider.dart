@@ -3,14 +3,14 @@ import 'package:blog_app/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class IntroScreen extends StatefulWidget {
-  const IntroScreen({Key key}) : super(key: key);
+  const IntroScreen({Key? key}) : super(key: key);
 
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }
 
 class _IntroScreenState extends State<IntroScreen> {
-  PageController _pageController;
+  late PageController _pageController;
 
   int _currentPage = 0;
 
@@ -19,9 +19,9 @@ class _IntroScreenState extends State<IntroScreen> {
     super.initState();
     _pageController = PageController();
     _pageController.addListener(() {
-      if (_currentPage != _pageController.page.round()) {
+      if (_currentPage != _pageController.page!.round()) {
         setState(() {
-          _currentPage = _pageController.page.round();
+          _currentPage = _pageController.page!.round();
         });
       }
     });

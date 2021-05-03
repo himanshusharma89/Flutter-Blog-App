@@ -64,9 +64,9 @@ class About extends StatelessWidget {
                                             horizontal: 8),
                                         child: GestureDetector(
                                           onTap: () =>
-                                              launcher.launcher(e['URL']),
+                                              launcher.launcher(e['URL']!),
                                           child: CachedNetworkImage(
-                                            imageUrl: e['iconURL'],
+                                            imageUrl: e['iconURL']!,
                                             height: 26,
                                             width: 26,
                                             placeholder: (_, String str) =>

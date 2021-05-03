@@ -43,11 +43,10 @@ class _AddPostState extends State<AddPost> {
                   border: OutlineInputBorder(),
                   contentPadding: EdgeInsets.only(right: 15, left: 15),
                 ),
-                validator: (String val) {
-                  if (val.isEmpty) {
+                validator: (String? val) {
+                  if (val!.isEmpty) {
                     return "Title filed can't be empty";
                   }
-                  return null;
                 },
               ),
               const SizedBox(
@@ -62,11 +61,10 @@ class _AddPostState extends State<AddPost> {
                       right: 15, top: 15, bottom: 50, left: 15),
                 ),
                 maxLines: 7,
-                validator: (String val) {
-                  if (val.isEmpty) {
+                validator: (String? val) {
+                  if (val!.isEmpty) {
                     return "Body field can't be empty";
                   }
-                  return null;
                 },
               )
             ],
@@ -83,16 +81,16 @@ class _AddPostState extends State<AddPost> {
   }
 
   void addPost() {
-    debugPrint('addPost form validation:${_formkey.currentState.validate()}');
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+    debugPrint('addPost form validation:${_formkey.currentState!.validate()}');
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       final Post post = Post(
           title: titleEditingController.text,
           body: bodyEditingController.text,
           date: DateTime.now().millisecondsSinceEpoch);
       debugPrint('addPost${post.toString}');
       PostService().addPost(post);
-      _formkey.currentState.reset();
+      _formkey.currentState!.reset();
       Navigator.pop(context);
     }
   }

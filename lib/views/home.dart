@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   List<Post> postsList = <Post>[];
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   bool swithValue = false;
-  Query postQuery;
+  late Query postQuery;
 
   @override
   void initState() {
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
           ),
           leading: IconButton(
               icon: const Icon(Icons.menu_rounded),
-              onPressed: () => _globalKey.currentState.openDrawer()),
+              onPressed: () => _globalKey.currentState!.openDrawer()),
         ),
         body: Column(
           children: <Widget>[

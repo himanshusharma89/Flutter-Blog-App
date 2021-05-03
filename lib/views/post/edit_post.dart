@@ -14,8 +14,8 @@ class EditPost extends StatefulWidget {
 }
 
 class _EditPostState extends State<EditPost> {
-  TextEditingController titleEditingController;
-  TextEditingController bodyEditingController;
+  late TextEditingController titleEditingController;
+  late TextEditingController bodyEditingController;
   final GlobalKey<FormState> _formkey = GlobalKey();
 
   @override
@@ -53,11 +53,10 @@ class _EditPostState extends State<EditPost> {
                     filled: true,
                     labelText: 'Post Title',
                     border: OutlineInputBorder()),
-                validator: (String val) {
-                  if (val.isEmpty) {
+                validator: (String? val) {
+                  if (val!.isEmpty) {
                     return "Title filed can't be empty";
                   }
-                  return null;
                 },
               ),
               const SizedBox(
@@ -70,11 +69,10 @@ class _EditPostState extends State<EditPost> {
                     labelText: 'Post Body',
                     border: OutlineInputBorder()),
                 maxLines: 10,
-                validator: (String val) {
-                  if (val.isEmpty) {
+                validator: (String? val) {
+                  if (val!.isEmpty) {
                     return "Body feild can't be empty";
                   }
-                  return null;
                 },
               )
             ],
@@ -92,16 +90,16 @@ class _EditPostState extends State<EditPost> {
 
   void updatePost() {
     debugPrint(
-        'updatePost form validation:${_formkey.currentState.validate()}');
-    if (_formkey.currentState.validate()) {
-      _formkey.currentState.save();
+        'updatePost form validation:${_formkey.currentState!.validate()}');
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
       final Post post = Post(
           key: widget.post.key,
           title: titleEditingController.text,
           body: bodyEditingController.text,
           date: DateTime.now().millisecondsSinceEpoch);
       PostService().updatePost(post);
-      _formkey.currentState.reset();
+      _formkey.currentState!.reset();
       Navigator.pushReplacementNamed(context, RouteConstant.ROOT);
     }
   }

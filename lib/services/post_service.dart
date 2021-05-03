@@ -4,7 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 class PostService {
   String nodeName = 'posts';
   FirebaseDatabase database = FirebaseDatabase.instance;
-  DatabaseReference _databaseReference;
+  late DatabaseReference _databaseReference;
 
   void addPost(Post post) {
     //refrence to Posts node

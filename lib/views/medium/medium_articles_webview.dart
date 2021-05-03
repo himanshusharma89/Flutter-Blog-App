@@ -3,7 +3,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
 
 class MediumArticlesWebView extends StatefulWidget {
-  const MediumArticlesWebView({@required this.title, @required this.url});
+  const MediumArticlesWebView({required this.title, required this.url});
 
   final String title;
   final String url;

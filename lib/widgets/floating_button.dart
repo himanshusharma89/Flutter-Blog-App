@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FloatingButton extends StatefulWidget {
-  const FloatingButton({@required this.buttonText, @required this.onPressed});
+  const FloatingButton({required this.buttonText, required this.onPressed});
 
   final String buttonText;
   final Function() onPressed;

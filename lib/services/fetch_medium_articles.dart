@@ -13,7 +13,7 @@ class FetchMediumArticleService {
       MediumArticleNotifier mediumArticleNotifier, String username) async {
     final String url = API_ENDPOINT + username;
     final List<Article> articleList = <Article>[];
-    http.get(url).then(
+    http.get(Uri.parse(url)).then(
       (http.Response response) {
         debugPrint('Response status: ${response.statusCode}');
         if (response.statusCode == 200) {

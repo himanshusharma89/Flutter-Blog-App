@@ -15,7 +15,7 @@ class MediumArticles extends StatefulWidget {
 }
 
 class MediumArticlesState extends State<MediumArticles> {
-  List<dynamic> selected;
+  late List<dynamic> selected;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController myController = TextEditingController();
 
@@ -128,11 +128,10 @@ class MediumArticlesState extends State<MediumArticles> {
                             hintText: 'Enter Username',
                             // hintStyle: TextStyle(color: Colors.white),
                           ),
-                          validator: (String val) {
-                            if (val.isEmpty) {
+                          validator: (String? val) {
+                            if (val!.isEmpty) {
                               return "Username can't be empty";
                             }
-                            return null;
                           },
                           style: TextStyle(
                               color: themeChange.darkTheme
@@ -151,8 +150,8 @@ class MediumArticlesState extends State<MediumArticles> {
                             mediumArticleNotifier.clearArticleList();
                             mediumArticleNotifier.setloader(false);
                           } else {
-                            if (_formKey.currentState.validate()) {
-                              _formKey.currentState.save();
+                            if (_formKey.currentState!.validate()) {
+                              _formKey.currentState!.save();
                               mediumArticleNotifier.setloader(true);
                               FetchMediumArticleService.getPosts(
                                   mediumArticleNotifier, myController.text);

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class PageViewWidget extends StatelessWidget {
   const PageViewWidget({
-    @required this.image,
-    @required this.text,
-    Key key,
+    required this.image,
+    required this.text,
+    Key? key,
   }) : super(key: key);
 
   final String image, text;

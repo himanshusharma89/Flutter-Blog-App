@@ -40,7 +40,7 @@ class BlogApp extends StatefulWidget {
 
 class _BlogAppState extends State<BlogApp> {
   DarkThemeProvider themeChangeProvider = DarkThemeProvider();
-  Widget homeWidget;
+  late Widget homeWidget;
 
   @override
   void initState() {
@@ -76,19 +76,19 @@ class _BlogAppState extends State<BlogApp> {
         return themeChangeProvider;
       },
       child: Consumer<DarkThemeProvider>(
-        builder: (BuildContext context, DarkThemeProvider value, Widget child) {
+        builder:
+            (BuildContext context, DarkThemeProvider value, Widget? child) {
           return GestureDetector(
             onTap: () => hideKeyboard(context),
             child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              builder: (_, Widget child) =>
-                  ScrollConfiguration(behavior: MyBehavior(), child: child),
-              theme: (themeChangeProvider.darkTheme == true)
-                  ? darkTheme
-                  : lightTheme,
-              home: homeWidget,
-              onGenerateRoute: RoutePage.generateRoute
-            ),
+                debugShowCheckedModeBanner: false,
+                builder: (_, Widget? child) =>
+                    ScrollConfiguration(behavior: MyBehavior(), child: child!),
+                theme: (themeChangeProvider.darkTheme == true)
+                    ? darkTheme
+                    : lightTheme,
+                home: homeWidget,
+                onGenerateRoute: RoutePage.generateRoute),
           );
         },
       ),
@@ -98,7 +98,7 @@ class _BlogAppState extends State<BlogApp> {
   void hideKeyboard(BuildContext context) {
     final FocusScopeNode currentFocus = FocusScope.of(context);
     if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
-      FocusManager.instance.primaryFocus.unfocus();
+      FocusManager.instance.primaryFocus!.unfocus();
     }
   }
 }
