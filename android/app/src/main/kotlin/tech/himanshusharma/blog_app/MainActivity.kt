@@ -1,4 +1,4 @@
-package com.project.blog_app
+package tech.himanshusharma.blog_app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

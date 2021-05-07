@@ -1,6 +1,7 @@
 import 'package:blog_app/helpers/launcher.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:blog_app/routes/router.dart';
+import 'package:blog_app/services/shared_preference_service.dart';
 import 'package:blog_app/views/home.dart';
 import 'package:blog_app/views/intro_slider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'helpers/theme.dart';
 
 final Launcher launcher = Launcher();
@@ -22,6 +22,7 @@ Future<void> main() async {
   });
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await SharedPreferencesService().init();
   runApp(
     MultiProvider(
       providers: <ChangeNotifierProvider<ChangeNotifier>>[
@@ -49,24 +50,20 @@ class _BlogAppState extends State<BlogApp> {
     checkFirstSeen();
   }
 
-  Future<void> getCurrentAppTheme() async {
-    themeChangeProvider.darkTheme = await themeChangeProvider
-        .darkThemePreference
-        .getSharedPreferenceValue('themeMode') as bool;
+  void getCurrentAppTheme() {
+    themeChangeProvider.darkTheme = SharedPreferencesService.getDarkTheme();
   }
 
-  Future<void> checkFirstSeen() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final bool _seen = prefs.getBool('seen') ?? false;
+  void checkFirstSeen() {
+    final bool _firstLaunch = SharedPreferencesService.getFirstLaunch();
 
-    if (_seen) {
-      setState(() {
-        homeWidget = HomePage();
-      });
-    } else {
-      await prefs.setBool('seen', true);
+    if (_firstLaunch) {
       homeWidget = const IntroScreen();
+    } else {
+      homeWidget = HomePage();
     }
+    SharedPreferencesService.setFirstLaunch(to: false);
+    setState(() {});
   }
 
   @override
@@ -84,9 +81,7 @@ class _BlogAppState extends State<BlogApp> {
                 debugShowCheckedModeBanner: false,
                 builder: (_, Widget? child) =>
                     ScrollConfiguration(behavior: MyBehavior(), child: child!),
-                theme: (themeChangeProvider.darkTheme == true)
-                    ? darkTheme
-                    : lightTheme,
+                theme: themeChangeProvider.darkTheme ? darkTheme : lightTheme,
                 home: homeWidget,
                 onGenerateRoute: RoutePage.generateRoute),
           );

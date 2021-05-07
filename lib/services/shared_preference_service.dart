@@ -4,26 +4,31 @@ import 'package:shared_preferences/shared_preferences.dart';
 // and retrieve data from shared preferences
 
 class SharedPreferencesService {
-  // a generic method to retrieve one key:value pair from shared preferences at a time
-  Future<dynamic> getSharedPreferenceValue(String key) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.get(key);
+  static late SharedPreferences _sharedPreferences;
+
+  // Create shared preferences instance here
+  Future<void> init() async {
+    _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  // a generic method to store one key:value pair in shared preferences at a time
-  // key is of type String,
-  // and value can be any of the following types [String, int, double, bool]
-  Future<void> setSharedPreferenceValue(String key, dynamic value) async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+  static String sharedPreferenceFirstLaunchKey = 'FIRSTLAUNCH';
+  static String sharedPreferenceDarkThemeKey = 'DARKTHEME';
 
-    if (value is String) {
-      await prefs.setString(key, value);
-    } else if (value is int) {
-      await prefs.setInt(key, value);
-    } else if (value is double) {
-      await prefs.setDouble(key, value);
-    } else if (value is bool) {
-      await prefs.setBool(key, value);
-    }
+  /// Set Data to Sharedpreference
+  static Future<bool> setFirstLaunch({required bool to}) async {
+    return _sharedPreferences.setBool(sharedPreferenceFirstLaunchKey, to);
+  }
+
+  static Future<bool> setDarkTheme({required bool to}) async {
+    return _sharedPreferences.setBool(sharedPreferenceDarkThemeKey, to);
+  }
+
+  /// Fetching Data From Sharedpreference
+  static bool getFirstLaunch() {
+    return _sharedPreferences.getBool(sharedPreferenceFirstLaunchKey) ?? true;
+  }
+
+  static bool getDarkTheme() {
+    return _sharedPreferences.getBool(sharedPreferenceDarkThemeKey) ?? false;
   }
 }
