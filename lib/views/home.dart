@@ -1,11 +1,14 @@
+import 'package:blog_app/helpers/ad_helper.dart';
 import 'package:blog_app/helpers/colors.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:blog_app/routes/route_constants.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_database/firebase_database.dart';
+
 import '../models/post.dart';
 import '../providers/theme_notifier.dart';
 import 'drawer.dart';
@@ -22,14 +25,43 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   bool swithValue = false;
   late Query postQuery;
+  late BannerAd _bannerAd;
+  bool _isBannerAdReady = false;
 
   @override
   void initState() {
+    super.initState();
+
     _database.reference().child(nodeName).onChildAdded.listen(_childAdded);
     _database.reference().child(nodeName).onChildRemoved.listen(_childRemoves);
     _database.reference().child(nodeName).onChildChanged.listen(_childChanged);
     postQuery = _database.reference().child('posts').orderByKey();
-    super.initState();
+
+    _bannerAd = BannerAd(
+      adUnitId: AdHelper.bannerAdUnitId,
+      request: AdRequest(),
+      size: AdSize.banner,
+      listener: AdListener(
+        onAdLoaded: (_) {
+          setState(() {
+            _isBannerAdReady = true;
+          });
+        },
+        onAdFailedToLoad: (ad, err) {
+          print('Failed to load a banner ad: ${err.message}');
+          _isBannerAdReady = false;
+          ad.dispose();
+        },
+      ),
+    );
+
+    _bannerAd.load();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd.dispose();
+    super.dispose();
   }
 
   @override
@@ -57,89 +89,107 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.menu_rounded),
               onPressed: () => _globalKey.currentState!.openDrawer()),
         ),
-        body: Column(
+        body: Stack(
           children: <Widget>[
-            Visibility(
-              visible: postsList.isEmpty,
-              child: Center(
-                child: Container(
-                  alignment: Alignment.center,
-                  child: const Text('No post to show'),
+            Column(
+              children: <Widget>[
+                Visibility(
+                  visible: postsList.isEmpty,
+                  child: Center(
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text('No post to show'),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Visibility(
-              visible: postsList.isNotEmpty,
-              child: Flexible(
-                child: FirebaseAnimatedList(
-                    query: postQuery,
-                    itemBuilder: (_, DataSnapshot snap,
-                        Animation<double> animation, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 2.5),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, RouteConstant.VIEW_POST,
-                                arguments: postsList[index]);
-                          },
-                          child: Card(
-                              elevation: 4.0,
-                              color: AppTheme.primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Row(
+                Visibility(
+                  visible: postsList.isNotEmpty,
+                  child: Flexible(
+                    child: FirebaseAnimatedList(
+                        query: postQuery,
+                        itemBuilder: (_, DataSnapshot snap,
+                            Animation<double> animation, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 2.5),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, RouteConstant.VIEW_POST,
+                                    arguments: postsList[index]);
+                              },
+                              child: Card(
+                                  elevation: 4.0,
+                                  color: AppTheme.primaryColor,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        const Icon(
-                                          Icons.border_color,
-                                          size: 18.0,
-                                          color: Colors.white,
+                                        Row(
+                                          children: <Widget>[
+                                            const Icon(
+                                              Icons.border_color,
+                                              size: 18.0,
+                                              color: Colors.white,
+                                            ),
+                                            const SizedBox(
+                                              width: 15,
+                                            ),
+                                            Text(
+                                              postsList[index].title,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w800,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         const SizedBox(
-                                          width: 15,
+                                          height: 12,
                                         ),
                                         Text(
-                                          postsList[index].title,
+                                          postsList[index].body,
                                           style: const TextStyle(
                                             color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w800,
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
-                                    const SizedBox(
-                                      height: 12,
-                                    ),
-                                    Text(
-                                      postsList[index].body,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )),
-                        ),
-                      );
-                    }),
-              ),
+                                  )),
+                            ),
+                          );
+                        }),
+                  ),
+                ),
+              ],
             ),
+            if (_isBannerAdReady)
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SizedBox(
+                  width: _bannerAd.size.width.toDouble(),
+                  height: _bannerAd.size.height.toDouble(),
+                  child: AdWidget(ad: _bannerAd),
+                ),
+              ),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.pushNamed(context, RouteConstant.ADD_POST);
-          },
-          tooltip: 'Add a post',
-          child: const Icon(
-            Icons.add,
+        floatingActionButton: Padding(
+          padding: EdgeInsets.only(bottom: _bannerAd.size.height + 10),
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.pushNamed(context, RouteConstant.ADD_POST);
+            },
+            tooltip: 'Add a post',
+            child: const Icon(
+              Icons.add,
+            ),
           ),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         drawer: BlogDrawer());
   }
 
