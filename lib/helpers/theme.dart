@@ -8,7 +8,7 @@ final ThemeData darkTheme = ThemeData(
     fontFamily: 'Nunito',
     brightness: Brightness.dark,
     backgroundColor: const Color(0xFF212121),
-    accentColor: Colors.white,
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white, brightness: Brightness.dark),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: AppTheme.primaryColor, backgroundColor: Colors.white),
     dividerColor: Colors.black12,
@@ -27,13 +27,16 @@ final ThemeData darkTheme = ThemeData(
         elevation: 0,
         color: Colors.transparent,
         centerTitle: true,
-        textTheme: TextTheme(
-            headline6: TextStyle(
+        toolbarTextStyle: TextStyle(
+          color: Colors.white
+        ),
+        iconTheme: IconThemeData(),
+        titleTextStyle: TextStyle(
           color: Colors.white,
           fontFamily: 'Nunito',
           fontSize: 20.0,
           fontWeight: FontWeight.w700,
-        ))));
+        ),));
 
 final ThemeData lightTheme = ThemeData(
     primarySwatch: Colors.purple,
@@ -41,7 +44,7 @@ final ThemeData lightTheme = ThemeData(
     fontFamily: 'Nunito',
     brightness: Brightness.light,
     backgroundColor: const Color(0xFFE5E5E5),
-    accentColor: Colors.black,
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white, brightness: Brightness.light),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white, backgroundColor: AppTheme.primaryColor),
     dividerColor: Colors.white54,
@@ -60,10 +63,9 @@ final ThemeData lightTheme = ThemeData(
         iconTheme: IconThemeData(
           color: AppTheme.primaryColor,
         ),
-        textTheme: TextTheme(
-            headline6: TextStyle(
-          color: AppTheme.primaryColor,
+        titleTextStyle: TextStyle(
+          color: Colors.white,
           fontFamily: 'Nunito',
-          fontSize: 22.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.w700,
-        ))));
+        )));

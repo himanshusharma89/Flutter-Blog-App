@@ -18,7 +18,7 @@ class FetchMediumArticleService {
         debugPrint('Response status: ${response.statusCode}');
         if (response.statusCode == 200) {
           debugPrint('Response body: ${response.body}');
-          final posts = jsonDecode(response.body);
+          final dynamic posts = jsonDecode(response.body);
           debugPrint("Posts : ${posts["items"]}");
           posts['items'].forEach(
             (Map<String, dynamic> element) {

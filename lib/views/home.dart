@@ -39,15 +39,15 @@ class _HomePageState extends State<HomePage> {
 
     _bannerAd = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
-      request: AdRequest(),
+      request: const AdRequest(),
       size: AdSize.banner,
-      listener: AdListener(
+      listener: BannerAdListener(
         onAdLoaded: (_) {
           setState(() {
             _isBannerAdReady = true;
           });
         },
-        onAdFailedToLoad: (ad, err) {
+        onAdFailedToLoad: (Ad ad, LoadAdError err) {
           print('Failed to load a banner ad: ${err.message}');
           _isBannerAdReady = false;
           ad.dispose();
@@ -109,58 +109,61 @@ class _HomePageState extends State<HomePage> {
                         query: postQuery,
                         itemBuilder: (_, DataSnapshot snap,
                             Animation<double> animation, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 2.5),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, RouteConstant.VIEW_POST,
-                                    arguments: postsList[index]);
-                              },
-                              child: Card(
-                                  elevation: 4.0,
-                                  color: AppTheme.primaryColor,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Row(
-                                          children: <Widget>[
-                                            const Icon(
-                                              Icons.border_color,
-                                              size: 18.0,
+                          if (snap.exists)
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 2.5),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouteConstant.VIEW_POST,
+                                      arguments: postsList[index]);
+                                },
+                                child: Card(
+                                    elevation: 4.0,
+                                    color: AppTheme.primaryColor,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              const Icon(
+                                                Icons.border_color,
+                                                size: 18.0,
+                                                color: Colors.white,
+                                              ),
+                                              const SizedBox(
+                                                width: 15,
+                                              ),
+                                              Text(
+                                                postsList[index].title,
+                                                style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.w800,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 12,
+                                          ),
+                                          Text(
+                                            postsList[index].body,
+                                            style: const TextStyle(
                                               color: Colors.white,
                                             ),
-                                            const SizedBox(
-                                              width: 15,
-                                            ),
-                                            Text(
-                                              postsList[index].title,
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.w800,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                        Text(
-                                          postsList[index].body,
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  )),
-                            ),
-                          );
+                                          )
+                                        ],
+                                      ),
+                                    )),
+                              ),
+                            );
+                          return const Center(
+                              child: CircularProgressIndicator());
                         }),
                   ),
                 ),

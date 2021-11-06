@@ -67,7 +67,7 @@ class _PostViewState extends State<PostView> {
                   ),
                   IconButton(
                     icon: const Icon(Icons.delete),
-                    onPressed: () {
+                    onPressed: () async {
                       PostService().deletePost(widget.post);
                       Navigator.pop(context);
                     },
