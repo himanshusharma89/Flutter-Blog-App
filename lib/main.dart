@@ -1,6 +1,8 @@
 import 'package:blog_app/helpers/launcher.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
+import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:blog_app/routes/router.dart';
+import 'package:blog_app/services/auth_service.dart';
 import 'package:blog_app/services/shared_preference_service.dart';
 import 'package:blog_app/views/home.dart';
 import 'package:blog_app/views/intro_slider.dart';
@@ -10,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
-import 'package:blog_app/providers/theme_notifier.dart';
+
 import 'helpers/theme.dart';
 
 final Launcher launcher = Launcher();
@@ -43,13 +45,16 @@ class BlogApp extends StatefulWidget {
 
 class _BlogAppState extends State<BlogApp> {
   DarkThemeProvider themeChangeProvider = DarkThemeProvider();
+  AuthService _authService = AuthService();
   late Widget homeWidget;
+  late bool signedIn;
 
   @override
   void initState() {
     super.initState();
     getCurrentAppTheme();
     checkFirstSeen();
+    signInAnonymously();
   }
 
   void getCurrentAppTheme() {
@@ -65,6 +70,11 @@ class _BlogAppState extends State<BlogApp> {
       homeWidget = HomePage();
     }
     SharedPreferencesService.setFirstLaunch(to: false);
+    setState(() {});
+  }
+
+  void signInAnonymously() async {
+    signedIn = await _authService.signInAnonymously();
     setState(() {});
   }
 

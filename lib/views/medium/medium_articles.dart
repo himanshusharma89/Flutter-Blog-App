@@ -2,7 +2,7 @@ import 'package:blog_app/models/article.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
 import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:blog_app/routes/route_constants.dart';
-import 'package:blog_app/services/fetch_medium_articles.dart';
+import 'package:blog_app/services/fetch_medium_articles_service.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
