@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
           });
         },
         onAdFailedToLoad: (Ad ad, LoadAdError err) {
-          print('Failed to load a banner ad: ${err.message}');
+          debugPrint('Failed to load a banner ad: ${err.message}');
           _isBannerAdReady = false;
           ad.dispose();
         },

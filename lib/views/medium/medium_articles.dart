@@ -1,8 +1,8 @@
 import 'package:blog_app/models/article.dart';
 import 'package:blog_app/providers/medium_article_notifier.dart';
+import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:blog_app/routes/route_constants.dart';
 import 'package:blog_app/services/fetch_medium_articles.dart';
-import 'package:blog_app/providers/theme_notifier.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +37,7 @@ class MediumArticlesState extends State<MediumArticles> {
         Provider.of<DarkThemeProvider>(context);
     final MediumArticleNotifier mediumArticleNotifier =
         Provider.of<MediumArticleNotifier>(context);
+    final List<Article> articleList = mediumArticleNotifier.getArticleList();
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -50,14 +51,12 @@ class MediumArticlesState extends State<MediumArticles> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Expanded(
-                child: mediumArticleNotifier.getArticleList().isNotEmpty
+                child: articleList.isNotEmpty
                     ? ListView.builder(
                         shrinkWrap: true,
-                        itemCount:
-                            mediumArticleNotifier.getArticleList().length,
+                        itemCount: articleList.length,
                         itemBuilder: (_, int index) {
-                          final Article article =
-                              mediumArticleNotifier.getArticleList()[index];
+                          final Article article = articleList[index];
                           return GestureDetector(
                             onTap: () {
                               Navigator.pushNamed(context,
@@ -158,10 +157,7 @@ class MediumArticlesState extends State<MediumArticles> {
                             }
                           }
                         },
-                        child: Text(
-                            mediumArticleNotifier.getArticleList().isEmpty
-                                ? 'Fetch'
-                                : 'Clear'),
+                        child: Text(articleList.isEmpty ? 'Fetch' : 'Clear'),
                       ),
                     ],
                   ),

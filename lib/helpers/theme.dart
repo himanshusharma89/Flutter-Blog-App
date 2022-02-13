@@ -8,7 +8,8 @@ final ThemeData darkTheme = ThemeData(
     fontFamily: 'Nunito',
     brightness: Brightness.dark,
     backgroundColor: const Color(0xFF212121),
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white, brightness: Brightness.dark),
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(secondary: Colors.white, brightness: Brightness.dark),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: AppTheme.primaryColor, backgroundColor: Colors.white),
     dividerColor: Colors.black12,
@@ -24,19 +25,18 @@ final ThemeData darkTheme = ThemeData(
       color: Colors.white,
     ),
     appBarTheme: const AppBarTheme(
-        elevation: 0,
-        color: Colors.transparent,
-        centerTitle: true,
-        toolbarTextStyle: TextStyle(
-          color: Colors.white
-        ),
-        iconTheme: IconThemeData(),
-        titleTextStyle: TextStyle(
-          color: Colors.white,
-          fontFamily: 'Nunito',
-          fontSize: 20.0,
-          fontWeight: FontWeight.w700,
-        ),));
+      elevation: 0,
+      color: Colors.transparent,
+      centerTitle: true,
+      toolbarTextStyle: TextStyle(color: Colors.white),
+      iconTheme: IconThemeData(),
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontFamily: 'Nunito',
+        fontSize: 20.0,
+        fontWeight: FontWeight.w700,
+      ),
+    ));
 
 final ThemeData lightTheme = ThemeData(
     primarySwatch: Colors.purple,
@@ -44,7 +44,8 @@ final ThemeData lightTheme = ThemeData(
     fontFamily: 'Nunito',
     brightness: Brightness.light,
     backgroundColor: const Color(0xFFE5E5E5),
-    colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.white, brightness: Brightness.light),
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(secondary: Colors.white, brightness: Brightness.light),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white, backgroundColor: AppTheme.primaryColor),
     dividerColor: Colors.white54,
@@ -64,7 +65,7 @@ final ThemeData lightTheme = ThemeData(
           color: AppTheme.primaryColor,
         ),
         titleTextStyle: TextStyle(
-          color: Colors.white,
+          color: AppTheme.primaryColor,
           fontFamily: 'Nunito',
           fontSize: 20.0,
           fontWeight: FontWeight.w700,

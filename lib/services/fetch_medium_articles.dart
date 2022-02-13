@@ -17,10 +17,10 @@ class FetchMediumArticleService {
       (http.Response response) {
         debugPrint('Response status: ${response.statusCode}');
         if (response.statusCode == 200) {
-          debugPrint('Response body: ${response.body}');
-          final dynamic posts = jsonDecode(response.body);
-          debugPrint("Posts : ${posts["items"]}");
-          posts['items'].forEach(
+          final List<Map<String, dynamic>> posts =
+              new List<Map<String, dynamic>>.from(
+                  jsonDecode(response.body)["items"]);
+          posts.forEach(
             (Map<String, dynamic> element) {
               articleList.add(
                 Article.fromMap(element),
