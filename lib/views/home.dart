@@ -1,7 +1,7 @@
 import 'package:blog_app/helpers/ad_helper.dart';
-import 'package:blog_app/helpers/colors.dart';
 import 'package:blog_app/models/post.dart';
 import 'package:blog_app/routes/route_constants.dart';
+import 'package:blog_app/widgets/post_card.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   String nodeName = 'posts';
   List<Post> postsList = <Post>[];
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-  bool swithValue = false;
+  bool switchValue = false;
   late Query postQuery;
   late BannerAd _bannerAd;
   bool _isBannerAdReady = false;
@@ -32,10 +32,10 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    _database.reference().child(nodeName).onChildAdded.listen(_childAdded);
-    _database.reference().child(nodeName).onChildRemoved.listen(_childRemoves);
-    _database.reference().child(nodeName).onChildChanged.listen(_childChanged);
-    postQuery = _database.reference().child('posts').orderByKey();
+    _database.ref().child(nodeName).onChildAdded.listen(_childAdded);
+    _database.ref().child(nodeName).onChildRemoved.listen(_childRemoves);
+    _database.ref().child(nodeName).onChildChanged.listen(_childChanged);
+    postQuery = _database.ref().child('posts');
 
     _bannerAd = BannerAd(
       adUnitId: AdHelper.bannerAdUnitId,
@@ -110,58 +110,7 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (_, DataSnapshot snap,
                             Animation<double> animation, int index) {
                           if (snap.exists)
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 2.5),
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, RouteConstant.VIEW_POST,
-                                      arguments: postsList[index]);
-                                },
-                                child: Card(
-                                    elevation: 4.0,
-                                    color: AppTheme.primaryColor,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Row(
-                                            children: <Widget>[
-                                              const Icon(
-                                                Icons.border_color,
-                                                size: 18.0,
-                                                color: Colors.white,
-                                              ),
-                                              const SizedBox(
-                                                width: 15,
-                                              ),
-                                              Text(
-                                                postsList[index].title,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 20.0,
-                                                  fontWeight: FontWeight.w800,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          const SizedBox(
-                                            height: 12,
-                                          ),
-                                          Text(
-                                            postsList[index].body,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    )),
-                              ),
-                            );
+                            return PostCard(post: postsList[index]);
                           return const Center(
                               child: CircularProgressIndicator());
                         }),
@@ -196,13 +145,13 @@ class _HomePageState extends State<HomePage> {
         drawer: BlogDrawer());
   }
 
-  void _childAdded(Event event) {
+  void _childAdded(dynamic event) {
     setState(() {
       postsList.add(Post.fromSnapshot(event.snapshot));
     });
   }
 
-  void _childRemoves(Event event) {
+  void _childRemoves(dynamic event) {
     final Post deletedPost = postsList.singleWhere((Post post) {
       return post.key == event.snapshot.key;
     });
@@ -212,7 +161,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _childChanged(Event event) {
+  void _childChanged(dynamic event) {
     final Post changedPost = postsList.singleWhere((Post post) {
       return post.key == event.snapshot.key;
     });

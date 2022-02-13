@@ -1,14 +1,13 @@
-//import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 class Post {
   Post({required this.date, required this.title, required this.body, this.key});
 
   factory Post.fromSnapshot(DataSnapshot snap) => Post(
-      body: snap.value['body'] as String,
-      date: snap.value['date'] as int,
+      body: snap.child('body').value as String,
+      date: snap.child('date').value as int,
       key: snap.key,
-      title: snap.value['title'] as String);
+      title: snap.child('title').value as String);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
