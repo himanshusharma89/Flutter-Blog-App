@@ -1,6 +1,5 @@
-import 'dart:io';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class MediumArticlesWebView extends StatefulWidget {
   const MediumArticlesWebView({required this.title, required this.url});
@@ -15,10 +14,11 @@ class MediumArticlesWebView extends StatefulWidget {
 }
 
 class MediumArticlesWebViewState extends State<MediumArticlesWebView> {
+  WebViewController controller = WebViewController();
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+    controller = WebViewController()..loadRequest(Uri.parse(widget.url));
   }
 
   @override
@@ -31,8 +31,8 @@ class MediumArticlesWebViewState extends State<MediumArticlesWebView> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: WebView(
-        initialUrl: widget.url,
+      body: WebViewWidget(
+        controller: controller,
       ),
     );
   }
