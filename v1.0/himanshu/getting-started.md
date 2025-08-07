@@ -16,7 +16,7 @@ Learn how to use DeveloperHub using our step-by-step guide:
 
 Click here and start editing your documentation.
 
-\{{page.vars.PRODUCT\_NAME\}}
+`{{page.vars.PRODUCT_NAME}}`
 
 ### Formatting
 
