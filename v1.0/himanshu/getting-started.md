@@ -70,6 +70,12 @@ func main() {
 {% /tab %}
 {% /code %}
 
+{% code %}
+{% tab language="javascript" %}
+console.log("try this")
+{% /tab %}
+{% /code %}
+
 ### Images & Videos
 
 Do you see all the images here? They were uploaded by using the plugin! You can also embed YouTube videos.
