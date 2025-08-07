@@ -70,11 +70,9 @@ func main() {
 {% /tab %}
 {% /code %}
 
-{% code %}
-{% tab language="javascript" %}
+```
 console.log("try this")
-{% /tab %}
-{% /code %}
+```
 
 ### Images & Videos
 
