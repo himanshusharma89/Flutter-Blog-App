@@ -3,14 +3,16 @@ type: page
 title: Getting Started
 listed: true
 slug: getting-started
+description: 
 index_title: Getting Started
+hidden: 
 keywords: null
-tags: null
-vars:
-  PRODUCT_NAME: My Product
+tags: 
 ---
 
-# Getting Started
+
+
+## Getting Started
 
 Learn how to use DeveloperHub using our step-by-step guide:
 
@@ -36,12 +38,19 @@ There are many in-page blocks that you can try which will make your documentatio
 
 . Go have a look! 👇
 
+
 #### Code
 
 You can write code by inserting the code block plugin either manually or by using markdown's syntax for fenced code block.
 
-```
-```
+
+{% code %}
+{% tab language="none" %}
+
+{% /tab %}
+{% /code %}
+
+
 
 
 
@@ -59,9 +68,15 @@ import "fmt"
 
 func main() { fmt.Println("hello world") }
 
-```
+
+{% code %}
+{% tab language="none" %}
 console.log("try this")
-```
+{% /tab %}
+{% /code %}
+
+
+
 
 #### Images & Videos
 
