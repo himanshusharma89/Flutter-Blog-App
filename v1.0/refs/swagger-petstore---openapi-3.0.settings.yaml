@@ -1,0 +1,12 @@
+title: 'Swagger Petstore - OpenAPI 3.0'
+description: null
+published: true
+downloadable: true
+expandable: false
+showContentType: false
+showAccept: false
+showTryItOut: true
+indexCollapsible: false
+showOAuth2: false
+showRequestPayloadOnly: false
+dontCapitalizeTags: false

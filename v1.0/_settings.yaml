@@ -1,0 +1,6 @@
+name: v1.0
+published: true
+documentations:
+    - himanshu
+references:
+    - swagger-petstore---openapi-3.0

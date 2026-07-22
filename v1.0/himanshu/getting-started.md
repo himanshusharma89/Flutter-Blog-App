@@ -2,15 +2,12 @@
 type: page
 title: Getting Started
 listed: true
-slug: getting-started
 description: 
 index_title: Getting Started
-hidden: 
+hidden: false
 keywords: null
 tags: 
 ---
-
-
 
 ## Getting Started
 
@@ -38,47 +35,33 @@ There are many in-page blocks that you can try which will make your documentatio
 
 . Go have a look! 👇
 
-
 #### Code
 
 You can write code by inserting the code block plugin either manually or by using markdown's syntax for fenced code block.
 
-
 {% code %}
-{% tab language="none" %}
+```none
 
-{% /tab %}
+```
 {% /code %}
-
-
-
-
 
 console.log("Hello World");
 
-
-
 print("Hello World!")
-
-
 
 package main
 
 import "fmt"
 
-func main() { fmt.Println("hello world") }
-
+func main() \{ fmt.Println("hello world") \}
 
 {% code %}
-{% tab language="none" %}
+```none
 console.log("try this")
-{% /tab %}
+```
 {% /code %}
 
-
-
-
-#### Images & Videos
+#### Images \& Videos
 
 Do you see all the images here? They were uploaded by using the plugin! You can also embed YouTube videos.
 
