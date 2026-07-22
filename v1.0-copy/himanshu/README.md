@@ -2,14 +2,11 @@
 type: page
 title: README
 listed: true
-slug: README
 description: 
 index_title: README
-hidden: 
+hidden: false
 keywords: 
 tags: 
 ---
 
-
 ## himanshu
-

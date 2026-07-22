@@ -2,10 +2,9 @@
 type: page
 title: Getting Started
 listed: true
-slug: getting-started
 description: 
 index_title: Getting Started
-hidden: 
+hidden: false
 keywords: 
 tags: 
 ---
@@ -30,8 +29,7 @@ Click here and start editing your documentation.
 
 You can highlight sentences and format them on the go (bold, italics, headings and so). You can also use the usual keyboard shortcuts: Ctrl/⌘+B, Ctrl/⌘+I. Hit Ctrl/⌘+/ to see all possible combinations.
 
-{% image url="https://uploads.developerhub.io/prod/02/r09kzcr7u2vusptm6uj2itmv7tg7wu32fs07xdmezswz6zqwv01a31vn98pmvrd2.png" mode="responsive" height="182" width="930" %}
-{% /image %}
+{% image url="https://uploads.developerhub.io/prod/02/r09kzcr7u2vusptm6uj2itmv7tg7wu32fs07xdmezswz6zqwv01a31vn98pmvrd2.png" /%}
 
 ## Markdown
 
@@ -45,21 +43,22 @@ To reference other pages in your documentation, use `@` to start linking.
 
 There are many in-page blocks that you can try which will make your documentation richer, just type {% key key=" /" /%}. Go have a look! 👇
 
-{% image url="https://uploads.developerhub.io/prod/02/ek4dchom06zasu70pblhjmnn80svgue7v9mws01hir8t8bgcy26148e2ou9dkhcq.png" mode="responsive" height="914" width="540" %}
-{% /image %}
+{% image url="https://uploads.developerhub.io/prod/02/ek4dchom06zasu70pblhjmnn80svgue7v9mws01hir8t8bgcy26148e2ou9dkhcq.png" /%}
 
 ### Code
 
 You can write code by inserting the code block plugin either manually or by using markdown's syntax for fenced code block.
 
 {% code %}
-{% tab language="javascript" %}
+```javascript
 console.log("Hello World");
-{% /tab %}
-{% tab language="python" %}
+```
+
+```python
 print("Hello World!")
-{% /tab %}
-{% tab language="go" %}
+```
+
+```go
 package main
 
 import "fmt" 
@@ -67,10 +66,10 @@ import "fmt"
 func main() {
      fmt.Println("hello world")
 }
-{% /tab %}
+```
 {% /code %}
 
-### Images & Videos
+### Images \& Videos
 
 Do you see all the images here? They were uploaded by using the plugin! You can also embed YouTube videos.
 
