@@ -1,2 +1,14 @@
 title: himanshu
 variables: {  }
+settings:
+  uiVersion: 3
+  darkMode: true
+  lightCodeTheme: false
+  showThemeToggle: true
+  stickyTopnav: false
+  transparentTopnav: false
+  fullWidthFooter: false
+  mainColour: '353535'
+  linkColour: ff5da2
+navigation:
+  openLinksNewTab: true
